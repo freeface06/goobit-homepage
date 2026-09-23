@@ -509,8 +509,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (indicator && stageTitles[targetStage]) {
-        indicator.textContent = stageTitles[targetStage];
+      if (indicator) {
+        if (window.innerWidth < 640) {
+          indicator.textContent = `STAGE 0${targetStage} / 03`;
+        } else if (stageTitles[targetStage]) {
+          indicator.textContent = stageTitles[targetStage];
+        }
       }
       if (progressBar && (scrollyTrack.offsetHeight - window.innerHeight <= 0)) {
         const widthPercent = targetStage === 1 ? 33.3 : targetStage === 2 ? 66.6 : 100;
@@ -548,6 +552,17 @@ document.addEventListener('DOMContentLoaded', () => {
         isScrollingTrack = true;
         requestAnimationFrame(handleScrollyProgress);
       }
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (indicator) {
+        if (window.innerWidth < 640) {
+          indicator.textContent = `STAGE 0${activeStage} / 03`;
+        } else if (stageTitles[activeStage]) {
+          indicator.textContent = stageTitles[activeStage];
+        }
+      }
+      handleScrollyProgress();
     }, { passive: true });
 
     // Initial check

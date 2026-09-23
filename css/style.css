@@ -454,10 +454,10 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
    Interactive Scrollytelling & Parallax Storytelling Styles
    ========================================================================== */
 
-/* Scrollytelling Pinning & Adaptive Layout */
-@media (min-width: 1024px) and (min-height: 720px) {
+/* Scrollytelling Pinning & Adaptive Layout (Enabled on portrait mobile, tablets, desktops >= 580px) */
+@media (min-height: 580px) {
   #ai-scrolly-track {
-    min-height: 260vh;
+    min-height: 240vh;
   }
   .ai-showcase-frame {
     position: sticky;
@@ -470,7 +470,8 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   }
 }
 
-@media (max-width: 1023px), (max-height: 719px) {
+/* Fallback for ultra-low height viewports (e.g. mobile in landscape mode < 580px) */
+@media (max-height: 579px) {
   #ai-scrolly-track {
     min-height: auto !important;
   }
@@ -481,6 +482,20 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
     padding-top: 3.5rem !important;
     padding-bottom: 3.5rem !important;
     overflow: visible !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .scrolly-card.is-active {
+    transform: translateX(0) !important;
+  }
+  .scrolly-panel {
+    inset: 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+    height: calc(100% - 1rem) !important;
+  }
+  .scrolly-card .scrolly-card-body {
+    max-height: 180px;
   }
 }
 
