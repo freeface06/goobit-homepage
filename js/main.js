@@ -384,46 +384,206 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 10. Core AI Technology Showcase Interactive Tabs & Scroll Sync
-  const aiTabButtons = document.querySelectorAll('[data-ai-tab]');
-  const aiVisualPanels = document.querySelectorAll('[data-ai-visual]');
-  if (aiTabButtons.length > 0 && aiVisualPanels.length > 0) {
-    const switchAiTab = (targetId) => {
-      aiTabButtons.forEach((btn) => {
-        const id = btn.getAttribute('data-ai-tab');
-        const isActive = id === targetId;
-        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        if (isActive) {
-          btn.classList.add('bg-white/10', 'border-amber-400', 'shadow-enterprise');
-          btn.classList.remove('bg-transparent', 'border-slate-800', 'opacity-60');
-          const indicator = btn.querySelector('.tab-indicator');
-          if (indicator) indicator.classList.remove('scale-x-0', 'opacity-0');
-        } else {
-          btn.classList.remove('bg-white/10', 'border-amber-400', 'shadow-enterprise');
-          btn.classList.add('bg-transparent', 'border-slate-800', 'opacity-60');
-          const indicator = btn.querySelector('.tab-indicator');
-          if (indicator) indicator.classList.add('scale-x-0', 'opacity-0');
-        }
-      });
+  /**
+   * @intent Scrollytelling Pinning & Parallax Interactive Storytelling Controller
+   * @agent  manager-develop
+   * @branch feat/scroll-storytelling
+   * @author @goobit-dev
+   * @date   2026-09-23
+   */
 
-      aiVisualPanels.forEach((panel) => {
-        const panelId = panel.getAttribute('data-ai-visual');
-        if (panelId === targetId) {
-          panel.classList.remove('is-inactive', 'hidden');
+  // 10-A. Scrollytelling Showcase Controller (Sticky track pinning across 3 stages)
+  const scrollyTrack = document.getElementById('ai-scrolly-track');
+  if (scrollyTrack) {
+    const scrollyPanels = scrollyTrack.querySelectorAll('[data-scrolly-panel]');
+    const scrollyCards = scrollyTrack.querySelectorAll('[data-scrolly-card]');
+    const progressBar = document.getElementById('scrolly-progress-bar');
+    const indicator = document.getElementById('scrolly-stage-indicator');
+
+    const stageTitles = {
+      1: 'STAGE 01 / 03 : KNOWLEDGE GRAPH & RAG',
+      2: 'STAGE 02 / 03 : AGENTIC AI & AUTOMATION',
+      3: 'STAGE 03 / 03 : AIR-GAPPED ON-PREMISE SLLM',
+    };
+
+    let activeStage = 1;
+
+    const setScrollyStage = (targetStage) => {
+      if (activeStage === targetStage) return;
+      activeStage = targetStage;
+
+      scrollyPanels.forEach((panel) => {
+        const stageNum = parseInt(panel.getAttribute('data-scrolly-panel'), 10);
+        if (stageNum === targetStage) {
           panel.classList.add('is-active');
         } else {
           panel.classList.remove('is-active');
-          panel.classList.add('is-inactive', 'hidden');
         }
       });
+
+      scrollyCards.forEach((card) => {
+        const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
+        const isActive = stageNum === targetStage;
+        card.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) {
+          card.classList.add('is-active');
+          card.classList.remove('is-inactive');
+        } else {
+          card.classList.remove('is-active');
+          card.classList.add('is-inactive');
+        }
+      });
+
+      if (indicator && stageTitles[targetStage]) {
+        indicator.textContent = stageTitles[targetStage];
+      }
     };
 
-    aiTabButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const targetId = btn.getAttribute('data-ai-tab');
-        if (targetId) switchAiTab(targetId);
+    let isScrollingTrack = false;
+    const handleScrollyProgress = () => {
+      isScrollingTrack = false;
+      const rect = scrollyTrack.getBoundingClientRect();
+      const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
+      if (trackHeight <= 0) return;
+
+      const progress = Math.max(0, Math.min(1, (-rect.top) / trackHeight));
+
+      if (progressBar) {
+        const widthPercent = Math.min(100, Math.max(10, progress * 100));
+        progressBar.style.width = `${widthPercent}%`;
+      }
+
+      let stage = 1;
+      if (progress < 0.33) {
+        stage = 1;
+      } else if (progress < 0.67) {
+        stage = 2;
+      } else {
+        stage = 3;
+      }
+      setScrollyStage(stage);
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isScrollingTrack) {
+        isScrollingTrack = true;
+        requestAnimationFrame(handleScrollyProgress);
+      }
+    }, { passive: true });
+
+    // Initial check
+    handleScrollyProgress();
+
+    // Click on Card smoothly jumps to exact stage scroll height
+    scrollyCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
+        const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
+        const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
+        if (trackHeight > 0) {
+          const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.5 : 0.95;
+          const targetY = trackTop + (ratio * trackHeight);
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
+        setScrollyStage(stageNum);
       });
     });
+  }
+
+  // 10-B. Hero Video Dissolve & Content Parallax
+  const heroVideoContainer = document.getElementById('hero-video-container');
+  const heroContentWrapper = document.getElementById('hero-content-wrapper');
+  if (heroVideoContainer || heroContentWrapper) {
+    let isHeroScrolling = false;
+    const handleHeroParallax = () => {
+      isHeroScrolling = false;
+      const scrollY = window.scrollY;
+      if (scrollY > 900) return;
+
+      if (heroVideoContainer) {
+        const opacity = Math.max(0.08, 1 - (scrollY / 550) * 0.85);
+        const scale = 1.05 + (scrollY / 1200) * 0.12;
+        heroVideoContainer.style.opacity = opacity;
+        heroVideoContainer.style.transform = `scale(${scale})`;
+      }
+
+      if (heroContentWrapper) {
+        const contentOpacity = Math.max(0.12, 1 - (scrollY / 450) * 0.88);
+        const contentY = scrollY * 0.18;
+        heroContentWrapper.style.opacity = contentOpacity;
+        heroContentWrapper.style.transform = `translateY(${contentY}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isHeroScrolling) {
+        isHeroScrolling = true;
+        requestAnimationFrame(handleHeroParallax);
+      }
+    }, { passive: true });
+  }
+
+  // 10-C. StatBar Animated Counting Up
+  const statCounters = document.querySelectorAll('.stat-counter[data-target]');
+  const metricsSection = document.getElementById('metrics-section');
+  if (statCounters.length > 0 && metricsSection && 'IntersectionObserver' in window) {
+    let hasCounted = false;
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasCounted) {
+          hasCounted = true;
+          statCounters.forEach((counter) => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 1800;
+            const startTime = performance.now();
+
+            const animateCount = (currentTime) => {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 4);
+              const currentVal = (target * ease).toFixed(decimals);
+              counter.textContent = currentVal + suffix;
+
+              if (progress < 1) {
+                requestAnimationFrame(animateCount);
+              } else {
+                counter.textContent = target.toFixed(decimals) + suffix;
+              }
+            };
+            requestAnimationFrame(animateCount);
+          });
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    counterObserver.observe(metricsSection);
+  }
+
+  // 10-D. Bottom CTA Backdrop Luminous Parallax
+  const bottomCtaSection = document.getElementById('bottom-cta-section');
+  const ctaBackdrop = document.getElementById('cta-luminous-backdrop');
+  if (bottomCtaSection && ctaBackdrop) {
+    let isCtaScrolling = false;
+    const handleCtaParallax = () => {
+      isCtaScrolling = false;
+      const rect = bottomCtaSection.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+      if (rect.top < winHeight && rect.bottom > 0) {
+        const factor = (winHeight - rect.top) / (winHeight + rect.height);
+        const scale = 1.0 + Math.min(0.12, Math.max(0, factor * 0.12));
+        ctaBackdrop.style.transform = `scale(${scale})`;
+      }
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isCtaScrolling) {
+        isCtaScrolling = true;
+        requestAnimationFrame(handleCtaParallax);
+      }
+    }, { passive: true });
   }
 
   // 11. Interactive Certificate Gallery Filter (Clean Minimalist View without Modal)

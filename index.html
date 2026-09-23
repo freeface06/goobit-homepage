@@ -229,7 +229,7 @@
     <section class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 lg:pt-48 lg:pb-36 bg-[#070A12] text-white overflow-hidden text-center" aria-label="메인 비주얼">
       
       <!-- High-Performance Ambient AI Video Background (Adaptive PC & Mobile) -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div id="hero-video-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <video
           id="hero-bg-video"
           autoplay
@@ -239,7 +239,7 @@
           webkit-playsinline="true"
           preload="auto"
           poster="images/goobit_ai_brain_chip.jpg"
-          class="w-full h-full object-cover object-center opacity-45 sm:opacity-55 scale-105 transition-opacity duration-1000"
+          class="w-full h-full object-cover object-center opacity-45 sm:opacity-55 scale-105 transition-all duration-700"
         >
           <source src="images/video/back1.mp4" type="video/mp4" />
         </video>
@@ -253,7 +253,7 @@
       <div class="absolute top-20 right-1/4 w-[600px] h-[400px] bg-gradient-to-bl from-amber-500/15 via-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none z-1"></div>
       <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none z-1"></div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div id="hero-content-wrapper" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 transition-opacity duration-300">
         
         <!-- Live Status Pill Badge -->
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs sm:text-sm font-semibold text-slate-200 shadow-2xl mb-8" data-reveal data-delay="0">
@@ -458,171 +458,190 @@
       </div>
     </section>
 
-    <!-- 3. Core AI Interactive Technology Showcase (Screenshot 4 Reference - "Agentic AI 개발") -->
-    <section id="ai-showcase-section" class="py-28 lg:py-36 bg-[#070A12] text-white border-t border-white/5 relative overflow-hidden" aria-label="핵심 AI 기술 쇼케이스">
-      <!-- Cyber Glow Ambient Lights -->
-      <div class="absolute -top-32 right-1/4 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-32 left-1/4 w-[550px] h-[550px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- 3. Core AI Interactive Technology Showcase (Scrollytelling Pinning) -->
+    <div id="ai-scrolly-track" class="relative lg:min-h-[280vh] bg-[#070A12] border-t border-white/5">
+      
+      <!-- Sticky Frame pinned at top-16 (64px) on Desktop, fluid on Mobile -->
+      <section id="ai-showcase-section" class="lg:sticky lg:top-16 lg:h-[calc(100vh-64px)] flex flex-col justify-center py-20 lg:py-0 bg-[#070A12] text-white relative overflow-hidden" aria-label="핵심 AI 기술 쇼케이스">
+        <!-- Cyber Glow Ambient Lights -->
+        <div class="absolute -top-32 right-1/4 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 left-1/4 w-[550px] h-[550px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Section Header -->
-        <div class="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4" data-reveal data-delay="0">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-extrabold text-amber-400 shadow-sm">
-            <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
-            <span>핵심 AI 기술 역량 · 차세대 인공지능</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-snug">
-            엔터프라이즈 실무를 위한 3대 핵심 AI 아키텍처
-          </h2>
-          <p class="text-slate-300 text-base sm:text-lg lg:text-xl leading-relaxed font-normal max-w-3xl mx-auto">
-            비정형 데이터의 온톨로지 지식자산화부터 자율 Agentic AI, 사내 망분리 온프레미스 보안까지 기업의 비즈니스 목적에 맞춤 설계합니다.
-          </p>
-        </div>
-
-        <!-- Split Interactive Showcase (Left: Dynamic Visual Panels, Right: Step Tab Cards) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
-          <!-- Left Visual Container (lg:col-span-7) -->
-          <div class="lg:col-span-7 h-full" data-reveal data-delay="100">
-            <div class="relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/15 via-white/5 to-transparent border border-white/10 shadow-2xl shadow-cyan-950/40 bg-slate-950 min-h-[380px] sm:min-h-[460px] flex items-center justify-center overflow-hidden">
-              
-              <!-- Panel 1: Knowledge Graph & RAG -->
-              <div data-ai-visual="kg-rag" class="ai-showcase-panel is-inactive hidden w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
-                <img src="images/goobit_ai_knowledge_graph.jpg" alt="구비트 하이브리드 지식그래프 및 RAG" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                  <span>하이브리드 지식그래프 v3.1</span>
-                </div>
-                <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">온톨로지 매핑 &amp; 시맨틱 추론</div>
-                  <h4 class="text-base sm:text-xl font-bold text-white">비정형 문서의 온톨로지 지식자산화 및 99.8% 무환각 검색</h4>
-                </div>
+          <!-- Top Scrollytelling Telemetry & Progress Rail (Desktop Only) -->
+          <div class="hidden lg:flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="scrolly-stage-indicator" class="text-xs font-mono font-bold text-amber-400 tracking-wider">
+                STAGE 01 / 03 : KNOWLEDGE GRAPH &amp; RAG
+              </span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-slate-400 font-mono font-medium">SCROLL PROGRESS</span>
+              <div class="w-48 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                <div id="scrolly-progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-cyan-400 to-amber-500 rounded-full scrolly-progress-fill" style="width: 33.3%;"></div>
               </div>
-
-              <!-- Panel 2: Agentic AI Development (Default Active, matches Screenshot 4 1:1) -->
-              <div data-ai-visual="agentic-ai" class="ai-showcase-panel is-active w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
-                <img src="images/goobit_ai_brain_chip.jpg" alt="구비트 Agentic AI 개발 및 자율 에이전트" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-xs font-bold shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                  <span>자율 에이전트 엔진</span>
-                </div>
-                <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1">엔터프라이즈 에이전틱 시스템</div>
-                  <h4 class="text-base sm:text-xl font-bold text-white">기업 DB 데이터와 업무 규칙 기반 목적형 AI Agent 자율 구축</h4>
-                </div>
-              </div>
-
-              <!-- Panel 3: Air-Gapped Security sLLM -->
-              <div data-ai-visual="security-sllm" class="ai-showcase-panel is-inactive hidden w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
-                <img src="images/goobit_ai_cyber_cube.jpg" alt="구비트 폐쇄망 온프레미스 sLLM 보안" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-blue-400/40 text-blue-300 text-xs font-bold shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                  <span>사내 폐쇄망 보안 데이터 볼트</span>
-                </div>
-                <div class="absolute bottom-4 left-4 right-4 text-left">
-                  <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">국가정보원 보안 규격 준수</div>
-                  <h4 class="text-base sm:text-xl font-bold text-white">국정원 보안 지침 충족 사내 망분리 온프레미스 sLLM 배포</h4>
-                </div>
-              </div>
-
             </div>
           </div>
 
-          <!-- Right Step Tab Cards (lg:col-span-5) -->
-          <div class="lg:col-span-5 space-y-4" data-reveal data-delay="200" role="tablist">
+          <!-- Section Header -->
+          <div class="text-center max-w-4xl mx-auto mb-10 lg:mb-12 space-y-3" data-reveal data-delay="0">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-extrabold text-amber-400 shadow-sm">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+              <span>핵심 AI 기술 역량 · 차세대 인공지능</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-snug">
+              엔터프라이즈 실무를 위한 3대 핵심 AI 아키텍처
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
+              비정형 데이터의 온톨로지 지식자산화부터 자율 Agentic AI, 사내 망분리 온프레미스 보안까지 스크롤 진행에 따라 차례로 확인하세요.
+            </p>
+          </div>
+
+          <!-- Split Interactive Showcase (Left: Dynamic Visual Panels, Right: Step Tab Cards) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            <!-- Tab 1: Knowledge Graph -->
-            <div data-ai-tab="kg-rag" role="tab" aria-selected="false" class="p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent opacity-60 hover:opacity-100 hover:bg-white/5 transition-all duration-300 cursor-pointer group select-none relative">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">01단계 · 온톨로지 지식그래프 &amp; RAG</span>
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-400/30">정확도 99.8%</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors tracking-tight">
-                하이브리드 지식그래프 &amp; RAG
-              </h3>
-              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
-                비정형 문서를 온톨로지 지식자산으로 구조화하여 기존 단순 벡터 RAG의 검색 누락과 환각(Hallucination)을 원천 차단합니다.
-              </p>
-              <div class="flex flex-wrap gap-2 pt-3">
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#온톨로지</span>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#시맨틱검색</span>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#무환각추론</span>
-              </div>
-              <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
-            </div>
-
-            <!-- Tab 2: Agentic AI (Default Selected - Matches Screenshot 4!) -->
-            <div data-ai-tab="agentic-ai" role="tab" aria-selected="true" class="p-6 sm:p-7 rounded-2xl border border-amber-400 bg-white/10 shadow-enterprise opacity-100 transition-all duration-300 cursor-pointer group select-none relative">
-              <div class="flex items-center justify-between mb-3">
-                <!-- 6x4 Red/Amber Accent Dot Matrix Icon (Screenshot 4 Reference) -->
-                <div class="flex items-center gap-3">
-                  <div class="grid grid-cols-6 gap-1 p-1.5 rounded-md bg-black/40 border border-red-500/30">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+            <!-- Left Visual Container (lg:col-span-7) -->
+            <div class="lg:col-span-7 h-full" data-reveal data-delay="100">
+              <div class="relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/15 via-white/5 to-transparent border border-white/10 shadow-2xl shadow-cyan-950/40 bg-slate-950 min-h-[360px] sm:min-h-[440px] flex items-center justify-center overflow-hidden">
+                
+                <!-- Panel 1: Knowledge Graph & RAG -->
+                <div data-scrolly-panel="1" data-ai-visual="kg-rag" class="scrolly-panel is-active w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="images/goobit_ai_knowledge_graph.jpg" alt="구비트 하이브리드 지식그래프 및 RAG" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    <span>하이브리드 지식그래프 v3.1</span>
                   </div>
-                  <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">02단계 · 자율형 에이전틱 AI</span>
+                  <div class="absolute bottom-4 left-4 right-4 text-left">
+                    <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">온톨로지 매핑 &amp; 시맨틱 추론</div>
+                    <h4 class="text-base sm:text-xl font-bold text-white">비정형 문서의 온톨로지 지식자산화 및 99.8% 무환각 검색</h4>
+                  </div>
                 </div>
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-400/30">공수 75% 절감</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
-                Agentic AI 개발 &amp; 업무 자동화
-              </h3>
-              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
-                기업의 DB 데이터, 업무 규칙, 프로세스, 노하우 등을 기반으로 업무 목적에 맞는 AI Agent를 직접 설계하고 개발할 수 있도록 지원하는 실전 기술입니다.
-              </p>
-              <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/10">
-                <div class="flex flex-wrap gap-2">
-                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#자율에이전트</span>
-                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#프로세스자동화</span>
+
+                <!-- Panel 2: Agentic AI Development -->
+                <div data-scrolly-panel="2" data-ai-visual="agentic-ai" class="scrolly-panel w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="images/goobit_ai_brain_chip.jpg" alt="구비트 Agentic AI 개발 및 자율 에이전트" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-xs font-bold shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    <span>자율 에이전트 엔진</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4 text-left">
+                    <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1">엔터프라이즈 에이전틱 시스템</div>
+                    <h4 class="text-base sm:text-xl font-bold text-white">기업 DB 데이터와 업무 규칙 기반 목적형 AI Agent 자율 구축</h4>
+                  </div>
                 </div>
-                <!-- Red Accent Link Button (Screenshot 4 Reference) -->
-                <a href="products.html#ai-suite" class="inline-flex items-center gap-1.5 text-xs font-black text-red-400 hover:text-red-300 group-hover:translate-x-1 transition-all whitespace-nowrap shrink-0">
-                  <span class="whitespace-nowrap">기술 상세 보기</span>
-                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 shrink-0"></i>
-                </a>
+
+                <!-- Panel 3: Air-Gapped Security sLLM -->
+                <div data-scrolly-panel="3" data-ai-visual="security-sllm" class="scrolly-panel w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                  <img src="images/goobit_ai_cyber_cube.jpg" alt="구비트 폐쇄망 온프레미스 sLLM 보안" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-blue-400/40 text-blue-300 text-xs font-bold shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                    <span>사내 폐쇄망 보안 데이터 볼트</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4 text-left">
+                    <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">국가정보원 보안 규격 준수</div>
+                    <h4 class="text-base sm:text-xl font-bold text-white">국정원 보안 지침 충족 사내 망분리 온프레미스 sLLM 배포</h4>
+                  </div>
+                </div>
+
               </div>
-              <div class="tab-indicator absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
             </div>
 
-            <!-- Tab 3: Security sLLM -->
-            <div data-ai-tab="security-sllm" role="tab" aria-selected="false" class="p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent opacity-60 hover:opacity-100 hover:bg-white/5 transition-all duration-300 cursor-pointer group select-none relative">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-bold uppercase tracking-wider text-blue-400">03단계 · 폐쇄망 온프레미스 sLLM 보안</span>
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-400/30">데이터 유출 0%</span>
+            <!-- Right Step Tab Cards (lg:col-span-5) -->
+            <div class="lg:col-span-5 space-y-4" data-reveal data-delay="200" role="tablist">
+              
+              <!-- Card 1: Knowledge Graph -->
+              <div data-scrolly-card="1" data-ai-tab="kg-rag" role="tab" aria-selected="true" class="scrolly-card is-active p-6 sm:p-7 rounded-2xl border border-amber-400 bg-white/10 shadow-enterprise transition-all duration-300 cursor-pointer group select-none relative">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-400">01단계 · 온톨로지 지식그래프 &amp; RAG</span>
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-400/30">정확도 99.8%</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors tracking-tight">
+                  하이브리드 지식그래프 &amp; RAG
+                </h3>
+                <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                  비정형 문서를 온톨로지 지식자산으로 구조화하여 기존 단순 벡터 RAG의 검색 누락과 환각(Hallucination)을 원천 차단합니다.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-3">
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#온톨로지</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#시맨틱검색</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#무환각추론</span>
+                </div>
+                <div class="tab-indicator absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
               </div>
-              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors tracking-tight">
-                폐쇄망 온프레미스 sLLM &amp; 보안
-              </h3>
-              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
-                국정원 보안 가이드라인을 완벽히 충족하며 외부 클라우드 통신 없는 사내 망분리 인프라 전용 온프레미스 sLLM을 안정적으로 배포합니다.
-              </p>
-              <div class="flex flex-wrap gap-2 pt-3">
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#국정원보안규격</span>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#사내망분리</span>
-                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#경량화sLLM</span>
+
+              <!-- Card 2: Agentic AI -->
+              <div data-scrolly-card="2" data-ai-tab="agentic-ai" role="tab" aria-selected="false" class="scrolly-card is-inactive p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent transition-all duration-300 cursor-pointer group select-none relative">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-3">
+                    <div class="grid grid-cols-6 gap-1 p-1.5 rounded-md bg-black/40 border border-red-500/30">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">02단계 · 자율형 에이전틱 AI</span>
+                  </div>
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-400/30">공수 75% 절감</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                  Agentic AI 개발 &amp; 업무 자동화
+                </h3>
+                <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                  기업의 DB 데이터, 업무 규칙, 프로세스, 노하우 등을 기반으로 업무 목적에 맞는 AI Agent를 직접 설계하고 개발할 수 있도록 지원하는 실전 기술입니다.
+                </p>
+                <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/10">
+                  <div class="flex flex-wrap gap-2">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#자율에이전트</span>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#프로세스자동화</span>
+                  </div>
+                  <a href="products.html#ai-suite" class="inline-flex items-center gap-1.5 text-xs font-black text-red-400 hover:text-red-300 group-hover:translate-x-1 transition-all whitespace-nowrap shrink-0">
+                    <span class="whitespace-nowrap">기술 상세 보기</span>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 shrink-0"></i>
+                  </a>
+                </div>
+                <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
               </div>
-              <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
+
+              <!-- Card 3: Security sLLM -->
+              <div data-scrolly-card="3" data-ai-tab="security-sllm" role="tab" aria-selected="false" class="scrolly-card is-inactive p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent transition-all duration-300 cursor-pointer group select-none relative">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold uppercase tracking-wider text-blue-400">03단계 · 폐쇄망 온프레미스 sLLM 보안</span>
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-400/30">데이터 유출 0%</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors tracking-tight">
+                  폐쇄망 온프레미스 sLLM &amp; 보안
+                </h3>
+                <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                  국정원 보안 가이드라인을 완벽히 충족하며 외부 클라우드 통신 없는 사내 망분리 인프라 전용 온프레미스 sLLM을 안정적으로 배포합니다.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-3">
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#국정원보안규격</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#사내망분리</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#경량화sLLM</span>
+                </div>
+                <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
+              </div>
+
             </div>
 
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- 4. StatBar (Social Proof 4-stat metrics in Dark Luxury Glass Cards) -->
     <section id="metrics-section" class="bg-[#0A0E1A] border-y border-white/10 py-16 sm:py-20 lg:py-24 relative z-20 text-white" aria-label="주요 실적 지표">
@@ -639,7 +658,7 @@
               </div>
               <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
                 <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">10+</span>
+                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="10" data-suffix="+">10+</span>
                   <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">년</span>
                 </div>
                 <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">엔터프라이즈 업력</div>
@@ -658,7 +677,7 @@
               </div>
               <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
                 <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">100+</span>
+                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="100" data-suffix="+">100+</span>
                   <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">건</span>
                 </div>
                 <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">메이저 프로젝트 완수</div>
@@ -677,7 +696,7 @@
               </div>
               <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
                 <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">99.9%</span>
+                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="99.9" data-decimals="1" data-suffix="%">99.9%</span>
                   <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">가용성</span>
                 </div>
                 <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">무중단 서비스 연속성</div>
@@ -696,7 +715,7 @@
               </div>
               <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
                 <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">15+</span>
+                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="15" data-suffix="+">15+</span>
                   <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">개사</span>
                 </div>
                 <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">핵심 고객사 &amp; 파트너</div>
@@ -1343,9 +1362,9 @@
     </section>
 
     <!-- 9. BottomCta (Supporting Your AI Journey - BI MATRIX Style with 3D Luminous Wave) -->
-    <section class="relative py-36 lg:py-48 bg-[#070A12] text-white overflow-hidden border-t border-white/10" aria-label="프로젝트 상담 신청">
+    <section id="bottom-cta-section" class="relative py-36 lg:py-48 bg-[#070A12] text-white overflow-hidden border-t border-white/10" aria-label="프로젝트 상담 신청">
       <!-- 3D Luminous Neon Light Wave Artwork Backdrop -->
-      <div class="absolute inset-0 z-0 pointer-events-none">
+      <div id="cta-luminous-backdrop" class="absolute inset-0 z-0 pointer-events-none transition-transform duration-700 ease-out">
         <img src="images/goobit_ai_luminous_wave.jpg" alt="AI Transformation Wave" class="w-full h-full object-cover object-center opacity-35 mix-blend-screen scale-105 filter blur-[0.5px]" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#070A12] via-[#070A12]/50 to-[#070A12]"></div>
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#070A12_75%)]"></div>

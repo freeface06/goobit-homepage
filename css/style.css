@@ -450,4 +450,71 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   color: #0F172A !important;
 }
 
+/* ==========================================================================
+   Interactive Scrollytelling & Parallax Storytelling Styles
+   ========================================================================== */
+
+/* Visual Panels Crossfade & Scale in Scrollytelling Frame */
+.scrolly-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.96) translateY(10px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.scrolly-panel.is-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Scrollytelling Step Cards (Right Column) */
+.scrolly-card {
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, border-color, background-color;
+}
+
+.scrolly-card.is-active {
+  border-color: rgba(245, 158, 11, 0.75) !important; /* amber-500 */
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+  transform: translateX(8px) !important;
+}
+
+@media (max-width: 1023px) {
+  .scrolly-card.is-active {
+    transform: translateX(0) scale(1.02) !important;
+  }
+}
+
+.scrolly-card.is-inactive {
+  opacity: 0.38 !important;
+  transform: translateX(0) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.scrolly-progress-fill {
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-counter {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@keyframes glowPulseAmber {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.06); }
+}
+
+.animate-glow-pulse {
+  animation: glowPulseAmber 7s ease-in-out infinite;
+}
+
+
 
