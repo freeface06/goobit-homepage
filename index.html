@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <!--
+   * @intent Complete Main Landing Page with top scroll progress, expanding video showcase, 4-stat metrics, AI highlights, product suite, case studies, card news preview, and bright-tone footer
+   * @agent  manager-develop
+   * @branch feat/homepage-skeleton
+   * @author @goobit-dev
+   * @date   2026-09-23
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주식회사 구비트 (Goobit) | Leading AI, Driving Value and DX</title>
+  <meta name="description" content="공공·통신 10여 년의 미션 크리티컬 시스템 운영 노하우와 지식그래프 기반 최신 엔터프라이즈 AI 기술을 융합하는 AI·DX 전문 솔루션 기업입니다." />
+  <meta name="keywords" content="구비트, Goobit, Goobit AI Suite, TBCMS, OPMS, 지식그래프, RAG, 공공SI, 통신ITO, 웹접근성" />
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png" />
+
+  <!-- Pretendard & Custom Style CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col font-sans antialiased">
+  
+  <!-- Fullscreen Enterprise Preloader (Smoothly dismisses when Hero Video is ready) -->
+  <div id="page-preloader" class="fixed inset-0 z-[99999] bg-[#070A12] flex flex-col items-center justify-center transition-opacity duration-700 select-none">
+    <div class="relative flex flex-col items-center max-w-sm px-6 text-center">
+      <!-- Glowing Ambient Background Orb -->
+      <div class="absolute -top-12 w-52 h-52 bg-gradient-to-tr from-amber-500/20 via-cyan-500/20 to-transparent rounded-full blur-2xl pointer-events-none animate-pulse"></div>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="inline-block relative z-10 drop-shadow-xl mb-2" aria-label="주식회사 구비트">
+        <img src="images/logo/ci-white.png" alt="주식회사 구비트 (GOOBIT)" class="h-9 sm:h-11 w-auto" />
+      </a>
+
+      <!-- Progress Line Indicator -->
+      <div class="w-56 sm:w-64 h-1 bg-white/10 rounded-full overflow-hidden mt-6 relative">
+        <div id="preloader-bar" class="h-full w-1/4 bg-gradient-to-r from-amber-400 via-cyan-400 to-amber-500 rounded-full transition-all duration-300"></div>
+      </div>
+
+      <!-- Telemetry Subtext -->
+      <div class="mt-4 flex items-center gap-2 text-xs font-mono tracking-wider text-slate-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+        <span id="preloader-text">AI 시스템 &amp; 비디오 스트림 로딩 중...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KRDS Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">본문 바로가기 (Skip to Content)</a>
+
+
+  <!-- Global Header (GNB) -->
+  <header data-theme="dark" class="fixed top-0 left-0 right-0 z-40 bg-[#070A12]/85 backdrop-blur-md border-b border-white/10 shadow-lg text-slate-100 transition-all duration-200" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Left: Official CI Logo & Desktop Navigation Group -->
+        <div class="flex items-center h-full gap-8 xl:gap-12">
+          <!-- Official CI Logo -->
+          <a href="index.html" class="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg group shrink-0" aria-label="주식회사 구비트 홈으로 이동">
+            <img src="images/logo/ci-white.png" alt="주식회사 구비트 (GOOBIT)" class="h-7 sm:h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105" />
+          </a>
+
+          <!-- Desktop Navigation Items (4 Core Menus) -->
+          <nav class="hidden lg:flex items-center h-full gap-1 xl:gap-2" role="navigation" aria-label="메인 메뉴">
+            <!-- 1. 회사소개 -->
+            <div class="relative h-full flex items-center">
+              <a href="company.html" data-menu-target="company" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소개</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 2. 제품 -->
+            <div class="relative h-full flex items-center">
+              <a href="products.html" data-menu-target="products" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>제품</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 3. 서비스 -->
+            <div class="relative h-full flex items-center">
+              <a href="services.html" data-menu-target="services" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>서비스</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 4. 회사소식 -->
+            <div class="relative h-full flex items-center">
+              <a href="news.html" data-menu-target="news" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소식</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Right: Primary CTA Action Button -->
+        <div class="hidden lg:flex items-center gap-3 shrink-0">
+          <a href="contact.html#inquiry" class="px-5 xl:px-6 py-2.5 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition-all duration-200 shadow-md ring-2 ring-amber-400/30 hover:ring-amber-400/60 flex items-center gap-2 shrink-0 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 active:scale-95">
+            <span>도입 문의하기</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="flex lg:hidden items-center gap-2.5">
+          <a href="contact.html#inquiry" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors shadow-xs">도입문의</a>
+          <button id="mobile-menu-toggle" aria-label="메뉴 열기" class="p-2 rounded-lg text-slate-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Full-Width Mega Menu Dropdown Drawer -->
+    <div id="mega-menu-drawer" class="hidden absolute top-full left-0 right-0 w-full bg-white border-b border-slate-200/90 shadow-2xl transition-all duration-200 z-50 animate-fadeIn" role="menu"></div>
+
+    <!-- Backdrop Blur Overlay (Exact Header Bottom Alignment) -->
+    <div id="mega-menu-backdrop" class="hidden fixed inset-x-0 bottom-0 top-16 lg:top-18 bg-slate-950/40 backdrop-blur-xs z-30 pointer-events-none transition-opacity duration-200" aria-hidden="true"></div>
+
+    <!-- Mobile Drawer Menu (Exact Header Bottom Alignment: top-16 = 64px, max-h-[calc(100vh-64px)]) -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden fixed inset-x-0 top-16 bg-[#0E1626] border-b border-slate-800 shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto p-4 transition-all text-slate-200">
+      <div class="space-y-4">
+        
+        <!-- Company Menu -->
+        <div class="border-b border-slate-800 pb-3">
+          <a href="company.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-white text-base hover:text-amber-400">
+            <div class="flex items-center gap-2">
+              <i data-lucide="building-2" class="w-4 h-4 text-blue-400"></i>
+              <span>회사소개</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="company.html#overview" class="block py-1 text-sm text-slate-400 hover:text-white">기업 개요 및 비전</a>
+            <a href="company.html#ceo" class="block py-1 text-sm text-slate-400 hover:text-white">CEO 인사말</a>
+            <a href="company.html#history" class="block py-1 text-sm text-slate-400 hover:text-white">주요 연혁</a>
+            <a href="company.html#certifications" class="block py-1 text-sm text-slate-400 hover:text-white">인증 및 특허</a>
+            <a href="company.html#location" class="block py-1 text-sm text-slate-400 hover:text-white">찾아오시는 길</a>
+          </div>
+        </div>
+
+        <!-- Products Menu -->
+        <div class="border-b border-slate-800 pb-3">
+          <a href="products.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-white text-base hover:text-amber-400">
+            <div class="flex items-center gap-2">
+              <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
+              <span>제품</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="products.html#ai-suite" class="block py-1 text-sm text-slate-400 hover:text-white">Goobit AI Suite</a>
+            <a href="products.html#tbcms" class="block py-1 text-sm text-slate-400 hover:text-white">TBCMS</a>
+            <a href="products.html#opms" class="block py-1 text-sm text-slate-400 hover:text-white">OPMS</a>
+          </div>
+        </div>
+
+        <!-- Services Menu -->
+        <div class="border-b border-slate-800 pb-3">
+          <a href="services.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-white text-base hover:text-amber-400">
+            <div class="flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i>
+              <span>서비스</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="services.html#public-si" class="block py-1 text-sm text-slate-400 hover:text-white">공공 정보화 SI</a>
+            <a href="services.html#telecom-ito" class="block py-1 text-sm text-slate-400 hover:text-white">통신·미디어 ITO</a>
+            <a href="services.html#edutech" class="block py-1 text-sm text-slate-400 hover:text-white">스마트 교육 &amp; LMS</a>
+            <a href="services.html#consulting" class="block py-1 text-sm text-slate-400 hover:text-white">AI·DX 컨설팅</a>
+          </div>
+        </div>
+
+        <!-- News Menu -->
+        <div class="border-b border-slate-800 pb-3">
+          <a href="news.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-white text-base hover:text-amber-400">
+            <div class="flex items-center gap-2">
+              <i data-lucide="newspaper" class="w-4 h-4 text-emerald-400"></i>
+              <span>회사소식</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="news.html?category=all" class="block py-1 text-sm text-slate-400 hover:text-white">전체 소식</a>
+            <a href="news.html?category=press" class="block py-1 text-sm text-slate-400 hover:text-white">보도자료</a>
+            <a href="news.html?category=tech" class="block py-1 text-sm text-slate-400 hover:text-white">기술·DX</a>
+            <a href="news.html?category=culture" class="block py-1 text-sm text-slate-400 hover:text-white">사내소식</a>
+          </div>
+        </div>
+
+        <!-- Direct CTA Action -->
+        <div class="pt-2 flex flex-col gap-2.5">
+          <a href="contact.html#inquiry" class="w-full py-3 text-center font-bold text-sm bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+            <span>무료 기술 컨설팅 및 도입 문의</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <div class="flex items-center justify-center gap-2 text-xs text-slate-400 py-1">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-blue-400"></i>
+            <span>대표전화: 02-517-5520 (평일 09:00 - 18:00)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-1 focus:outline-none" tabindex="-1">
+    
+    <!-- 1. Hero Screen: Deep Cyber Canvas with 3D Holographic AI Showcase & Ambient Video Background -->
+    <section class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 lg:pt-48 lg:pb-36 bg-[#070A12] text-white overflow-hidden text-center" aria-label="메인 비주얼">
+      
+      <!-- High-Performance Ambient AI Video Background (Adaptive PC & Mobile) -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <video
+          id="hero-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          webkit-playsinline="true"
+          preload="auto"
+          poster="images/goobit_ai_brain_chip.jpg"
+          class="w-full h-full object-cover object-center opacity-45 sm:opacity-55 scale-105 transition-opacity duration-1000"
+        >
+          <source src="images/video/back1.mp4" type="video/mp4" />
+        </video>
+        <!-- Seamless Atmospheric Dark Gradient Overlays for High-Contrast Readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#070A12]/90 via-[#070A12]/50 to-[#070A12]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#070A12_90%)]"></div>
+      </div>
+
+      <!-- Cyber Neon Atmospheric Gradient Orbs -->
+      <div class="absolute top-10 left-1/4 -translate-x-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none z-1"></div>
+      <div class="absolute top-20 right-1/4 w-[600px] h-[400px] bg-gradient-to-bl from-amber-500/15 via-purple-600/10 to-transparent rounded-full blur-3xl pointer-events-none z-1"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none z-1"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        
+        <!-- Live Status Pill Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs sm:text-sm font-semibold text-slate-200 shadow-2xl mb-8" data-reveal data-delay="0">
+          <span class="inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+          <span class="tracking-wide">차세대 엔터프라이즈 AI 아키텍처 · GS 1등급 &amp; 특허 등록 기술력</span>
+        </div>
+
+        <!-- Giant Headline Typography -->
+        <div class="relative max-w-5xl mx-auto px-2 sm:px-6 space-y-6" data-reveal data-delay="100">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.12]">
+            인공지능으로 이끄는 혁신,<br />
+            가치를 완성하는<br />
+            <span class="bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500 bg-clip-text text-transparent">엔터프라이즈 AI &amp; DX</span>
+          </h1>
+
+          <p class="text-base sm:text-lg md:text-xl font-normal text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            가치에 진심을 담다 | 공공·통신 10년의 미션 크리티컬 신뢰 위에 지식그래프와 자율 Agentic AI를 결합하여 기업의 진정한 AI 전환을 실현합니다.
+          </p>
+        </div>
+
+        <!-- Dual Action CTAs -->
+        <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto" data-reveal data-delay="200">
+          <a href="contact.html#inquiry" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl ring-4 ring-amber-400/20 hover:ring-amber-400/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group whitespace-nowrap shrink-0">
+            <span class="whitespace-nowrap">솔루션 도입 상담 신청</span>
+            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform shrink-0"></i>
+          </a>
+
+          <a href="#ai-showcase-section" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold text-base border border-white/15 hover:border-amber-400/60 backdrop-blur-md hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2.5 whitespace-nowrap shrink-0">
+            <span class="whitespace-nowrap">핵심 기술 아키텍처 둘러보기</span>
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-400 shrink-0"></i>
+          </a>
+        </div>
+
+        <!-- Integrated Enterprise AI Cockpit Dock (Replaces bulky floating picture card with high-tech glass console) -->
+        <div class="mt-14 sm:mt-16 max-w-5xl mx-auto px-2 sm:px-4" data-reveal data-delay="300">
+          <div class="relative rounded-3xl bg-slate-950/40 backdrop-blur-xl border border-white/10 p-5 sm:p-7 shadow-2xl shadow-cyan-950/20 overflow-hidden group">
+            
+            <!-- Ambient Subtle Background Glow Orbs -->
+            <div class="absolute -top-24 left-1/4 w-80 h-24 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 right-1/4 w-80 h-24 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Terminal HUD Header -->
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/10 text-xs">
+              <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                </div>
+                <span class="font-mono text-slate-300 font-semibold tracking-wider hidden sm:inline">GOOBIT NEURAL RUNTIME // ENTERPRISE AI v4.2</span>
+                <span class="font-mono text-slate-300 font-semibold tracking-wider sm:hidden">GOOBIT AI v4.2</span>
+              </div>
+              <div class="flex items-center gap-2 text-slate-300 text-xs font-mono">
+                <span class="text-emerald-400 font-bold">무환각 99.8%</span>
+                <span class="text-slate-600">|</span>
+                <span class="text-cyan-300 font-bold">망분리 온프레미스</span>
+              </div>
+            </div>
+
+            <!-- 3-Pillar Enterprise Capability Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 text-left">
+              
+              <!-- Pillar 1: Knowledge Graph -->
+              <a href="#ai-showcase-section" class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 hover:border-amber-400/50 transition-all duration-300 group/pill cursor-pointer block relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2.5">
+                  <span class="text-[11px] font-extrabold tracking-wider text-amber-400 uppercase">01. KNOWLEDGE GRAPH</span>
+                  <div class="w-7 h-7 rounded-lg bg-amber-400/10 flex items-center justify-center text-amber-400 group-hover/pill:scale-110 transition-transform">
+                    <i data-lucide="network" class="w-4 h-4"></i>
+                  </div>
+                </div>
+                <div class="text-sm sm:text-base font-extrabold text-white group-hover/pill:text-amber-300 transition-colors tracking-tight">
+                  하이브리드 지식그래프 &amp; RAG
+                </div>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed font-normal break-keep">
+                  비정형 문서의 온톨로지 구조화 및 검색 누락·환각 없는 정밀 시맨틱 탐색
+                </p>
+                <div class="mt-3 flex items-center gap-1.5 text-[11px] font-bold text-amber-400/80 group-hover/pill:text-amber-300">
+                  <span>핵심 아키텍처 보기</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover/pill:translate-x-1 transition-transform"></i>
+                </div>
+              </a>
+
+              <!-- Pillar 2: Agentic AI -->
+              <a href="#ai-showcase-section" class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 hover:border-cyan-400/50 transition-all duration-300 group/pill cursor-pointer block relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2.5">
+                  <span class="text-[11px] font-extrabold tracking-wider text-cyan-400 uppercase">02. AGENTIC AI</span>
+                  <div class="w-7 h-7 rounded-lg bg-cyan-400/10 flex items-center justify-center text-cyan-400 group-hover/pill:scale-110 transition-transform">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
+                  </div>
+                </div>
+                <div class="text-sm sm:text-base font-extrabold text-white group-hover/pill:text-cyan-300 transition-colors tracking-tight">
+                  자율 Agentic AI &amp; 자동화
+                </div>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed font-normal break-keep">
+                  DB·업무 규칙 기반 목적형 AI Agent 자율 구축으로 전사 반복 공수 75% 절감
+                </p>
+                <div class="mt-3 flex items-center gap-1.5 text-[11px] font-bold text-cyan-400/80 group-hover/pill:text-cyan-300">
+                  <span>핵심 아키텍처 보기</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover/pill:translate-x-1 transition-transform"></i>
+                </div>
+              </a>
+
+              <!-- Pillar 3: Security Vault -->
+              <a href="#ai-showcase-section" class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 hover:border-blue-400/50 transition-all duration-300 group/pill cursor-pointer block relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2.5">
+                  <span class="text-[11px] font-extrabold tracking-wider text-blue-400 uppercase">03. SECURITY VAULT</span>
+                  <div class="w-7 h-7 rounded-lg bg-blue-400/10 flex items-center justify-center text-blue-400 group-hover/pill:scale-110 transition-transform">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                  </div>
+                </div>
+                <div class="text-sm sm:text-base font-extrabold text-white group-hover/pill:text-blue-300 transition-colors tracking-tight">
+                  사내 폐쇄망 온프레미스 sLLM
+                </div>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed font-normal break-keep">
+                  국정원 보안 지침 완벽 충족 외부 데이터 유출 없는 사내 단독 인프라 배포
+                </p>
+                <div class="mt-3 flex items-center gap-1.5 text-[11px] font-bold text-blue-400/80 group-hover/pill:text-blue-300">
+                  <span>핵심 아키텍처 보기</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover/pill:translate-x-1 transition-transform"></i>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Animated Scroll Down Mouse Indicator -->
+        <a href="#marquee-strip" class="mt-16 sm:mt-20 inline-flex flex-col items-center justify-center gap-2.5 text-slate-400 group cursor-pointer select-none transition-transform hover:-translate-y-0.5" aria-label="주요 역량으로 스크롤 이동">
+          <span class="text-xs font-bold tracking-wider text-slate-400 transition-colors group-hover:text-amber-400">스크롤하여 살펴보기</span>
+          <div class="w-6 h-10 rounded-full border-2 border-slate-600 group-hover:border-amber-400 flex items-start justify-center p-1.5 transition-colors shadow-xs">
+            <div class="w-1.5 h-2.5 bg-amber-400 rounded-full animate-bounce-subtle"></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- 2. Kinetic Marquee Typography Strip (Screenshot 3 Reference) -->
+    <section id="marquee-strip" class="py-10 bg-[#0A0E1A] border-y border-white/10 overflow-hidden relative select-none" aria-label="기술 키워드 마키">
+      <div class="relative w-full overflow-hidden space-y-4">
+        <div class="absolute left-0 top-0 bottom-0 w-24 sm:w-40 bg-gradient-to-r from-[#0A0E1A] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 sm:w-40 bg-gradient-to-l from-[#0A0E1A] to-transparent z-10 pointer-events-none"></div>
+
+        <!-- Track 1: Solid & Outlined Grotesque Typography -->
+        <div class="flex w-max animate-marquee space-x-8 items-center">
+          <div class="flex items-center gap-8 text-3xl sm:text-5xl md:text-6xl font-black tracking-tight">
+            <span class="text-white">엔터프라이즈 AI 혁신</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-outline-white">AI 지식그래프</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-white">자율형 에이전트</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-outline-white">하이브리드 RAG</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-amber-400">무환각 신뢰 AI</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-white">디지털 전환 DX</span>
+            <span class="text-amber-500 font-normal">/</span>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex items-center gap-8 text-3xl sm:text-5xl md:text-6xl font-black tracking-tight">
+            <span class="text-white">엔터프라이즈 AI 혁신</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-outline-white">AI 지식그래프</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-white">자율형 에이전트</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-outline-white">하이브리드 RAG</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-amber-400">무환각 신뢰 AI</span>
+            <span class="text-amber-500 font-normal">/</span>
+            <span class="text-white">디지털 전환 DX</span>
+            <span class="text-amber-500 font-normal">/</span>
+          </div>
+        </div>
+
+        <!-- Track 2: Reverse Direction Micro-Telemetry Strip -->
+        <div class="flex w-max animate-marquee-reverse space-x-6 items-center pt-1 opacity-75">
+          <div class="flex items-center gap-6 text-xs sm:text-sm md:text-base font-bold tracking-wider text-slate-400">
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>10년 이상의 검증된 엔터프라이즈 구축 역량</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>100건 이상의 대규모 공공·기업 프로젝트 완수</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>99.9% 무중단 서비스 연속성 보장</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>망분리 온프레미스 보안 검증 완료</span>
+            <span class="text-slate-600">·</span>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex items-center gap-6 text-xs sm:text-sm md:text-base font-bold tracking-wider text-slate-400">
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>10년 이상의 검증된 엔터프라이즈 구축 역량</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>100건 이상의 대규모 공공·기업 프로젝트 완수</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>99.9% 무중단 서비스 연속성 보장</span>
+            <span class="text-slate-600">·</span>
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>망분리 온프레미스 보안 검증 완료</span>
+            <span class="text-slate-600">·</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Core AI Interactive Technology Showcase (Screenshot 4 Reference - "Agentic AI 개발") -->
+    <section id="ai-showcase-section" class="py-28 lg:py-36 bg-[#070A12] text-white border-t border-white/5 relative overflow-hidden" aria-label="핵심 AI 기술 쇼케이스">
+      <!-- Cyber Glow Ambient Lights -->
+      <div class="absolute -top-32 right-1/4 w-[550px] h-[550px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 left-1/4 w-[550px] h-[550px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4" data-reveal data-delay="0">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-extrabold text-amber-400 shadow-sm">
+            <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+            <span>핵심 AI 기술 역량 · 차세대 인공지능</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-snug">
+            엔터프라이즈 실무를 위한 3대 핵심 AI 아키텍처
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg lg:text-xl leading-relaxed font-normal max-w-3xl mx-auto">
+            비정형 데이터의 온톨로지 지식자산화부터 자율 Agentic AI, 사내 망분리 온프레미스 보안까지 기업의 비즈니스 목적에 맞춤 설계합니다.
+          </p>
+        </div>
+
+        <!-- Split Interactive Showcase (Left: Dynamic Visual Panels, Right: Step Tab Cards) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Left Visual Container (lg:col-span-7) -->
+          <div class="lg:col-span-7 h-full" data-reveal data-delay="100">
+            <div class="relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/15 via-white/5 to-transparent border border-white/10 shadow-2xl shadow-cyan-950/40 bg-slate-950 min-h-[380px] sm:min-h-[460px] flex items-center justify-center overflow-hidden">
+              
+              <!-- Panel 1: Knowledge Graph & RAG -->
+              <div data-ai-visual="kg-rag" class="ai-showcase-panel is-inactive hidden w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_knowledge_graph.jpg" alt="구비트 하이브리드 지식그래프 및 RAG" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <span>하이브리드 지식그래프 v3.1</span>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 text-left">
+                  <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider mb-1">온톨로지 매핑 &amp; 시맨틱 추론</div>
+                  <h4 class="text-base sm:text-xl font-bold text-white">비정형 문서의 온톨로지 지식자산화 및 99.8% 무환각 검색</h4>
+                </div>
+              </div>
+
+              <!-- Panel 2: Agentic AI Development (Default Active, matches Screenshot 4 1:1) -->
+              <div data-ai-visual="agentic-ai" class="ai-showcase-panel is-active w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_brain_chip.jpg" alt="구비트 Agentic AI 개발 및 자율 에이전트" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  <span>자율 에이전트 엔진</span>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 text-left">
+                  <div class="text-[11px] font-bold text-cyan-400 uppercase tracking-wider mb-1">엔터프라이즈 에이전틱 시스템</div>
+                  <h4 class="text-base sm:text-xl font-bold text-white">기업 DB 데이터와 업무 규칙 기반 목적형 AI Agent 자율 구축</h4>
+                </div>
+              </div>
+
+              <!-- Panel 3: Air-Gapped Security sLLM -->
+              <div data-ai-visual="security-sllm" class="ai-showcase-panel is-inactive hidden w-full h-full relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_cyber_cube.jpg" alt="구비트 폐쇄망 온프레미스 sLLM 보안" class="w-full h-full object-cover opacity-95 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-blue-400/40 text-blue-300 text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <span>사내 폐쇄망 보안 데이터 볼트</span>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 text-left">
+                  <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">국가정보원 보안 규격 준수</div>
+                  <h4 class="text-base sm:text-xl font-bold text-white">국정원 보안 지침 충족 사내 망분리 온프레미스 sLLM 배포</h4>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Step Tab Cards (lg:col-span-5) -->
+          <div class="lg:col-span-5 space-y-4" data-reveal data-delay="200" role="tablist">
+            
+            <!-- Tab 1: Knowledge Graph -->
+            <div data-ai-tab="kg-rag" role="tab" aria-selected="false" class="p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent opacity-60 hover:opacity-100 hover:bg-white/5 transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">01단계 · 온톨로지 지식그래프 &amp; RAG</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-400/30">정확도 99.8%</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors tracking-tight">
+                하이브리드 지식그래프 &amp; RAG
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                비정형 문서를 온톨로지 지식자산으로 구조화하여 기존 단순 벡터 RAG의 검색 누락과 환각(Hallucination)을 원천 차단합니다.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-3">
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#온톨로지</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#시맨틱검색</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#무환각추론</span>
+              </div>
+              <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
+            </div>
+
+            <!-- Tab 2: Agentic AI (Default Selected - Matches Screenshot 4!) -->
+            <div data-ai-tab="agentic-ai" role="tab" aria-selected="true" class="p-6 sm:p-7 rounded-2xl border border-amber-400 bg-white/10 shadow-enterprise opacity-100 transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-3">
+                <!-- 6x4 Red/Amber Accent Dot Matrix Icon (Screenshot 4 Reference) -->
+                <div class="flex items-center gap-3">
+                  <div class="grid grid-cols-6 gap-1 p-1.5 rounded-md bg-black/40 border border-red-500/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">02단계 · 자율형 에이전틱 AI</span>
+                </div>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-400/30">공수 75% 절감</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                Agentic AI 개발 &amp; 업무 자동화
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                기업의 DB 데이터, 업무 규칙, 프로세스, 노하우 등을 기반으로 업무 목적에 맞는 AI Agent를 직접 설계하고 개발할 수 있도록 지원하는 실전 기술입니다.
+              </p>
+              <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/10">
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#자율에이전트</span>
+                  <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#프로세스자동화</span>
+                </div>
+                <!-- Red Accent Link Button (Screenshot 4 Reference) -->
+                <a href="products.html#ai-suite" class="inline-flex items-center gap-1.5 text-xs font-black text-red-400 hover:text-red-300 group-hover:translate-x-1 transition-all whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">기술 상세 보기</span>
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 shrink-0"></i>
+                </a>
+              </div>
+              <div class="tab-indicator absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
+            </div>
+
+            <!-- Tab 3: Security sLLM -->
+            <div data-ai-tab="security-sllm" role="tab" aria-selected="false" class="p-6 sm:p-7 rounded-2xl border border-slate-800 bg-transparent opacity-60 hover:opacity-100 hover:bg-white/5 transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-400">03단계 · 폐쇄망 온프레미스 sLLM 보안</span>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-400/30">데이터 유출 0%</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors tracking-tight">
+                폐쇄망 온프레미스 sLLM &amp; 보안
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed font-normal">
+                국정원 보안 가이드라인을 완벽히 충족하며 외부 클라우드 통신 없는 사내 망분리 인프라 전용 온프레미스 sLLM을 안정적으로 배포합니다.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-3">
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#국정원보안규격</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#사내망분리</span>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-slate-300 border border-white/10">#경량화sLLM</span>
+              </div>
+              <div class="tab-indicator scale-x-0 opacity-0 absolute bottom-0 left-6 right-6 h-[2px] bg-amber-400 rounded-full transition-all duration-300"></div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. StatBar (Social Proof 4-stat metrics in Dark Luxury Glass Cards) -->
+    <section id="metrics-section" class="bg-[#0A0E1A] border-y border-white/10 py-16 sm:py-20 lg:py-24 relative z-20 text-white" aria-label="주요 실적 지표">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          
+          <div class="h-full" data-reveal data-delay="0">
+            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl glass-dark-card group cursor-default h-full overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300">
+              <div class="flex items-center justify-between w-full mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 transition-all duration-300">
+                  <i data-lucide="calendar" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <span class="text-[11px] font-bold tracking-wider text-slate-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 uppercase">01 / TRACK RECORD</span>
+              </div>
+              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
+                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
+                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">10+</span>
+                  <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">년</span>
+                </div>
+                <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">엔터프라이즈 업력</div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal break-keep break-words">2015년 법인 설립 이래 미션 크리티컬 SI/ITO 전담</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="120">
+            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl glass-dark-card group cursor-default h-full overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all duration-300">
+              <div class="flex items-center justify-between w-full mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-400 transition-all duration-300">
+                  <i data-lucide="check-square" class="w-5 h-5 text-cyan-400"></i>
+                </div>
+                <span class="text-[11px] font-bold tracking-wider text-slate-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 uppercase">02 / PROJECTS</span>
+              </div>
+              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
+                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
+                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">100+</span>
+                  <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">건</span>
+                </div>
+                <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">메이저 프로젝트 완수</div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal break-keep break-words">중앙부처, 지자체, 통신 대기업 정보화 레퍼런스</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="240">
+            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl glass-dark-card group cursor-default h-full overflow-hidden border border-white/10 hover:border-amber-400/50 transition-all duration-300">
+              <div class="flex items-center justify-between w-full mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 transition-all duration-300">
+                  <i data-lucide="activity" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <span class="text-[11px] font-bold tracking-wider text-slate-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 uppercase">03 / AVAILABILITY</span>
+              </div>
+              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
+                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
+                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">99.9%</span>
+                  <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">가용성</span>
+                </div>
+                <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">무중단 서비스 연속성</div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal break-keep break-words">일 트래픽 5,000만 뷰 통신 포털 8개년 연속 무장애</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="360">
+            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl glass-dark-card group cursor-default h-full overflow-hidden border border-white/10 hover:border-blue-400/50 transition-all duration-300">
+              <div class="flex items-center justify-between w-full mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-blue-400 transition-all duration-300">
+                  <i data-lucide="handshake" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <span class="text-[11px] font-bold tracking-wider text-slate-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 uppercase">04 / PARTNERS</span>
+              </div>
+              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
+                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
+                  <span class="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left">15+</span>
+                  <span class="text-sm sm:text-base font-bold text-amber-400 shrink-0">개사</span>
+                </div>
+                <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep">핵심 고객사 &amp; 파트너</div>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal break-keep break-words">KT, 농림축산식품부, 서울시향 등 장기 파트너십</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ProductSection (3 Proven Software Products) -->
+    <section class="py-28 lg:py-36 bg-[#F8FAFC] border-t border-slate-200/80" aria-label="구비트 주요 제품 라인업">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4" data-reveal data-delay="0">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-extrabold text-blue-700 shadow-xs">
+            <i data-lucide="sparkles" class="w-4 h-4 text-blue-600"></i>
+            <span>검증된 독자 소프트웨어 솔루션</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#162846] tracking-tight leading-snug">
+            검증된 독자 솔루션 및 제품 라인업
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg lg:text-xl leading-relaxed font-normal max-w-3xl mx-auto">
+            10년의 공공·문화 엔터프라이즈 실전 노하우가 집약된 소프트웨어 제품군을 만나보세요.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          
+          <div class="h-full" data-reveal data-delay="0">
+            <div class="bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-8 lg:p-8 flex flex-col justify-between hover:border-amber-400 hover:shadow-card-hover hover:-translate-y-2.5 transition-all duration-300 group shimmer-card h-full">
+              <div class="space-y-6">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="p-3.5 rounded-2xl bg-amber-50 border-amber-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300">
+                    <i data-lucide="cpu" class="w-6 h-6 text-amber-500"></i>
+                  </div>
+                  <span class="text-xs font-bold px-3 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-300 ring-2 ring-amber-400/20 whitespace-nowrap shrink-0">신규 출시</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-xs font-extrabold text-slate-400 tracking-wider uppercase">엔터프라이즈 AI 플랫폼</div>
+                  <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">Goobit AI Suite</h3>
+                  <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal keep-all">지식그래프 및 하이브리드 RAG 기반 엔터프라이즈 업무 혁신 AI 솔루션</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#온프레미스</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#지식그래프</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#전자정부4.x</span>
+                </div>
+              </div>
+              <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <span class="text-xs text-slate-400 font-medium truncate block" title="공공 행정 · 대용량 ITO 최적화">공공 행정 · 대용량 ITO 최적화</span>
+                </div>
+                <a href="products.html#ai-suite" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition-all shadow-xs group-hover:bg-blue-600 whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">자세히 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="150">
+            <div class="bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-8 lg:p-8 flex flex-col justify-between hover:border-amber-400 hover:shadow-card-hover hover:-translate-y-2.5 transition-all duration-300 group shimmer-card h-full">
+              <div class="space-y-6">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="p-3.5 rounded-2xl bg-blue-50 border-blue-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300">
+                    <i data-lucide="layout-template" class="w-6 h-6 text-blue-600"></i>
+                  </div>
+                  <span class="text-xs font-bold px-3 py-1 rounded-full border bg-blue-50 text-blue-700 border-blue-200/70 whitespace-nowrap shrink-0">GS 1등급</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-xs font-extrabold text-slate-400 tracking-wider uppercase">대용량 웹 콘텐츠 관리</div>
+                  <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">TBCMS v3.5</h3>
+                  <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal keep-all">공공 대국민 서비스 및 대용량 포털 전용 고성능 콘텐츠 관리 솔루션</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#GS인증 1등급</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#국정원 보안검증</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#대용량 트래픽</span>
+                </div>
+              </div>
+              <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <span class="text-xs text-slate-400 font-medium truncate block" title="저작권 등록 제C-2015-021021호">저작권 등록 제C-2015-021021호</span>
+                </div>
+                <a href="products.html#tbcms" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition-all shadow-xs group-hover:bg-blue-600 whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">자세히 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="300">
+            <div class="bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-8 lg:p-8 flex flex-col justify-between hover:border-amber-400 hover:shadow-card-hover hover:-translate-y-2.5 transition-all duration-300 group shimmer-card h-full">
+              <div class="space-y-6">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="p-3.5 rounded-2xl bg-amber-50 border-amber-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300">
+                    <i data-lucide="music" class="w-6 h-6 text-amber-500"></i>
+                  </div>
+                  <span class="text-xs font-bold px-3 py-1 rounded-full border bg-amber-50 text-amber-700 border-amber-200/70 whitespace-nowrap shrink-0">저작권 등록</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="text-xs font-extrabold text-slate-400 tracking-wider uppercase">문화예술 오케스트라 ERP</div>
+                  <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">OPMS v2.0</h3>
+                  <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal keep-all">문화예술 기관 및 오케스트라 전용 디지털 악보 자산화 및 통합 운영 솔루션</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#디지털 악보</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#서울시향 구축</span>
+                  <span class="text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md whitespace-nowrap">#저작권 관리</span>
+                </div>
+              </div>
+              <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <span class="text-xs text-slate-400 font-medium truncate block" title="저작권 등록 제C-2018-005128호">저작권 등록 제C-2018-005128호</span>
+                </div>
+                <a href="products.html#opms" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-bold transition-all shadow-xs group-hover:bg-blue-600 whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">자세히 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ServiceSection (4 Core Business Domains) -->
+    <section class="py-28 lg:py-36 bg-white border-t border-slate-200/80" aria-label="구비트 사업 영역">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4" data-reveal data-delay="0">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs sm:text-sm font-extrabold text-slate-700">
+            <i data-lucide="briefcase" class="w-4 h-4 text-blue-600"></i>
+            <span>핵심 엔지니어링 서비스</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#162846] tracking-tight leading-snug">
+            전문 엔지니어링 서비스 영역
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg lg:text-xl leading-relaxed font-normal max-w-3xl mx-auto">
+            공공 행정부터 대용량 통신망, 에듀테크, AI 컨설팅까지 검증된 엔지니어링 역량을 제공합니다.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          
+          <div class="h-full" data-reveal data-delay="0">
+            <div class="rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 lg:p-11 hover:border-amber-400/80 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group h-full">
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div class="p-4 rounded-2xl bg-blue-50 border-blue-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0">
+                    <i data-lucide="landmark" class="w-6 h-6 text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">공공 정보화 SI</h3>
+                    <span class="text-xs sm:text-sm font-semibold text-slate-400">전자정부 표준프레임워크 공공 SI</span>
+                  </div>
+                </div>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">전자정부 표준프레임워크 기반 공공 행정 및 대국민 정보화 시스템 구축</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">농림축산식품부</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">국립농산물품질관리원</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">공공기관</span>
+                </div>
+              </div>
+              <div class="pt-8 mt-8 border-t border-slate-100 flex items-center justify-end">
+                <a href="services.html#public-si" class="inline-flex items-center gap-2 text-sm font-extrabold text-slate-700 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">서비스 상세 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="120">
+            <div class="rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 lg:p-11 hover:border-amber-400/80 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group h-full">
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div class="p-4 rounded-2xl bg-amber-50 border-amber-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0">
+                    <i data-lucide="radio" class="w-6 h-6 text-amber-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">통신·미디어 ITO</h3>
+                    <span class="text-xs sm:text-sm font-semibold text-slate-400">미션 크리티컬 대용량 ITO 운영</span>
+                  </div>
+                </div>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">일 트래픽 5,000만 뷰 미션 크리티컬 통신 포털 8개년 연속 무중단 운영</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">KT 올레닷컴</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">KT 미디어 포털</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">대용량 분산 ITO</span>
+                </div>
+              </div>
+              <div class="pt-8 mt-8 border-t border-slate-100 flex items-center justify-end">
+                <a href="services.html#telecom-ito" class="inline-flex items-center gap-2 text-sm font-extrabold text-slate-700 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">서비스 상세 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="240">
+            <div class="rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 lg:p-11 hover:border-amber-400/80 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group h-full">
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div class="p-4 rounded-2xl bg-blue-50 border-blue-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">스마트 교육 &amp; 에듀테크</h3>
+                    <span class="text-xs sm:text-sm font-semibold text-slate-400">클라우드 차세대 스마트 학습 플랫폼</span>
+                  </div>
+                </div>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">클라우드 기반 차세대 스마트 학습 플랫폼 및 AI 맞춤형 교육 시스템 개발</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">동아출판</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">두산에듀테크</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">디지털 교육 플랫폼</span>
+                </div>
+              </div>
+              <div class="pt-8 mt-8 border-t border-slate-100 flex items-center justify-end">
+                <a href="services.html#edutech" class="inline-flex items-center gap-2 text-sm font-extrabold text-slate-700 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">서비스 상세 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full" data-reveal data-delay="360">
+            <div class="rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-10 lg:p-11 hover:border-amber-400/80 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group h-full">
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div class="p-4 rounded-2xl bg-amber-50 border-amber-200/60 border shadow-xs group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0">
+                    <i data-lucide="compass" class="w-6 h-6 text-amber-500"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-[#162846] group-hover:text-blue-600 transition-colors tracking-tight">AI &amp; 클라우드 컨설팅</h3>
+                    <span class="text-xs sm:text-sm font-semibold text-slate-400">온프레미스 AI &amp; 클라우드 전환 컨설팅</span>
+                  </div>
+                </div>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">온프레미스 sLLM 도입, RAG 파이프라인 검증, 클라우드 네이티브 전환 컨설팅</p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">현대자동차</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">엔터프라이즈 기업</span>
+                  <span class="text-xs sm:text-sm font-semibold px-3 py-1 rounded-md bg-blue-50/80 text-blue-700 border border-blue-100">공공 DX 추진단</span>
+                </div>
+              </div>
+              <div class="pt-8 mt-8 border-t border-slate-100 flex items-center justify-end">
+                <a href="services.html#consulting" class="inline-flex items-center gap-2 text-sm font-extrabold text-slate-700 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                  <span class="whitespace-nowrap">서비스 상세 보기</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ReferenceSection (Asymmetric Split 2x2 Showcase - BI MATRIX Style) -->
+    <section class="py-28 lg:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden" aria-label="고객 성공 사례">
+      <!-- Ambient Cyber Glows -->
+      <div class="absolute top-1/4 -left-40 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 right-0 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          <!-- Left Sticky Header Column -->
+          <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-6" data-reveal="fade-right" data-delay="0">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-pink-950/60 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest">
+              <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+              <span>성공 사례 (Reference)</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.25]">
+              구비트의 다양한 산업 분야<br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-amber-300 to-cyan-400">성공 사례를 확인해보세요</span>
+            </h2>
+
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed font-normal">
+              대용량 통신망 무중단 운영부터 중앙부처 공공 정보화, 문화예술 오케스트라 ERP, 글로벌 기업 DX까지 대한민국 주요 기관 및 기업이 구비트를 선택한 이유를 소개합니다.
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row gap-4">
+              <a href="services.html#cases" class="inline-flex items-center justify-between sm:justify-start gap-4 px-6 py-3.5 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-pink-500/60 text-white text-sm font-bold transition-all duration-300 group shadow-lg hover:shadow-pink-500/10 whitespace-nowrap shrink-0">
+                <span class="whitespace-nowrap">고객사 구축사례 전체보기</span>
+                <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-white transition-colors shrink-0">
+                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform shrink-0"></i>
+                </div>
+              </a>
+            </div>
+
+            <!-- Mini Trust Stats -->
+            <div class="pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
+              <div>
+                <div class="text-2xl lg:text-3xl font-black text-white">100+</div>
+                <div class="text-xs text-slate-400 mt-1">누적 프로젝트 완수</div>
+              </div>
+              <div>
+                <div class="text-2xl lg:text-3xl font-black text-pink-400">99.99%</div>
+                <div class="text-xs text-slate-400 mt-1">미션 크리티컬 가용성</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 2x2 Dark Cards Column -->
+          <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-5" data-reveal="fade-left" data-delay="100">
+            
+            <!-- Card 1: KT -->
+            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-pink-500/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(236,72,153,0.18)]">
+              <div class="space-y-5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.8)]"></span>
+                    <span class="text-xs font-bold text-pink-400 tracking-wide uppercase">통신·미디어</span>
+                  </div>
+                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-pink-400 group-hover:bg-pink-500/20 transition-all duration-200" title="상세 제안서 요청">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                  </a>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">KT (케이티)</div>
+                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-pink-300 transition-colors leading-snug">
+                    올레닷컴 &amp; C-Cube 통합 포털 무중단 ITO 운영
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  일 평균 5,000만 뷰의 대규모 트래픽 분산 아키텍처와 24/7 실시간 모니터링 체계를 구축하여 8개년 연속 무중단 안정 운영을 달성했습니다.
+                </p>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-mono">2016 - 2024</span>
+                <span class="font-extrabold text-pink-400 bg-pink-500/10 px-2.5 py-1 rounded-md border border-pink-500/20">가용성 99.99% 달성</span>
+              </div>
+            </div>
+
+            <!-- Card 2: 농림축산식품부 -->
+            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-cyan-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(6,182,212,0.18)]">
+              <div class="space-y-5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]"></span>
+                    <span class="text-xs font-bold text-cyan-400 tracking-wide uppercase">공공 정보화</span>
+                  </div>
+                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-cyan-400 group-hover:bg-cyan-400/20 transition-all duration-200" title="상세 제안서 요청">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                  </a>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">농림축산식품부</div>
+                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                    차세대 대국민 농정 포털 및 산하 15개 시스템 통합
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  독자 개발 CMS TBCMS 엔진을 기반으로 15개 산하 행정 웹페이지를 단일 플랫폼으로 통합하고 웹 접근성(WA) 품질인증 마크를 획득했습니다.
+                </p>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-mono">2021 - 2023</span>
+                <span class="font-extrabold text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-md border border-cyan-400/20">웹접근성 100% 획득</span>
+              </div>
+            </div>
+
+            <!-- Card 3: 서울시립교향악단 -->
+            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-amber-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(245,158,11,0.18)]">
+              <div class="space-y-5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></span>
+                    <span class="text-xs font-bold text-amber-400 tracking-wide uppercase">문화예술 DX</span>
+                  </div>
+                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-amber-400 group-hover:bg-amber-400/20 transition-all duration-200" title="상세 제안서 요청">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                  </a>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">서울시립교향악단</div>
+                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-amber-300 transition-colors leading-snug">
+                    스마트 오케스트라 운영관리 (OPMS) 및 악보 디지털 자산화
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  국내 최초 문화예술 특화 ERP OPMS를 도입하여 수작업 연주자 일정 관리를 80% 자동화하고 고유 악보 바코드 추적으로 분실률 0%를 기록했습니다.
+                </p>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-mono">2018 - 2024</span>
+                <span class="font-extrabold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md border border-amber-400/20">일정 관리 80% 절감</span>
+              </div>
+            </div>
+
+            <!-- Card 4: 현대자동차 -->
+            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-blue-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(59,130,246,0.18)]">
+              <div class="space-y-5">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+                    <span class="text-xs font-bold text-blue-400 tracking-wide uppercase">스마트 교육 &amp; LMS</span>
+                  </div>
+                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400 group-hover:bg-blue-400/20 transition-all duration-200" title="상세 제안서 요청">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                  </a>
+                </div>
+
+                <div class="space-y-1.5">
+                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">현대자동차 글로벌 인재개발원</div>
+                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-blue-300 transition-colors leading-snug">
+                    엔터프라이즈 디지털 학습 플랫폼 및 맞춤형 추천 엔진
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  임직원 3만 명 동시 접속을 수용하는 클라우드 LMS를 구축하고 직무별 맞춤형 추천 알고리즘을 적용하여 사내 교육 이수율 35% 향상을 달성했습니다.
+                </p>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-500 font-mono">2019 - 2021</span>
+                <span class="font-extrabold text-blue-400 bg-blue-400/10 px-2.5 py-1 rounded-md border border-blue-400/20">이수율 35% 향상</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. LatestNewsSection (3 Card News Preview) -->
+    <section class="py-28 lg:py-36 bg-slate-50 border-t border-slate-200/80 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 lg:mb-20" data-reveal data-delay="0">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-extrabold mb-4 tracking-wider">
+              <i data-lucide="newspaper" class="w-4 h-4"></i>
+              <span>구비트 최신 소식</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-snug">
+              구비트 최신 카드뉴스
+            </h2>
+            <p class="text-base sm:text-lg lg:text-xl text-slate-600 mt-3 font-normal max-w-2xl">
+              인공지능 기술 혁신과 주요 프로젝트 소식을 카드뉴스로 전해드립니다.
+            </p>
+          </div>
+
+          <a href="news.html" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-slate-300 hover:border-amber-500 bg-white hover:bg-amber-50/50 text-slate-800 hover:text-amber-800 text-sm sm:text-base font-bold transition-all shadow-xs shrink-0 self-start sm:self-auto group whitespace-nowrap">
+            <span class="whitespace-nowrap">회사소식 전체보기</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-amber-600 group-hover:translate-x-1.5 transition-all shrink-0"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          
+          <!-- Card 1 -->
+          <div class="h-full" data-reveal data-delay="0">
+            <article data-news-id="news-rag-national-project" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+              <div class="relative aspect-[4/3] bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between overflow-hidden text-white">
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                <div class="relative z-10 flex items-center justify-between gap-2">
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-blue-50 text-blue-700 border-blue-200">보도자료</span>
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                    <span>카드 5장</span>
+                  </div>
+                </div>
+                <div class="relative z-10 my-auto py-2">
+                  <h3 class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-3 group-hover:text-amber-300 transition-colors">
+                    구비트, AI 지식그래프 기반 하이브리드 RAG 국책 연구과제 주관기관 최종 선정
+                  </h3>
+                </div>
+                <div class="relative z-10 flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>2026.03.18</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1 text-slate-400">
+                      <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                      <span>1,420</span>
+                    </div>
+                    <span class="text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                      <span>열기</span>
+                      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
+                <div>
+                  <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                    과기정통부 주관 엔터프라이즈 AI 데이터 신뢰성 검증 및 지식그래프 연계 하이브리드 RAG 기술 개발 총괄 주관기관으로 선정되어 3개년간 연구개발을 이끕니다.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#AI지식그래프</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#하이브리드RAG</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#국책과제</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
+                  <span class="text-slate-400 font-medium truncate min-w-0 flex-1">구비트 AI R&amp;D 연구소</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                    <span class="whitespace-nowrap">카드뉴스 보기</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="h-full" data-reveal data-delay="150">
+            <article data-news-id="news-tbcms-update" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+              <div class="relative aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 p-6 flex flex-col justify-between overflow-hidden text-white">
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                <div class="relative z-10 flex items-center justify-between gap-2">
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-amber-50 text-amber-800 border-amber-200">기술·DX</span>
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                    <span>카드 5장</span>
+                  </div>
+                </div>
+                <div class="relative z-10 my-auto py-2">
+                  <h3 class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-3 group-hover:text-amber-300 transition-colors">
+                    TBCMS 3.0 대규모 업데이트: 웹 접근성 KWCAG 2.2 인증 및 차세대 공공 CMS 엔진 혁신
+                  </h3>
+                </div>
+                <div class="relative z-10 flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>2026.02.24</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1 text-slate-400">
+                      <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                      <span>1,180</span>
+                    </div>
+                    <span class="text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                      <span>열기</span>
+                      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
+                <div>
+                  <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                    10년 이상 100여 개 공공·기관에 검증된 통합 콘텐츠 관리 솔루션 TBCMS가 마이크로서비스 아키텍처와 KWCAG 2.2 인증을 완벽 탑재했습니다.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#TBCMS</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#웹접근성</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#공공CMS</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
+                  <span class="text-slate-400 font-medium truncate min-w-0 flex-1">솔루션 사업본부 TBCMS팀</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                    <span class="whitespace-nowrap">카드뉴스 보기</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="h-full" data-reveal data-delay="300">
+            <article data-news-id="news-office-expansion" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+              <div class="relative aspect-[4/3] bg-gradient-to-br from-amber-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between overflow-hidden text-white">
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+                <div class="relative z-10 flex items-center justify-between gap-2">
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-emerald-50 text-emerald-800 border-emerald-200">사내소식</span>
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                    <span>카드 4장</span>
+                  </div>
+                </div>
+                <div class="relative z-10 my-auto py-2">
+                  <h3 class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-3 group-hover:text-amber-300 transition-colors">
+                    가치에 진심을 담는 사람들: 문정 현대지식산업센터 신사옥 확장 이전 및 AI R&amp;D 연구소 신설
+                  </h3>
+                </div>
+                <div class="relative z-10 flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span>2026.02.10</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1 text-slate-400">
+                      <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                      <span>950</span>
+                    </div>
+                    <span class="text-amber-400 font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                      <span>열기</span>
+                      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
+                <div>
+                  <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                    구비트가 창립 11주년을 앞두고 송파구 문정 비즈니스 밸리 현대지식산업센터 C동으로 사옥을 확장 이전하며 전용 AI 연구소를 정식 개소했습니다.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#사옥이전</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#조직문화</span>
+                    <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">#AI연구소</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
+                  <span class="text-slate-400 font-medium truncate min-w-0 flex-1">피플 &amp; 컬처팀</span>
+                  <span class="inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-amber-600 transition-colors whitespace-nowrap shrink-0">
+                    <span class="whitespace-nowrap">카드뉴스 보기</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0"></i>
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. BottomCta (Supporting Your AI Journey - BI MATRIX Style with 3D Luminous Wave) -->
+    <section class="relative py-36 lg:py-48 bg-[#070A12] text-white overflow-hidden border-t border-white/10" aria-label="프로젝트 상담 신청">
+      <!-- 3D Luminous Neon Light Wave Artwork Backdrop -->
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <img src="images/goobit_ai_luminous_wave.jpg" alt="AI Transformation Wave" class="w-full h-full object-cover object-center opacity-35 mix-blend-screen scale-105 filter blur-[0.5px]" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#070A12] via-[#070A12]/50 to-[#070A12]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#070A12_75%)]"></div>
+      </div>
+
+      <!-- Flowing Ambient Lighting Particles -->
+      <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-pink-500/15 rounded-full blur-3xl pointer-events-none animate-float-slow"></div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10" data-reveal="zoom-in" data-delay="100">
+        
+        <!-- Monospace Tracking Tag -->
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-bold text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.25)]">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span class="tracking-wider">신뢰할 수 있는 AI 전환 파트너</span>
+        </div>
+
+        <!-- Hero Headline -->
+        <div class="space-y-4">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.2]">
+            성공적인 AI 전환,<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-amber-300 to-pink-500">구비트가 함께합니다</span>
+          </h2>
+          <p class="text-slate-300 text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed font-normal pt-2">
+            10년의 엔터프라이즈 미션 크리티컬 실적과 차세대 지식그래프·RAG 기술로<br class="hidden sm:inline" />
+            가장 신뢰할 수 있는 AI 혁신을 구비트와 함께 시작하세요.
+          </p>
+        </div>
+
+        <!-- Sleek High-Contrast Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+          <a href="contact.html#inquiry" class="w-full sm:w-auto px-10 py-5 rounded-full text-base sm:text-lg font-black bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 hover:from-cyan-300 hover:via-blue-400 hover:to-indigo-500 text-slate-950 transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_45px_rgba(6,182,212,0.7)] hover:scale-105 flex items-center justify-center gap-3 group">
+            <span>1:1 맞춤 견적 및 데모 신청</span>
+            <div class="w-7 h-7 rounded-full bg-slate-950/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+              <i data-lucide="arrow-right" class="w-4 h-4 text-slate-950"></i>
+            </div>
+          </a>
+
+          <a href="tel:02-517-5520" class="w-full sm:w-auto px-9 py-5 rounded-full text-base sm:text-lg font-bold bg-[#0C121E]/80 hover:bg-[#11192B] text-white border border-white/20 hover:border-amber-400/60 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md">
+            <i data-lucide="phone-call" class="w-5 h-5 text-amber-400"></i>
+            <span>유선 상담: 02-517-5520</span>
+          </a>
+        </div>
+
+        <!-- Security & Compliance Telemetry -->
+        <div class="pt-6 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm text-slate-400 font-medium">
+          <span class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+            초기 기술 아키텍처 컨설팅 무상 지원
+          </span>
+          <span class="text-white/20 hidden sm:inline">&bull;</span>
+          <span class="flex items-center gap-2">
+            <i data-lucide="lock" class="w-4 h-4 text-amber-400"></i>
+            사전 비밀유지협약(NDA) 철저 준수
+          </span>
+          <span class="text-white/20 hidden sm:inline">&bull;</span>
+          <span class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+            GS인증 1등급 &amp; 전자정부 4.x 완벽 검증
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Scroll-To-Top Button -->
+  <aside class="fixed bottom-6 right-6 z-30" aria-label="화면 상단으로 이동">
+    <button id="scroll-top-btn" class="hidden opacity-0 p-3.5 rounded-full bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 group" aria-label="화면 상단으로 이동" title="맨 위로 이동">
+      <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform"></i>
+    </button>
+  </aside>
+
+  <!-- Bright-Tone Enterprise Footer -->
+  <footer class="bg-slate-50 text-slate-600 border-t border-slate-200" role="contentinfo">
+    <!-- Main Footer Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mb-12">
+        
+        <!-- Brand & Slogan -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center">
+            <img src="images/logo/ci.png" alt="주식회사 구비트 (GOOBIT)" class="h-8 md:h-9 w-auto object-contain" />
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed font-normal">
+            가치에 진심을 담다. 공공·통신 10여 년의 미션 크리티컬 시스템 운영 노하우와 지식그래프 기반 최신 엔터프라이즈 AI 기술을 융합하는 AI·DX 전문 솔루션 기업입니다.
+          </p>
+          <div class="space-y-2 text-xs text-slate-600 pt-2">
+            <div class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-amber-500 shrink-0"></i>
+              <span>서울특별시 송파구 법원로 11길 7 문정현대지식산업센터 C동 408호</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-amber-500 shrink-0"></i>
+              <span>TEL: 02-517-5520 | FAX: 02-517-5521</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-amber-500 shrink-0"></i>
+              <span>E-mail: contact@goobit.co.kr</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Sitemap Columns -->
+        <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider">
+              <a href="company.html" class="hover:text-amber-600 transition-colors flex items-center gap-1">
+                <span>회사소개</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </a>
+            </h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="company.html#overview" class="hover:text-slate-900 transition-colors">기업 개요 및 비전</a></li>
+              <li><a href="company.html#ceo" class="hover:text-slate-900 transition-colors">CEO 인사말</a></li>
+              <li><a href="company.html#history" class="hover:text-slate-900 transition-colors">주요 연혁</a></li>
+              <li><a href="company.html#certifications" class="hover:text-slate-900 transition-colors">인증 및 특허</a></li>
+              <li><a href="company.html#location" class="hover:text-slate-900 transition-colors">찾아오시는 길</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider">
+              <a href="products.html" class="hover:text-amber-600 transition-colors flex items-center gap-1">
+                <span>제품</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </a>
+            </h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="products.html#ai-suite" class="hover:text-slate-900 transition-colors">Goobit AI Suite</a></li>
+              <li><a href="products.html#tbcms" class="hover:text-slate-900 transition-colors">TBCMS</a></li>
+              <li><a href="products.html#opms" class="hover:text-slate-900 transition-colors">OPMS</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider">
+              <a href="services.html" class="hover:text-amber-600 transition-colors flex items-center gap-1">
+                <span>서비스</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </a>
+            </h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="services.html#public-si" class="hover:text-slate-900 transition-colors">공공 정보화 SI</a></li>
+              <li><a href="services.html#telecom-ito" class="hover:text-slate-900 transition-colors">통신·미디어 ITO</a></li>
+              <li><a href="services.html#edutech" class="hover:text-slate-900 transition-colors">스마트 교육 &amp; LMS</a></li>
+              <li><a href="services.html#consulting" class="hover:text-slate-900 transition-colors">AI·DX 컨설팅</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider">
+              <a href="news.html" class="hover:text-amber-600 transition-colors flex items-center gap-1">
+                <span>회사소식</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </a>
+            </h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="news.html?category=all" class="hover:text-slate-900 transition-colors">전체 소식</a></li>
+              <li><a href="news.html?category=press" class="hover:text-slate-900 transition-colors">보도자료</a></li>
+              <li><a href="news.html?category=tech" class="hover:text-slate-900 transition-colors">기술·DX 스토리</a></li>
+              <li><a href="news.html?category=culture" class="hover:text-slate-900 transition-colors">사내 소식</a></li>
+            </ul>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider">
+              <a href="contact.html" class="hover:text-amber-600 transition-colors flex items-center gap-1">
+                <span>문의하기</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+              </a>
+            </h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="contact.html#inquiry" class="hover:text-slate-900 transition-colors">프로젝트 도입 문의</a></li>
+              <li><a href="contact.html#support" class="hover:text-slate-900 transition-colors">기술 지원 데스크</a></li>
+              <li><a href="contact.html#directions" class="hover:text-slate-900 transition-colors">오시는 길 안내</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Legal & Copyright -->
+      <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="space-y-1 text-center md:text-left">
+          <p>주식회사 구비트 (Goobit Co., Ltd.) | 대표이사: 구본일 | 사업자등록번호: 698-86-00102</p>
+          <p>개인정보보호책임자: 구본일 (privacy@goobit.co.kr) | 통신판매업신고: 송파구청 제2015-서울송파-0982호</p>
+          <p class="text-slate-600 font-medium">Copyright 2026 주식회사 구비트 (Goobit Co., Ltd.). All rights reserved.</p>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="contact.html#directions" class="text-slate-500 hover:text-amber-600 transition-colors">오시는 길</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Card News Reader Modal Container -->
+  <div id="card-news-modal-root"></div>
+
+  <!-- JavaScript Libraries and App Controllers -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/card-news.js"></script>
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <!--
+   * @intent Professional engineering services page showcasing public SI, telecom ITO, edutech, AI consulting, and 4-phase methodology
+   * @agent  manager-develop
+   * @branch feat/homepage-skeleton
+   * @author @goobit-dev
+   * @date   2026-09-23
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>전문 엔지니어링 서비스 | 주식회사 구비트 (Goobit)</title>
+  <meta name="description" content="전자정부 표준프레임워크 기반 공공 SI부터 24/365 대용량 통신 ITO, AI 컨설팅까지 검증된 방법론으로 프로젝트 성공을 보장합니다." />
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png" />
+
+  <!-- Pretendard & Custom Style CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col font-sans antialiased">
+  
+  <!-- KRDS Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">본문 바로가기 (Skip to Content)</a>
+
+
+  <!-- Global Header (GNB) -->
+  <header data-theme="light" class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs text-slate-800 transition-all duration-200" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Left: Official CI Logo & Desktop Navigation Group -->
+        <div class="flex items-center h-full gap-8 xl:gap-12">
+          <!-- Official CI Logo -->
+          <a href="index.html" class="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg group shrink-0" aria-label="주식회사 구비트 홈으로 이동">
+            <img src="images/logo/ci.png" alt="주식회사 구비트 (GOOBIT)" class="h-7 sm:h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105" />
+          </a>
+
+          <!-- Desktop Navigation Items (4 Core Menus) -->
+          <nav class="hidden lg:flex items-center h-full gap-1 xl:gap-2" role="navigation" aria-label="메인 메뉴">
+            <!-- 1. 회사소개 -->
+            <div class="relative h-full flex items-center">
+              <a href="company.html" data-menu-target="company" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소개</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 2. 제품 -->
+            <div class="relative h-full flex items-center">
+              <a href="products.html" data-menu-target="products" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>제품</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 3. 서비스 -->
+            <div class="relative h-full flex items-center">
+              <a href="services.html" data-menu-target="services" class="is-current-page relative h-full px-3.5 xl:px-4 text-sm font-bold flex items-center gap-1.5 text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>서비스</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 4. 회사소식 -->
+            <div class="relative h-full flex items-center">
+              <a href="news.html" data-menu-target="news" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소식</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Right: Primary CTA Action Button -->
+        <div class="hidden lg:flex items-center gap-3 shrink-0">
+          <a href="contact.html#inquiry" class="px-5 xl:px-6 py-2.5 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-600 text-slate-900 transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 shrink-0 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 active:scale-95">
+            <span>도입 문의하기</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="flex lg:hidden items-center gap-2.5">
+          <a href="contact.html#inquiry" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-900 transition-colors shadow-xs">도입문의</a>
+          <button id="mobile-menu-toggle" aria-label="메뉴 열기" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Full-Width Mega Menu Dropdown Drawer -->
+    <div id="mega-menu-drawer" class="hidden absolute top-full left-0 right-0 w-full bg-white border-b border-slate-200/90 shadow-2xl transition-all duration-200 z-50 animate-fadeIn" role="menu"></div>
+
+    <!-- Backdrop Blur Overlay (Exact Header Bottom Alignment) -->
+    <div id="mega-menu-backdrop" class="hidden fixed inset-x-0 bottom-0 top-16 lg:top-18 bg-slate-900/15 backdrop-blur-xs z-30 pointer-events-none transition-opacity duration-200" aria-hidden="true"></div>
+
+    <!-- Mobile Drawer Menu (Exact Header Bottom Alignment: top-16 = 64px, max-h-[calc(100vh-64px)]) -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden fixed inset-x-0 top-16 bg-white border-b border-slate-200 shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto p-4 transition-all text-slate-800">
+      <div class="space-y-4">
+        <div class="border-b border-slate-100 pb-3">
+          <a href="company.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="building-2" class="w-4 h-4 text-blue-600"></i>
+              <span>회사소개</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="company.html#overview" class="block py-1 text-sm text-slate-600 hover:text-slate-900">기업 개요 및 비전</a>
+            <a href="company.html#ceo" class="block py-1 text-sm text-slate-600 hover:text-slate-900">CEO 인사말</a>
+            <a href="company.html#history" class="block py-1 text-sm text-slate-600 hover:text-slate-900">주요 연혁</a>
+            <a href="company.html#certifications" class="block py-1 text-sm text-slate-600 hover:text-slate-900">인증 및 특허</a>
+            <a href="company.html#location" class="block py-1 text-sm text-slate-600 hover:text-slate-900">찾아오시는 길</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="products.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="cpu" class="w-4 h-4 text-amber-500"></i>
+              <span>제품</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="products.html#ai-suite" class="block py-1 text-sm text-slate-600 hover:text-slate-900">Goobit AI Suite</a>
+            <a href="products.html#architecture" class="block py-1 text-sm text-slate-600 hover:text-slate-900">AI 아키텍처 다이어그램</a>
+            <a href="products.html#comparison" class="block py-1 text-sm text-slate-600 hover:text-slate-900">솔루션 비교 분석</a>
+            <a href="products.html#tbcms" class="block py-1 text-sm text-slate-600 hover:text-slate-900">TBCMS (콘텐츠 관리)</a>
+            <a href="products.html#opms" class="block py-1 text-sm text-slate-600 hover:text-slate-900">OPMS (공연 관리 ERP)</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="services.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-blue-600 text-base">
+            <div class="flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-blue-600"></i>
+              <span>서비스</span>
+            </div>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-blue-600"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="services.html#methodology" class="block py-1 text-sm text-slate-600 hover:text-slate-900">구축 방법론 (Methodology)</a>
+            <a href="services.html#public-si" class="block py-1 text-sm text-slate-600 hover:text-slate-900">공공 정보화 SI</a>
+            <a href="services.html#telecom-ito" class="block py-1 text-sm text-slate-600 hover:text-slate-900">통신·미디어 ITO</a>
+            <a href="services.html#edutech" class="block py-1 text-sm text-slate-600 hover:text-slate-900">스마트 교육 & LMS</a>
+            <a href="services.html#consulting" class="block py-1 text-sm text-slate-600 hover:text-slate-900">AI·DX 컨설팅</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="news.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="newspaper" class="w-4 h-4 text-amber-500"></i>
+              <span>회사소식</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="news.html?category=all" class="block py-1 text-sm text-slate-600 hover:text-slate-900">전체 소식</a>
+            <a href="news.html?category=press" class="block py-1 text-sm text-slate-600 hover:text-slate-900">보도자료</a>
+            <a href="news.html?category=tech" class="block py-1 text-sm text-slate-600 hover:text-slate-900">기술·DX 스토리</a>
+            <a href="news.html?category=culture" class="block py-1 text-sm text-slate-600 hover:text-slate-900">사내소식</a>
+          </div>
+        </div>
+
+        <!-- Direct CTA Action -->
+        <div class="pt-2 flex flex-col gap-2.5">
+          <a href="contact.html#inquiry" class="w-full py-3 text-center font-bold text-sm bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2">
+            <span>무료 기술 컨설팅 및 도입 문의</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <div class="flex items-center justify-center gap-2 text-xs text-slate-500 py-1">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-blue-600"></i>
+            <span>대표전화: 02-517-5520 (평일 09:00 - 18:00)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-1 pt-16 bg-surface-section">
+    
+    <!-- Hero Banner -->
+    <div class="bg-navy-950 text-white py-16 lg:py-20 border-b border-navy-800 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#06B6D4_1px,transparent_1px)] [background-size:20px_20px]"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-850 border border-cyan-400/30 text-xs font-bold text-cyan-400">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+            <span>엔터프라이즈 서비스</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+            전문 엔지니어링 서비스
+          </h1>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            전자정부 표준프레임워크 기반 공공 SI부터 24/365 대용량 통신 ITO, AI 컨설팅까지 검증된 방법론으로 프로젝트 성공을 보장합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-nav Anchor Bar -->
+    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600">
+          <a href="#methodology" class="hover:text-blue-600 whitespace-nowrap">구축 방법론 (Methodology)</a>
+          <a href="#public-si" class="hover:text-blue-600 whitespace-nowrap">공공 정보화 SI</a>
+          <a href="#telecom-ito" class="hover:text-blue-600 whitespace-nowrap">통신·미디어 ITO</a>
+          <a href="#edutech" class="hover:text-blue-600 whitespace-nowrap">스마트 교육 &amp; LMS</a>
+          <a href="#consulting" class="hover:text-blue-600 whitespace-nowrap">AI·DX 컨설팅</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+      
+      <!-- 1. Methodology Section -->
+      <section id="methodology" class="scroll-mt-32 space-y-8" data-reveal>
+        <div class="space-y-3">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">품질 관리 및 수행 프로세스</span>
+          <h2 class="text-3xl font-extrabold text-navy-900">
+            구비트 엔터프라이즈 4단계 수행 방법론
+          </h2>
+          <p class="text-slate-600 text-base max-w-3xl">
+            10년의 SI/ITO 프로젝트 수행 데이터와 CMMI/ISO 품질 체계를 기반으로 설계된 표준 구축 절차입니다.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between space-y-4 hover:border-cyan-400 hover:shadow-md transition-all">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-cyan-600">Phase 01</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              </div>
+              <h3 class="text-base font-bold text-navy-900">
+                요건 분석 및 아키텍처 수립
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                비즈니스 요구사항 정의, 데이터 모델링, 폐쇄망/보안 규격 검토 및 최적의 인프라 설계를 확정합니다.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-gray-100 text-[11px] font-semibold text-slate-400">
+              품질 게이트 (TRUST 5 준수)
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between space-y-4 hover:border-cyan-400 hover:shadow-md transition-all">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-cyan-600">Phase 02</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              </div>
+              <h3 class="text-base font-bold text-navy-900">
+                애자일 스프린트 및 코어 개발
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                2주 단위 스프린트 반복 개발, 조기 데모 시연 및 사용자 피드백을 실시간 반영하여 불확실성을 최소화합니다.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-gray-100 text-[11px] font-semibold text-slate-400">
+              품질 게이트 (TRUST 5 준수)
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between space-y-4 hover:border-cyan-400 hover:shadow-md transition-all">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-cyan-600">Phase 03</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              </div>
+              <h3 class="text-base font-bold text-navy-900">
+                전수 검증 및 보안성 감사
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                단위/통합/부하 테스트, 시큐어코딩 취약점 진단, 국정원 보안성 검토 및 웹 접근성(KRDS) 인증을 완수합니다.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-gray-100 text-[11px] font-semibold text-slate-400">
+              품질 게이트 (TRUST 5 준수)
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between space-y-4 hover:border-cyan-400 hover:shadow-md transition-all">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-black text-cyan-600">Phase 04</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              </div>
+              <h3 class="text-base font-bold text-navy-900">
+                무중단 컷오버 및 안정화 운영
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                데이터 마이그레이션 및 실시간 모니터링 환경 가동, 전담 운영팀을 즉각 배치하여 무결점 서비스를 보장합니다.
+              </p>
+            </div>
+            <div class="pt-2 border-t border-gray-100 text-[11px] font-semibold text-slate-400">
+              품질 게이트 (TRUST 5 준수)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Detailed Service Domains -->
+      <div class="space-y-16">
+        
+        <!-- Public SI -->
+        <section id="public-si" class="scroll-mt-32 p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 shadow-sm space-y-8" data-reveal>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-100 pb-6">
+            <div class="flex items-start gap-4">
+              <div class="p-4 rounded-2xl bg-navy-950 text-cyan-400 shrink-0 shadow-sm">
+                <i data-lucide="landmark" class="w-6 h-6"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  PUBLIC INFORMATICS SYSTEM INTEGRATION
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">
+                  공공 정보화 시스템 구축 (Public SI)
+                </h2>
+                <p class="text-sm font-semibold text-slate-600">
+                  전자정부 표준프레임워크 기반 대민 행정 포털 및 대규모 공공 SI
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="contact.html#inquiry"
+              class="px-6 py-3 rounded-xl text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 transition-colors shrink-0 flex items-center gap-2 self-start lg:self-auto"
+            >
+              <span>해당 분야 사업 제안 요청</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            행정안전부, 농림축산식품부, KOTRA 등 주요 중앙부처 및 공공기관의 정보화 시스템 구축 경험을 보유하고 있습니다. 전자정부 표준프레임워크 4.x 기반의 아키텍처 설계와 공공데이터 연계, 웹 표준 및 장애인 웹 접근성 품질마크(WA) 100% 획득을 지원합니다.
+          </p>
+
+          <!-- Competencies -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-navy-900 uppercase tracking-wider">
+              핵심 수행 역량
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">전자정부 표준프레임워크(eGovFrame 4.x) 최신 아키텍처 완전 준수</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">국가정보원 보안성 검토 및 시큐어코딩 진단 100% 무결점 통과</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">KRDS(한국형 디자인 시스템) 표준 컴포넌트 라이브러리 탑재</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">지자체 및 유관기관 레거시 시스템 데이터 무중단 마이그레이션</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Major Clients & Tech Stack -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100 text-xs">
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">주요 실적 기관 및 고객사</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">농림축산식품부</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">KOTRA</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">서울디지털재단</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">한국문화정보원</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">정보통신산업진흥원(NIPA)</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">사용 기술 스택</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">eGovFrame 4.2</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Spring Boot 3</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Oracle / Tibero</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Vue.js / React</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">KRDS</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Telecom ITO -->
+        <section id="telecom-ito" class="scroll-mt-32 p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 shadow-sm space-y-8" data-reveal>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-100 pb-6">
+            <div class="flex items-start gap-4">
+              <div class="p-4 rounded-2xl bg-navy-950 text-blue-400 shrink-0 shadow-sm">
+                <i data-lucide="radio" class="w-6 h-6"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  TELECOM &amp; MEDIA INFRASTRUCTURE ITO
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">
+                  통신·미디어 시스템 운영 (Telecom ITO)
+                </h2>
+                <p class="text-sm font-semibold text-slate-600">
+                  24/365 무중단 대용량 트래픽 통신·방송 미디어 인프라 관제 및 ITO
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="contact.html#inquiry"
+              class="px-6 py-3 rounded-xl text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 transition-colors shrink-0 flex items-center gap-2 self-start lg:self-auto"
+            >
+              <span>해당 분야 사업 제안 요청</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            KT, SK텔레콤, LG유플러스 등 국내 굴지의 통신 및 미디어 기업 대용량 트래픽 시스템을 10년 이상 무중단 안정 운영한 독보적 노하우를 바탕으로, 클라우드 네이티브 아키텍처 전환과 24/365 SLA 관제 체계를 지원합니다.
+          </p>
+
+          <!-- Competencies -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-navy-900 uppercase tracking-wider">
+              핵심 수행 역량
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">초당 수만 건 트랜잭션 분산 큐(Kafka) 최적화 및 튜닝</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">Kubernetes 기반 자동 스케일아웃 및 블루-그린 무중단 배포</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">SLA 99.99% 준수 및 비상 장애 대응 핫라인 24/365 상시 가동</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">미디어 콘텐츠 CDN 엣지 캐싱 최적화로 대역폭 비용 40% 절감</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Major Clients & Tech Stack -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100 text-xs">
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">주요 실적 기관 및 고객사</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">KT</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">SK텔레콤</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">LG유플러스</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">CJ ENM</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">SK브로드밴드</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">사용 기술 스택</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Kubernetes</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Docker</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Kafka</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Redis</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Jenkins</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Prometheus / Grafana</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Edutech -->
+        <section id="edutech" class="scroll-mt-32 p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 shadow-sm space-y-8" data-reveal>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-100 pb-6">
+            <div class="flex items-start gap-4">
+              <div class="p-4 rounded-2xl bg-navy-950 text-indigo-400 shrink-0 shadow-sm">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  SMART EDUCATION PLATFORM &amp; LMS
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">
+                  스마트 교육 플랫폼 &amp; LMS (EduTech)
+                </h2>
+                <p class="text-sm font-semibold text-slate-600">
+                  클라우드 네이티브 온라인 학습 환경 및 인터랙티브 교육 포털
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="contact.html#inquiry"
+              class="px-6 py-3 rounded-xl text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 transition-colors shrink-0 flex items-center gap-2 self-start lg:self-auto"
+            >
+              <span>해당 분야 사업 제안 요청</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            원격 교육, 학점 은행, 기업 사내 역량 개발 연수원 등 다양한 교육 도메인을 위한 맞춤형 스마트 LMS 플랫폼을 구축합니다. 실시간 화상 강의(WebRTC), 동영상 스트리밍 진도율 체크, AI 튜터 챗봇과의 인터랙션을 통해 몰입도 높은 디지털 학습 경험을 실현합니다.
+          </p>
+
+          <!-- Competencies -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-navy-900 uppercase tracking-wider">
+              핵심 수행 역량
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">WebRTC 기반 대화형 다자간 실시간 화상 세미나 룸 구현</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">SCORM / xAPI 국제 e-Learning 표준 규격 100% 호환성 보장</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">모바일 반응형 최적화로 시간·장소 제약 없는 학습 편의 제공</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">학습자 행동 데이터 기반 개인화 맞춤 강좌 추천 알고리즘</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Major Clients & Tech Stack -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100 text-xs">
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">주요 실적 기관 및 고객사</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">한국교육학술정보원(KERIS)</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">EBS</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">대교</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">메가스터디</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">서울시 평생학습포털</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">사용 기술 스택</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Moodle Core</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">WebRTC</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Node.js</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">AWS Elemental</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Next.js</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Consulting -->
+        <section id="consulting" class="scroll-mt-32 p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 shadow-sm space-y-8" data-reveal>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-gray-100 pb-6">
+            <div class="flex items-start gap-4">
+              <div class="p-4 rounded-2xl bg-navy-950 text-emerald-400 shrink-0 shadow-sm">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  AI-POWERED DIGITAL TRANSFORMATION CONSULTING
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">
+                  AI·DX 기술 컨설팅 (Consulting)
+                </h2>
+                <p class="text-sm font-semibold text-slate-600">
+                  지식그래프 및 생성형 AI 도입 전략 수립부터 PoC 및 폐쇄망 구축 가이드
+                </p>
+              </div>
+            </div>
+
+            <a
+              href="contact.html#inquiry"
+              class="px-6 py-3 rounded-xl text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 transition-colors shrink-0 flex items-center gap-2 self-start lg:self-auto"
+            >
+              <span>해당 분야 사업 제안 요청</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            기존 엔터프라이즈 레거시 시스템에 최신 지식그래프 온톨로지와 생성형 AI 기술을 접목하고자 하는 기업 및 기관을 위한 전문 기술 컨설팅을 제공합니다. 데이터 감사, 프롬프트 엔지니어링, 온프레미스 GPU 인프라 사이징, 국정원 보안성 검토 대비 사전 컨설팅을 수행합니다.
+          </p>
+
+          <!-- Competencies -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-navy-900 uppercase tracking-wider">
+              핵심 수행 역량
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">고객사 보유 비정형 문서 대상 온톨로지 지식그래프 적합도 진단</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">사내 폐쇄망 sLLM 도입을 위한 GPU 인프라 사이징 및 TCO 분석</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">공공기관 정보보호 및 개인정보 영향평가(PIA) 대응 기술 자문</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5"></i>
+                <span class="text-xs text-slate-800 font-medium leading-relaxed">실제 데이터 기반 단기 4주 개념증명(PoC) 패키지 신속 완수</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Major Clients & Tech Stack -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100 text-xs">
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">주요 실적 기관 및 고객사</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">행정안전부 디지털정부국</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">한국지능정보사회진흥원(NIA)</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">주요 금융그룹</span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200 font-semibold">제조 대기업</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <span class="font-bold text-navy-900 block">사용 기술 스택</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Neo4j</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">LangChain / LangGraph</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Hugging Face</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">vLLM</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Python</span>
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium">Docker</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Bottom Consultation Prompt Banner -->
+      <section class="rounded-3xl bg-gradient-to-r from-navy-900 via-navy-950 to-slate-900 p-8 sm:p-12 text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6" data-reveal>
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-amber-400">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>전문 엔지니어링 역량</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            성공적인 프로젝트 수행 파트너를 찾으시나요?
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl">
+            10년 이상의 공공·통신 사업 수행 경험과 특화된 기술력을 갖춘 구비트 수석 엔지니어 팀이 귀사의 비즈니스 혁신을 지원합니다.
+          </p>
+        </div>
+
+        <a
+          href="contact.html#inquiry"
+          class="px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 shrink-0 active:scale-95"
+        >
+          <span>프로젝트 제안 문의하기</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Bright Footer -->
+  <footer class="bg-white border-t border-slate-200 text-slate-800" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mb-12">
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center">
+            <img src="images/logo/ci.png" alt="주식회사 구비트 (GOOBIT)" class="h-8 md:h-9 w-auto object-contain" />
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed font-normal">
+            가치에 진심을 담다. 공공·통신 10여 년의 미션 크리티컬 시스템 운영 노하우와 지식그래프 기반 최신 엔터프라이즈 AI 기술을 융합하는 AI·DX 전문 솔루션 기업입니다.
+          </p>
+          <div class="space-y-2 text-xs text-slate-600 pt-2">
+            <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-amber-500 shrink-0"></i><span>서울특별시 송파구 법원로 11길 7 문정현대지식산업센터 C동 408호</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-amber-500 shrink-0"></i><span>TEL: 02-517-5520 | FAX: 02-517-5521</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-amber-500 shrink-0"></i><span>E-mail: contact@goobit.co.kr</span></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="company.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>회사소개</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="company.html#overview" class="hover:text-slate-900 transition-colors">기업 개요 및 비전</a></li>
+              <li><a href="company.html#ceo" class="hover:text-slate-900 transition-colors">CEO 인사말</a></li>
+              <li><a href="company.html#history" class="hover:text-slate-900 transition-colors">주요 연혁</a></li>
+              <li><a href="company.html#certifications" class="hover:text-slate-900 transition-colors">인증 및 특허</a></li>
+              <li><a href="company.html#location" class="hover:text-slate-900 transition-colors">찾아오시는 길</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="products.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>제품</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="products.html#ai-suite" class="hover:text-slate-900 transition-colors">Goobit AI Suite</a></li>
+              <li><a href="products.html#architecture" class="hover:text-slate-900 transition-colors">AI 아키텍처 다이어그램</a></li>
+              <li><a href="products.html#comparison" class="hover:text-slate-900 transition-colors">솔루션 비교 분석</a></li>
+              <li><a href="products.html#tbcms" class="hover:text-slate-900 transition-colors">TBCMS</a></li>
+              <li><a href="products.html#opms" class="hover:text-slate-900 transition-colors">OPMS</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="services.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>서비스</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="services.html#public-si" class="hover:text-slate-900 transition-colors">공공 정보화 SI</a></li>
+              <li><a href="services.html#telecom-ito" class="hover:text-slate-900 transition-colors">통신·미디어 ITO</a></li>
+              <li><a href="services.html#edutech" class="hover:text-slate-900 transition-colors">스마트 교육 &amp; LMS</a></li>
+              <li><a href="services.html#consulting" class="hover:text-slate-900 transition-colors">AI·DX 컨설팅</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="news.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>회사소식</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="news.html?category=all" class="hover:text-slate-900 transition-colors">전체 소식</a></li>
+              <li><a href="news.html?category=press" class="hover:text-slate-900 transition-colors">보도자료</a></li>
+              <li><a href="news.html?category=tech" class="hover:text-slate-900 transition-colors">기술·DX 스토리</a></li>
+              <li><a href="news.html?category=culture" class="hover:text-slate-900 transition-colors">사내 소식</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="contact.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>문의하기</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="contact.html#inquiry" class="hover:text-slate-900 transition-colors">프로젝트 도입 문의</a></li>
+              <li><a href="contact.html#support" class="hover:text-slate-900 transition-colors">기술 지원 데스크</a></li>
+              <li><a href="contact.html#directions" class="hover:text-slate-900 transition-colors">오시는 길 안내</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="space-y-1 text-center md:text-left">
+          <p>주식회사 구비트 (Goobit Co., Ltd.) | 대표이사: 구본일 | 사업자등록번호: 698-86-00102</p>
+          <p>개인정보보호책임자: 구본일 (privacy@goobit.co.kr) | 통신판매업신고: 송파구청 제2015-서울송파-0982호</p>
+          <p class="text-slate-600 font-medium">Copyright 2026 주식회사 구비트 (Goobit Co., Ltd.). All rights reserved.</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="contact.html#directions" class="text-slate-500 hover:text-amber-600 transition-colors">오시는 길</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scroll-to-top" class="opacity-0 pointer-events-none fixed bottom-6 right-6 z-40 p-3 rounded-full bg-navy-900/90 text-white shadow-xl hover:bg-amber-500 hover:text-slate-950 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 group" aria-label="맨 위로 이동">
+    <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-200"></i>
+  </button>
+
+  <!-- Card News Reader Modal Container -->
+  <div id="card-news-modal-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/card-news.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/**
+ * @intent Global CSS with Tailwind directives, Pretendard typography, card elevation, and shimmer utilities
+ * @agent  manager-develop
+ * @branch feat/homepage-skeleton
+ * @author @goobit-dev
+ * @date   2026-09-23
+ */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after, html, body, button, input, select, textarea, code, pre, kbd, samp {
+  font-family: 'Pretendard', sans-serif !important;
+}
+
+@layer base {
+  *, *::before, *::after, html, body, button, input, select, textarea, code, pre, kbd, samp {
+    font-family: 'Pretendard', sans-serif !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: #0F172A;
+    background-color: #FFFFFF;
+    font-family: 'Pretendard', sans-serif !important;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748B;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Card 3D lift & interactive elevation */
+  .card-interactive {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+  }
+  .card-interactive:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px -10px rgba(22, 40, 70, 0.12), 0 10px 18px -6px rgba(22, 40, 70, 0.08);
+  }
+
+  /* Shimmer sweep overlay across cards */
+  .shimmer-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(245, 166, 35, 0.06),
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+    transform: skewX(-20deg) translateX(-200%);
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 20;
+  }
+  .shimmer-card:hover::before {
+    transform: skewX(-20deg) translateX(360%);
+  }
+}
+

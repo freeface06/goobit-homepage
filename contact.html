@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <!--
+   * @intent Contact & Support page featuring interactive inquiry form, fast support desk, Naver map, and FAQ accordion
+   * @agent  manager-develop
+   * @branch feat/homepage-skeleton
+   * @author @goobit-dev
+   * @date   2026-09-23
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>도입 문의 &amp; 오시는 길 | 주식회사 구비트 (Goobit)</title>
+  <meta name="description" content="엔터프라이즈 AI 솔루션 도입, 시스템 구축 견적, 유지보수 기술 지원 등 구비트 전문 컨설턴트가 신속히 답변해 드립니다. 본사 오시는 길 및 고객 지원 안내." />
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png" />
+
+  <!-- Pretendard & Custom Style CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col font-sans antialiased">
+  
+  <!-- KRDS Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">본문 바로가기 (Skip to Content)</a>
+
+
+  <!-- Global Header (GNB) -->
+  <header data-theme="light" class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs text-slate-800 transition-all duration-200" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Left: Official CI Logo & Desktop Navigation Group -->
+        <div class="flex items-center h-full gap-8 xl:gap-12">
+          <!-- Official CI Logo -->
+          <a href="index.html" class="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg group shrink-0" aria-label="주식회사 구비트 홈으로 이동">
+            <img src="images/logo/ci.png" alt="주식회사 구비트 (GOOBIT)" class="h-7 sm:h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105" />
+          </a>
+
+          <!-- Desktop Navigation Items (4 Core Menus) -->
+          <nav class="hidden lg:flex items-center h-full gap-1 xl:gap-2" role="navigation" aria-label="메인 메뉴">
+            <!-- 1. 회사소개 -->
+            <div class="relative h-full flex items-center">
+              <a href="company.html" data-menu-target="company" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소개</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 2. 제품 -->
+            <div class="relative h-full flex items-center">
+              <a href="products.html" data-menu-target="products" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>제품</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 3. 서비스 -->
+            <div class="relative h-full flex items-center">
+              <a href="services.html" data-menu-target="services" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>서비스</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+
+            <!-- 4. 회사소식 -->
+            <div class="relative h-full flex items-center">
+              <a href="news.html" data-menu-target="news" class="relative h-full px-3.5 xl:px-4 text-sm font-semibold flex items-center gap-1.5 text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap">
+                <span>회사소식</span>
+                <i data-lucide="chevron-down" class="chevron-icon w-3.5 h-3.5 text-slate-400 transition-transform duration-200"></i>
+                <span class="active-indicator opacity-0 absolute bottom-0 left-3 right-3 h-[2.5px] bg-amber-500 rounded-full transition-all duration-200"></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Right: Primary CTA Action Button (Current Page Highlighted) -->
+        <div class="hidden lg:flex items-center gap-3 shrink-0">
+          <a href="contact.html#inquiry" class="px-5 xl:px-6 py-2.5 rounded-xl text-sm font-bold bg-amber-500 hover:bg-amber-600 text-slate-900 transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 shrink-0 whitespace-nowrap ring-2 ring-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 active:scale-95">
+            <span>도입 문의하기</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="flex lg:hidden items-center gap-2.5">
+          <a href="contact.html#inquiry" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 transition-colors shadow-xs">도입문의</a>
+          <button id="mobile-menu-toggle" aria-label="메뉴 열기" class="p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Full-Width Mega Menu Dropdown Drawer -->
+    <div id="mega-menu-drawer" class="hidden absolute top-full left-0 right-0 w-full bg-white border-b border-slate-200/90 shadow-2xl transition-all duration-200 z-50 animate-fadeIn" role="menu"></div>
+
+    <!-- Backdrop Blur Overlay (Exact Header Bottom Alignment) -->
+    <div id="mega-menu-backdrop" class="hidden fixed inset-x-0 bottom-0 top-16 lg:top-18 bg-slate-900/15 backdrop-blur-xs z-30 pointer-events-none transition-opacity duration-200" aria-hidden="true"></div>
+
+    <!-- Mobile Drawer Menu (Exact Header Bottom Alignment: top-16 = 64px, max-h-[calc(100vh-64px)]) -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden fixed inset-x-0 top-16 bg-white border-b border-slate-200 shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto p-4 transition-all text-slate-800">
+      <div class="space-y-4">
+        <div class="border-b border-slate-100 pb-3">
+          <a href="company.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="building-2" class="w-4 h-4 text-blue-600"></i>
+              <span>회사소개</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="company.html#overview" class="block py-1 text-sm text-slate-600 hover:text-slate-900">기업 개요 및 비전</a>
+            <a href="company.html#ceo" class="block py-1 text-sm text-slate-600 hover:text-slate-900">CEO 인사말</a>
+            <a href="company.html#history" class="block py-1 text-sm text-slate-600 hover:text-slate-900">주요 연혁</a>
+            <a href="company.html#certifications" class="block py-1 text-sm text-slate-600 hover:text-slate-900">인증 및 특허</a>
+            <a href="company.html#location" class="block py-1 text-sm text-slate-600 hover:text-slate-900">찾아오시는 길</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="products.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="cpu" class="w-4 h-4 text-amber-500"></i>
+              <span>제품</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="products.html#ai-suite" class="block py-1 text-sm text-slate-600 hover:text-slate-900">Goobit AI Suite</a>
+            <a href="products.html#architecture" class="block py-1 text-sm text-slate-600 hover:text-slate-900">AI 아키텍처 다이어그램</a>
+            <a href="products.html#comparison" class="block py-1 text-sm text-slate-600 hover:text-slate-900">솔루션 비교 분석</a>
+            <a href="products.html#tbcms" class="block py-1 text-sm text-slate-600 hover:text-slate-900">TBCMS (콘텐츠 관리)</a>
+            <a href="products.html#opms" class="block py-1 text-sm text-slate-600 hover:text-slate-900">OPMS (공연 관리 ERP)</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="services.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-cyan-600"></i>
+              <span>서비스</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="services.html#methodology" class="block py-1 text-sm text-slate-600 hover:text-slate-900">구축 방법론 (Methodology)</a>
+            <a href="services.html#public-si" class="block py-1 text-sm text-slate-600 hover:text-slate-900">공공 정보화 SI</a>
+            <a href="services.html#telecom-ito" class="block py-1 text-sm text-slate-600 hover:text-slate-900">통신·미디어 ITO</a>
+            <a href="services.html#edutech" class="block py-1 text-sm text-slate-600 hover:text-slate-900">스마트 교육 & LMS</a>
+            <a href="services.html#consulting" class="block py-1 text-sm text-slate-600 hover:text-slate-900">AI·DX 컨설팅</a>
+          </div>
+        </div>
+
+        <div class="border-b border-slate-100 pb-3">
+          <a href="news.html" class="w-full flex items-center justify-between text-left py-2 font-bold text-slate-900 text-base hover:text-blue-600">
+            <div class="flex items-center gap-2">
+              <i data-lucide="newspaper" class="w-4 h-4 text-amber-500"></i>
+              <span>회사소식</span>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+          </a>
+          <div class="pl-6 space-y-1.5 mt-1">
+            <a href="news.html?category=all" class="block py-1 text-sm text-slate-600 hover:text-slate-900">전체 소식</a>
+            <a href="news.html?category=press" class="block py-1 text-sm text-slate-600 hover:text-slate-900">보도자료</a>
+            <a href="news.html?category=tech" class="block py-1 text-sm text-slate-600 hover:text-slate-900">기술·DX 스토리</a>
+            <a href="news.html?category=culture" class="block py-1 text-sm text-slate-600 hover:text-slate-900">사내소식</a>
+          </div>
+        </div>
+
+        <!-- Direct CTA Action -->
+        <div class="pt-2 flex flex-col gap-2.5">
+          <a href="contact.html#inquiry" class="w-full py-3 text-center font-bold text-sm bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl shadow-xs ring-2 ring-amber-400 transition-all flex items-center justify-center gap-2">
+            <span>무료 기술 컨설팅 및 도입 문의</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <div class="flex items-center justify-center gap-2 text-xs text-slate-500 py-1">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-blue-600"></i>
+            <span>대표전화: 02-517-5520 (평일 09:00 - 18:00)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-1 pt-16 bg-surface-section">
+    
+    <!-- Hero Banner -->
+    <div class="bg-navy-950 text-white py-16 lg:py-20 border-b border-navy-800 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#06B6D4_1px,transparent_1px)] [background-size:20px_20px]"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-850 border border-cyan-400/30 text-xs font-bold text-cyan-400">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span>문의 및 고객지원</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+            도입 문의 및 고객 지원
+          </h1>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            엔터프라이즈 AI 솔루션 도입, 시스템 구축 견적, 유지보수 기술 지원 등 구비트 전문 컨설턴트가 신속히 답변해 드립니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-nav Anchor Bar -->
+    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600">
+          <a href="#inquiry" class="hover:text-blue-600 whitespace-nowrap">1:1 도입 문의 양식</a>
+          <a href="#support" class="hover:text-blue-600 whitespace-nowrap">기술 지원 데스크</a>
+          <a href="#directions" class="hover:text-blue-600 whitespace-nowrap">본사 오시는 길</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+      
+      <!-- 1. Interactive Inquiry Form Section -->
+      <section id="inquiry" class="scroll-mt-32 space-y-8" data-reveal>
+        <div class="space-y-3">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">프로젝트 도입 문의</span>
+          <h2 class="text-3xl font-extrabold text-navy-900">
+            1:1 맞춤 견적 및 프로젝트 제안 문의
+          </h2>
+          <p class="text-slate-600 text-base max-w-3xl">
+            요구하시는 프로젝트 범위와 솔루션을 선택해 주시면, 전담 엔지니어가 24시간 이내에 1차 기술 검토 후 연락드립니다.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Form Card -->
+          <div class="lg:col-span-8 rounded-3xl bg-white p-8 sm:p-10 border border-gray-200 shadow-sm">
+            
+            <!-- Success State Message (Initially Hidden) -->
+            <div id="inquiry-success-view" class="hidden py-12 text-center space-y-4">
+              <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-navy-900">
+                문의가 성공적으로 접수되었습니다.
+              </h3>
+              <p class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                입력해 주신 연락처(<span id="submitted-email-display" class="font-semibold text-navy-900"></span>)로 접수 확인 안내를 발송해 드렸습니다. 영업일 기준 24시간 이내에 담당자가 연락드리겠습니다.
+              </p>
+              <div class="pt-4">
+                <button
+                  type="button"
+                  onclick="resetInquiryForm()"
+                  class="px-6 py-2.5 rounded-lg text-xs font-bold bg-navy-900 text-white hover:bg-navy-800 transition-colors"
+                >
+                  추가 문의 작성하기
+                </button>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form id="inquiry-form" onsubmit="handleInquirySubmit(event)" class="space-y-6">
+              
+              <!-- Validation Error Box -->
+              <div id="form-error-box" class="hidden p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-center gap-3 text-rose-700 text-xs font-bold">
+                <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+                <span id="form-error-msg">모든 필수 항목을 입력해 주세요.</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-1.5">
+                  <label for="companyName" class="text-xs font-bold text-navy-900">
+                    회사명 / 기관명 <span class="text-rose-500">*</span>
+                  </label>
+                  <input
+                    id="companyName"
+                    name="companyName"
+                    type="text"
+                    required
+                    placeholder="예: (주)한국기업 또는 OO청"
+                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="contactPerson" class="text-xs font-bold text-navy-900">
+                    담당자명 및 직급 <span class="text-rose-500">*</span>
+                  </label>
+                  <input
+                    id="contactPerson"
+                    name="contactPerson"
+                    type="text"
+                    required
+                    placeholder="예: 홍길동 팀장"
+                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-1.5">
+                  <label for="email" class="text-xs font-bold text-navy-900">
+                    업무용 이메일 <span class="text-rose-500">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="name@company.co.kr"
+                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="phone" class="text-xs font-bold text-navy-900">
+                    연락처 / 직통전화 <span class="text-rose-500">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="010-0000-0000 또는 02-000-0000"
+                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="space-y-1.5">
+                  <label for="serviceCategory" class="text-xs font-bold text-navy-900">
+                    문의 솔루션 / 서비스 분야
+                  </label>
+                  <select
+                    id="serviceCategory"
+                    name="serviceCategory"
+                    class="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-xs bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  >
+                    <option value="Goobit AI Suite 도입">Goobit AI Suite (지식그래프/RAG)</option>
+                    <option value="TBCMS 구축">TBCMS (콘텐츠/포털 관리)</option>
+                    <option value="OPMS 도입">OPMS (스마트 공연 ERP)</option>
+                    <option value="공공 정보화 SI">공공 정보화 SI 구축</option>
+                    <option value="통신·미디어 ITO">통신·미디어 ITO 운영</option>
+                    <option value="스마트 교육 LMS">스마트 교육 &amp; LMS</option>
+                    <option value="기타 컨설팅">AI·DX 기술 컨설팅</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="budgetRange" class="text-xs font-bold text-navy-900">
+                    예상 예산 범위
+                  </label>
+                  <select
+                    id="budgetRange"
+                    name="budgetRange"
+                    class="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-xs bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  >
+                    <option value="미정 (견적 상담 필요)">미정 (견적 상담 필요)</option>
+                    <option value="5천만 원 미만">5천만 원 미만</option>
+                    <option value="5천만 ~ 1억 원">5천만 ~ 1억 원</option>
+                    <option value="1억 ~ 3억 원">1억 ~ 3억 원</option>
+                    <option value="3억 원 이상">3억 원 이상 대규모 프로젝트</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label for="projectPeriod" class="text-xs font-bold text-navy-900">
+                    희망 착수 시기
+                  </label>
+                  <select
+                    id="projectPeriod"
+                    name="projectPeriod"
+                    class="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-xs bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                  >
+                    <option value="즉시 착수 가능">즉시 착수 가능</option>
+                    <option value="1개월 이내">1개월 이내</option>
+                    <option value="3개월 이내 착수">3개월 이내 착수</option>
+                    <option value="차기 년도 예산 편성">차기 년도 예산 편성</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="message" class="text-xs font-bold text-navy-900">
+                  문의 및 요구사항 상세 내용 <span class="text-rose-500">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="구축하고자 하는 시스템의 목적, 현재 보유 데이터 형태(HWP, PDF, DB), 특별 요구사항(망분리 여부 등)을 자유롭게 기재해 주세요."
+                  class="w-full p-4 rounded-lg border border-gray-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                ></textarea>
+              </div>
+
+              <!-- Privacy Agreement -->
+              <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 flex items-start gap-3">
+                <input
+                  id="privacyAgreed"
+                  name="privacyAgreed"
+                  type="checkbox"
+                  required
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-amber-500 focus:ring-amber-400"
+                />
+                <label for="privacyAgreed" class="text-xs text-slate-600 leading-relaxed">
+                  <span class="font-bold text-navy-900">[필수] 개인정보 수집 및 이용 동의</span>
+                  <br />
+                  수집 항목: 회사명, 성명, 이메일, 전화번호 | 수집 목적: 프로젝트 견적 상담 및 기술 제안서 발송 | 보유 기간: 상담 완료 후 1년 또는 요청 시 즉시 파기.
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-4 rounded-xl font-bold text-sm bg-amber-500 hover:bg-amber-600 text-slate-950 transition-all shadow-md flex items-center justify-center gap-2 active:scale-95"
+              >
+                <i data-lucide="send" class="w-4 h-4 text-slate-900"></i>
+                <span>프로젝트 도입 및 견적 문의 발송</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Fast Contact & Support Desk Sidebar -->
+          <div id="support" class="lg:col-span-4 space-y-6 scroll-mt-32">
+            <div class="p-6 rounded-3xl bg-navy-950 text-white border border-navy-800 shadow-xl space-y-6">
+              <div class="space-y-1 border-b border-navy-800 pb-4">
+                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                  신속 상담 안내
+                </span>
+                <h3 class="text-lg font-bold text-white">
+                  유선 상담 및 긴급 핫라인
+                </h3>
+              </div>
+
+              <div class="space-y-4 text-xs">
+                <div class="space-y-1">
+                  <span class="text-slate-400 block font-medium">대표 유선 전화</span>
+                  <a href="tel:02-517-5520" class="text-base font-bold text-cyan-400 hover:underline flex items-center gap-1.5">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span>02-517-5520</span>
+                  </a>
+                  <span class="text-[11px] text-slate-400 block">평일 09:00 ~ 18:00 (점심시간 12:00~13:00)</span>
+                </div>
+
+                <div class="space-y-1 pt-2 border-t border-navy-900">
+                  <span class="text-slate-400 block font-medium">공식 문의 및 제안 이메일</span>
+                  <a href="mailto:contact@goobit.co.kr" class="text-sm font-semibold text-white hover:text-cyan-400 flex items-center gap-1.5 break-all">
+                    <i data-lucide="mail" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                    <span>contact@goobit.co.kr</span>
+                  </a>
+                </div>
+
+                <div class="space-y-1 pt-2 border-t border-navy-900">
+                  <span class="text-slate-400 block font-medium">팩스 번호</span>
+                  <span class="text-xs text-slate-300">02-517-5521</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-navy-900 border border-navy-800 space-y-2">
+                <div class="flex items-center gap-2 text-cyan-400 font-bold text-xs">
+                  <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                  <span>24/365 긴급 기술지원</span>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed font-normal">
+                  공공·통신 유지보수 계약 고객사 전용 24시간 장애 접수 핫라인은 계약서 내 지정 번호로 직접 연결됩니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 2. Office Directions Section with High-Fidelity Naver Map -->
+      <section id="directions" class="scroll-mt-32 space-y-8" data-reveal>
+        <div class="space-y-3">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">본사 위치 및 찾아오시는 길</span>
+          <h2 class="text-3xl font-extrabold text-navy-900">
+            오시는 길 안내
+          </h2>
+          <p class="text-slate-600 text-base">
+            주식회사 구비트 서울 본사 방문을 환영합니다. 최적의 경로를 확인하세요.
+          </p>
+        </div>
+
+        <!-- Dedicated High-Fidelity Naver Map Component -->
+        <div id="naver-map-root" data-map-component></div>
+
+        <!-- Transit & Directions Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-sm font-bold text-navy-900">
+              <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i>
+              <span>본사 주소</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              서울특별시 송파구 법원로 11길 7 문정현대지식산업센터 C동 408호
+            </p>
+            <div class="text-[11px] text-slate-400 font-medium">
+              우편번호: 05836
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-sm font-bold text-navy-900">
+              <i data-lucide="train" class="w-5 h-5 text-cyan-600"></i>
+              <span>지하철 이용 시</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              8호선 문정역 3·4번 출구 도보 5분 (문정 컬처밸리 지하연결통로 이용 가능)
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-sm font-bold text-navy-900">
+              <i data-lucide="clock" class="w-5 h-5 text-emerald-600"></i>
+              <span>방문 및 주차 안내</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              지하 1~4층 자주식 주차장 완비 (방문 차량 1시간 무료 주차권 제공)
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+
+    </div>
+  </main>
+
+  <!-- Global Bright Footer -->
+  <footer class="bg-white border-t border-slate-200 text-slate-800" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mb-12">
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center">
+            <img src="images/logo/ci.png" alt="주식회사 구비트 (GOOBIT)" class="h-8 md:h-9 w-auto object-contain" />
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed font-normal">
+            가치에 진심을 담다. 공공·통신 10여 년의 미션 크리티컬 시스템 운영 노하우와 지식그래프 기반 최신 엔터프라이즈 AI 기술을 융합하는 AI·DX 전문 솔루션 기업입니다.
+          </p>
+          <div class="space-y-2 text-xs text-slate-600 pt-2">
+            <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-amber-500 shrink-0"></i><span>서울특별시 송파구 법원로 11길 7 문정현대지식산업센터 C동 408호</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-amber-500 shrink-0"></i><span>TEL: 02-517-5520 | FAX: 02-517-5521</span></div>
+            <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-amber-500 shrink-0"></i><span>E-mail: contact@goobit.co.kr</span></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="company.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>회사소개</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="company.html#overview" class="hover:text-slate-900 transition-colors">기업 개요 및 비전</a></li>
+              <li><a href="company.html#ceo" class="hover:text-slate-900 transition-colors">CEO 인사말</a></li>
+              <li><a href="company.html#history" class="hover:text-slate-900 transition-colors">주요 연혁</a></li>
+              <li><a href="company.html#certifications" class="hover:text-slate-900 transition-colors">인증 및 특허</a></li>
+              <li><a href="company.html#location" class="hover:text-slate-900 transition-colors">찾아오시는 길</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="products.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>제품</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="products.html#ai-suite" class="hover:text-slate-900 transition-colors">Goobit AI Suite</a></li>
+              <li><a href="products.html#architecture" class="hover:text-slate-900 transition-colors">AI 아키텍처 다이어그램</a></li>
+              <li><a href="products.html#comparison" class="hover:text-slate-900 transition-colors">솔루션 비교 분석</a></li>
+              <li><a href="products.html#tbcms" class="hover:text-slate-900 transition-colors">TBCMS</a></li>
+              <li><a href="products.html#opms" class="hover:text-slate-900 transition-colors">OPMS</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="services.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>서비스</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="services.html#public-si" class="hover:text-slate-900 transition-colors">공공 정보화 SI</a></li>
+              <li><a href="services.html#telecom-ito" class="hover:text-slate-900 transition-colors">통신·미디어 ITO</a></li>
+              <li><a href="services.html#edutech" class="hover:text-slate-900 transition-colors">스마트 교육 &amp; LMS</a></li>
+              <li><a href="services.html#consulting" class="hover:text-slate-900 transition-colors">AI·DX 컨설팅</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="news.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>회사소식</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="news.html?category=all" class="hover:text-slate-900 transition-colors">전체 소식</a></li>
+              <li><a href="news.html?category=press" class="hover:text-slate-900 transition-colors">보도자료</a></li>
+              <li><a href="news.html?category=tech" class="hover:text-slate-900 transition-colors">기술·DX 스토리</a></li>
+              <li><a href="news.html?category=culture" class="hover:text-slate-900 transition-colors">사내 소식</a></li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-wider"><a href="contact.html" class="hover:text-amber-600 transition-colors flex items-center gap-1"><span>문의하기</span><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i></a></h3>
+            <ul class="space-y-2 text-xs text-slate-500">
+              <li><a href="contact.html#inquiry" class="hover:text-slate-900 transition-colors">프로젝트 도입 문의</a></li>
+              <li><a href="contact.html#support" class="hover:text-slate-900 transition-colors">기술 지원 데스크</a></li>
+              <li><a href="contact.html#directions" class="hover:text-slate-900 transition-colors">오시는 길 안내</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="space-y-1 text-center md:text-left">
+          <p>주식회사 구비트 (Goobit Co., Ltd.) | 대표이사: 구본일 | 사업자등록번호: 698-86-00102</p>
+          <p>개인정보보호책임자: 구본일 (privacy@goobit.co.kr) | 통신판매업신고: 송파구청 제2015-서울송파-0982호</p>
+          <p class="text-slate-600 font-medium">Copyright 2026 주식회사 구비트 (Goobit Co., Ltd.). All rights reserved.</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="contact.html#directions" class="text-slate-500 hover:text-amber-600 transition-colors">오시는 길</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top Button -->
+  <button id="scroll-to-top" class="opacity-0 pointer-events-none fixed bottom-6 right-6 z-40 p-3 rounded-full bg-navy-900/90 text-white shadow-xl hover:bg-amber-500 hover:text-slate-950 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 group" aria-label="맨 위로 이동">
+    <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-200"></i>
+  </button>
+
+  <!-- Card News Reader Modal Container -->
+  <div id="card-news-modal-root"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/card-news.js"></script>
+  <script src="js/map.js"></script>
+
+  <!-- Contact Form & FAQ Accordion Controller -->
+  <script>
+    /**
+     * @intent Contact inquiry form validation and FAQ accordion toggle logic
+     * @agent  manager-develop
+     * @branch feat/homepage-skeleton
+     * @author @goobit-dev
+     * @date   2026-09-23
+     */
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const errorBox = document.getElementById('form-error-box');
+      const errorMsg = document.getElementById('form-error-msg');
+      const form = document.getElementById('inquiry-form');
+      const successView = document.getElementById('inquiry-success-view');
+      const emailDisplay = document.getElementById('submitted-email-display');
+
+      const company = form.companyName.value.trim();
+      const person = form.contactPerson.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const message = form.message.value.trim();
+      const agreed = form.privacyAgreed.checked;
+
+      if (!company) {
+        showError('회사명 또는 기관명을 입력해 주세요.');
+        form.companyName.focus();
+        return;
+      }
+      if (!person) {
+        showError('담당자 성함을 입력해 주세요.');
+        form.contactPerson.focus();
+        return;
+      }
+      if (!email || !email.includes('@')) {
+        showError('유효한 이메일 주소를 입력해 주세요.');
+        form.email.focus();
+        return;
+      }
+      if (!phone) {
+        showError('연락 가능한 전화번호를 입력해 주세요.');
+        form.phone.focus();
+        return;
+      }
+      if (!message) {
+        showError('문의 및 요구사항 내용을 입력해 주세요.');
+        form.message.focus();
+        return;
+      }
+      if (!agreed) {
+        showError('개인정보 수집 및 이용 동의에 체크해 주세요.');
+        return;
+      }
+
+      if (errorBox) errorBox.classList.add('hidden');
+      if (emailDisplay) emailDisplay.textContent = email;
+      form.classList.add('hidden');
+      if (successView) successView.classList.remove('hidden');
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    function showError(msg) {
+      const errorBox = document.getElementById('form-error-box');
+      const errorMsg = document.getElementById('form-error-msg');
+      if (errorBox && errorMsg) {
+        errorMsg.textContent = msg;
+        errorBox.classList.remove('hidden');
+      }
+    }
+
+    function resetInquiryForm() {
+      const form = document.getElementById('inquiry-form');
+      const successView = document.getElementById('inquiry-success-view');
+      const errorBox = document.getElementById('form-error-box');
+
+      if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+      }
+      if (successView) successView.classList.add('hidden');
+      if (errorBox) errorBox.classList.add('hidden');
+    }
+
+
+  </script>
+</body>
+</html>

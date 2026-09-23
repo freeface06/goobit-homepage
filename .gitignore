@@ -1,0 +1,28 @@
+# --- AI Harness & Skill Isolation (Zero-Pollution) ---
+# Universal AI Governance Constitution (Local SSOT)
+AGENTS.md
+# Harness-specific Configurations (Redirects to AGENTS.md)
+CLAUDE.md
+.cursorrules
+.cursor/
+.gemini/
+.github/
+.aider*
+# Local AI Agent Workspace & Mounted Skills (Managed by pull/push)
+.agents/
+.harness/
+# Dependencies & Builds
+node_modules/
+dist/
+.cache/
+
+# Scratch & Temporary
+scratch/
+__pycache__/
+*.log
+temp_*.png
+test_*.png
+
+# System files
+.DS_Store
+Thumbs.db
