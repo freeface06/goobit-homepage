@@ -512,6 +512,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (indicator && stageTitles[targetStage]) {
         indicator.textContent = stageTitles[targetStage];
       }
+      if (progressBar && (scrollyTrack.offsetHeight - window.innerHeight <= 0)) {
+        const widthPercent = targetStage === 1 ? 33.3 : targetStage === 2 ? 66.6 : 100;
+        progressBar.style.width = `${widthPercent}%`;
+      }
     };
 
     let isScrollingTrack = false;

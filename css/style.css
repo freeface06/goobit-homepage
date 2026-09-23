@@ -454,48 +454,133 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
    Interactive Scrollytelling & Parallax Storytelling Styles
    ========================================================================== */
 
+/* Scrollytelling Pinning & Adaptive Layout */
+@media (min-width: 1024px) and (min-height: 720px) {
+  #ai-scrolly-track {
+    min-height: 260vh;
+  }
+  .ai-showcase-frame {
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px), (max-height: 719px) {
+  #ai-scrolly-track {
+    min-height: auto !important;
+  }
+  .ai-showcase-frame {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    overflow: visible !important;
+  }
+}
+
 /* Visual Panels Crossfade & Scale in Scrollytelling Frame */
 .scrolly-panel {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: scale(0.96) translateY(10px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  visibility: hidden;
+  position: absolute !important;
+  inset: 0.75rem !important;
+  width: calc(100% - 1.5rem) !important;
+  height: calc(100% - 1.5rem) !important;
+  opacity: 0 !important;
+  transform: scale(0.96) translateY(8px) !important;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  z-index: 1 !important;
 }
 
 .scrolly-panel.is-active {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-  pointer-events: auto;
-  visibility: visible;
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  z-index: 10 !important;
 }
 
 /* Scrollytelling Step Cards (Right Column) */
 .scrolly-card {
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity, border-color, background-color;
 }
 
 .scrolly-card.is-active {
-  border-color: rgba(245, 158, 11, 0.75) !important; /* amber-500 */
   background-color: rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.25), 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
   opacity: 1 !important;
-  transform: translateX(8px) !important;
+  transform: translateX(6px) !important;
+}
+
+.scrolly-card[data-scrolly-card="1"].is-active {
+  border-color: rgba(245, 158, 11, 0.75) !important; /* amber-500 */
+  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.scrolly-card[data-scrolly-card="2"].is-active {
+  border-color: rgba(6, 182, 212, 0.75) !important; /* cyan-500 */
+  box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.scrolly-card[data-scrolly-card="3"].is-active {
+  border-color: rgba(59, 130, 246, 0.75) !important; /* blue-500 */
+  box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
 @media (max-width: 1023px) {
   .scrolly-card.is-active {
-    transform: translateX(0) scale(1.02) !important;
+    transform: translateX(0) !important;
   }
 }
 
 .scrolly-card.is-inactive {
-  opacity: 0.38 !important;
+  opacity: 0.65 !important;
   transform: translateX(0) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.scrolly-card.is-inactive:hover {
+  opacity: 0.9 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Accordion body for scrolly cards */
+.scrolly-card .scrolly-card-body {
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.scrolly-card.is-active .scrolly-card-body {
+  max-height: 220px;
+  opacity: 1;
+  margin-top: 0.5rem;
+  pointer-events: auto;
+}
+
+.scrolly-card.is-inactive .scrolly-card-body {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.scrolly-card.is-active .tab-indicator {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.scrolly-card.is-inactive .tab-indicator {
+  transform: scaleX(0);
+  opacity: 0;
 }
 
 .scrolly-progress-fill {
