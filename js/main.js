@@ -176,14 +176,22 @@ document.addEventListener('DOMContentLoaded', () => {
            header.classList.contains('bg-[#070A12]/85');
   };
 
-  const openMegaMenu = (menuId) => {
+  let isClickPinned = false;
+  let lastOpenTimestamp = 0;
+
+  const openMegaMenu = (menuId, isClick = false) => {
     activeMenuId = menuId;
+    if (isClick) {
+      isClickPinned = true;
+    }
+    lastOpenTimestamp = Date.now();
     renderMegaMenu(menuId);
     if (megaMenuDrawer) {
       megaMenuDrawer.classList.remove('hidden');
     }
     if (megaMenuBackdrop) {
-      megaMenuBackdrop.classList.remove('hidden');
+      megaMenuBackdrop.classList.remove('hidden', 'pointer-events-none');
+      megaMenuBackdrop.classList.add('pointer-events-auto');
     }
 
     const dark = isDarkHeader();
@@ -240,11 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeMegaMenu = () => {
     activeMenuId = null;
+    isClickPinned = false;
     if (megaMenuDrawer) {
       megaMenuDrawer.classList.add('hidden');
     }
     if (megaMenuBackdrop) {
-      megaMenuBackdrop.classList.add('hidden');
+      megaMenuBackdrop.classList.add('hidden', 'pointer-events-none');
+      megaMenuBackdrop.classList.remove('pointer-events-auto');
     }
 
     const dark = isDarkHeader();
@@ -274,19 +284,76 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   navItemButtons.forEach((btn) => {
+    const menuId = btn.getAttribute('data-menu-target');
+
+    // 1. Hover Preview
     btn.addEventListener('mouseenter', () => {
-      const menuId = btn.getAttribute('data-menu-target');
-      if (menuId) openMegaMenu(menuId);
+      if (menuId) openMegaMenu(menuId, false);
     });
+
+    // 2. Keyboard Focus
     btn.addEventListener('focus', () => {
-      const menuId = btn.getAttribute('data-menu-target');
-      if (menuId) openMegaMenu(menuId);
+      if (menuId) openMegaMenu(menuId, false);
+    });
+
+    // 3. User Click: Prevents immediate page jump and opens/pins mega menu bar
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // Stop immediate navigation!
+      if (!menuId) return;
+
+      const isDrawerOpen = megaMenuDrawer && !megaMenuDrawer.classList.contains('hidden');
+
+      if (isDrawerOpen && activeMenuId === menuId) {
+        // If clicked again after having been open for a while (> 350ms), toggle close
+        if (Date.now() - lastOpenTimestamp > 350) {
+          closeMegaMenu();
+        } else {
+          // If clicked immediately following hover, lock it open
+          isClickPinned = true;
+        }
+      } else {
+        // Open the menu and pin it
+        openMegaMenu(menuId, true);
+      }
     });
   });
 
+  // Leave header closes mega menu only if NOT click-pinned
   if (header) {
     header.addEventListener('mouseleave', () => {
+      if (!isClickPinned) {
+        closeMegaMenu();
+      }
+    });
+  }
+
+  // Backdrop click closes menu
+  if (megaMenuBackdrop) {
+    megaMenuBackdrop.addEventListener('click', () => {
       closeMegaMenu();
+    });
+  }
+
+  // Outside click dismisses menu
+  document.addEventListener('click', (e) => {
+    if (megaMenuDrawer && !megaMenuDrawer.classList.contains('hidden')) {
+      const isInsideHeader = header && header.contains(e.target);
+      const isInsideDrawer = megaMenuDrawer.contains(e.target);
+      if (!isInsideHeader && !isInsideDrawer) {
+        closeMegaMenu();
+      }
+    }
+  });
+
+  // Clicking any menu item inside the mega menu drawer navigates and closes drawer
+  if (megaMenuDrawer) {
+    megaMenuDrawer.addEventListener('click', (e) => {
+      const targetLink = e.target.closest('a');
+      if (targetLink && targetLink.getAttribute('href')) {
+        setTimeout(() => {
+          closeMegaMenu();
+        }, 120);
+      }
     });
   }
 
@@ -307,6 +374,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isHidden) {
         mobileMenuDrawer.classList.remove('hidden');
       } else {
+        mobileMenuDrawer.classList.add('hidden');
+      }
+    });
+
+    // Clicking a link inside the mobile drawer closes it
+    mobileMenuDrawer.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link) {
         mobileMenuDrawer.classList.add('hidden');
       }
     });
