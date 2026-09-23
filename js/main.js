@@ -570,7 +570,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Click on Card smoothly jumps to exact stage scroll height
     scrollyCards.forEach((card) => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        // If clicking on detail link inside card, let link navigate
+        if (e.target.closest('a')) return;
+
         const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
         const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
         const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
