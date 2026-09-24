@@ -467,13 +467,23 @@ document.addEventListener('DOMContentLoaded', () => {
    * @date   2026-09-23
    */
 
-  // 10-A. Scrollytelling Showcase Controller (Sticky track pinning across 3 stages)
+  // 10-A. Scrollytelling Showcase Controller (Sticky track pinning across 3 stages with live micro-progress)
   const scrollyTrack = document.getElementById('ai-scrolly-track');
   if (scrollyTrack) {
     const scrollyPanels = scrollyTrack.querySelectorAll('[data-scrolly-panel]');
     const scrollyCards = scrollyTrack.querySelectorAll('[data-scrolly-card]');
     const progressBar = document.getElementById('scrolly-progress-bar');
     const indicator = document.getElementById('scrolly-stage-indicator');
+    const cardBars = {
+      1: scrollyTrack.querySelector('[data-scrolly-bar="1"]'),
+      2: scrollyTrack.querySelector('[data-scrolly-bar="2"]'),
+      3: scrollyTrack.querySelector('[data-scrolly-bar="3"]'),
+    };
+    const cardStatuses = {
+      1: scrollyTrack.querySelector('[data-scrolly-status="1"]'),
+      2: scrollyTrack.querySelector('[data-scrolly-status="2"]'),
+      3: scrollyTrack.querySelector('[data-scrolly-status="3"]'),
+    };
 
     const stageTitles = {
       1: 'STAGE 01 / 03 : KNOWLEDGE GRAPH & RAG',
@@ -484,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeStage = 1;
 
     const setScrollyStage = (targetStage) => {
-      if (activeStage === targetStage) return;
       activeStage = targetStage;
 
       scrollyPanels.forEach((panel) => {
@@ -498,14 +507,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       scrollyCards.forEach((card) => {
         const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
-        const isActive = stageNum === targetStage;
-        card.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        if (isActive) {
+        card.setAttribute('aria-selected', stageNum === targetStage ? 'true' : 'false');
+        if (stageNum === targetStage) {
           card.classList.add('is-active');
-          card.classList.remove('is-inactive');
+          card.classList.remove('is-completed', 'is-inactive');
+          if (cardStatuses[stageNum]) {
+            cardStatuses[stageNum].textContent = '진행 중';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-300';
+          }
+        } else if (stageNum < targetStage) {
+          card.classList.add('is-completed');
+          card.classList.remove('is-active', 'is-inactive');
+          if (cardStatuses[stageNum]) {
+            cardStatuses[stageNum].textContent = '완료';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400';
+          }
         } else {
-          card.classList.remove('is-active');
           card.classList.add('is-inactive');
+          card.classList.remove('is-active', 'is-completed');
+          if (cardStatuses[stageNum]) {
+            cardStatuses[stageNum].textContent = '대기';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 text-slate-400';
+          }
         }
       });
 
@@ -515,10 +538,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (stageTitles[targetStage]) {
           indicator.textContent = stageTitles[targetStage];
         }
-      }
-      if (progressBar && (scrollyTrack.offsetHeight - window.innerHeight <= 0)) {
-        const widthPercent = targetStage === 1 ? 33.3 : targetStage === 2 ? 66.6 : 100;
-        progressBar.style.width = `${widthPercent}%`;
       }
     };
 
@@ -532,18 +551,35 @@ document.addEventListener('DOMContentLoaded', () => {
       const progress = Math.max(0, Math.min(1, (-rect.top) / trackHeight));
 
       if (progressBar) {
-        const widthPercent = Math.min(100, Math.max(10, progress * 100));
+        const widthPercent = Math.min(100, Math.max(6, progress * 100));
         progressBar.style.width = `${widthPercent}%`;
       }
 
+      // Calculate micro-progress for each stage continuously
       let stage = 1;
-      if (progress < 0.33) {
+      let s1 = 0, s2 = 0, s3 = 0;
+
+      if (progress < 0.333) {
         stage = 1;
-      } else if (progress < 0.67) {
+        s1 = Math.min(100, Math.max(0, (progress / 0.333) * 100));
+        s2 = 0;
+        s3 = 0;
+      } else if (progress < 0.666) {
         stage = 2;
+        s1 = 100;
+        s2 = Math.min(100, Math.max(0, ((progress - 0.333) / 0.333) * 100));
+        s3 = 0;
       } else {
         stage = 3;
+        s1 = 100;
+        s2 = 100;
+        s3 = Math.min(100, Math.max(0, ((progress - 0.666) / 0.334) * 100));
       }
+
+      if (cardBars[1]) cardBars[1].style.width = `${s1}%`;
+      if (cardBars[2]) cardBars[2].style.width = `${s2}%`;
+      if (cardBars[3]) cardBars[3].style.width = `${s3}%`;
+
       setScrollyStage(stage);
     };
 
@@ -578,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
         const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
         if (trackHeight > 0) {
-          const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.5 : 0.95;
+          const ratio = stageNum === 1 ? 0.08 : stageNum === 2 ? 0.50 : 0.88;
           const targetY = trackTop + (ratio * trackHeight);
           window.scrollTo({ top: targetY, behavior: 'smooth' });
         }
@@ -587,7 +623,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 10-B. Hero Video Dissolve & Content Parallax
+  // 10-B. Hero Atmospheric Depth & Smooth Scroll Transition
+  const heroSection = document.querySelector('main > section:first-of-type');
   const heroVideoContainer = document.getElementById('hero-video-container');
   const heroContentWrapper = document.getElementById('hero-content-wrapper');
   if (heroVideoContainer || heroContentWrapper) {
@@ -595,20 +632,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleHeroParallax = () => {
       isHeroScrolling = false;
       const scrollY = window.scrollY;
-      if (scrollY > 900) return;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 1400;
 
+      // Only execute while near or within the hero section
+      if (scrollY > heroHeight + 150) return;
+
+      // Ambient AI video gently deepens into the dark space canvas (#070A12) without washed-out grain
       if (heroVideoContainer) {
-        const opacity = Math.max(0.08, 1 - (scrollY / 550) * 0.85);
-        const scale = 1.05 + (scrollY / 1200) * 0.12;
+        const videoRatio = Math.min(1, Math.max(0, scrollY / (heroHeight * 0.85)));
+        const opacity = Math.max(0.20, 1 - (videoRatio * 0.70));
+        const scale = 1.0 + (videoRatio * 0.05);
         heroVideoContainer.style.opacity = opacity;
         heroVideoContainer.style.transform = `scale(${scale})`;
       }
 
+      // Hero content stays 100% crisp throughout reading, buttons, and cockpit dock
+      // Only as the very bottom approaches the exit into the marquee does it gently ease
       if (heroContentWrapper) {
-        const contentOpacity = Math.max(0.12, 1 - (scrollY / 450) * 0.88);
-        const contentY = scrollY * 0.18;
-        heroContentWrapper.style.opacity = contentOpacity;
-        heroContentWrapper.style.transform = `translateY(${contentY}px)`;
+        const exitThreshold = Math.max(300, heroHeight - window.innerHeight);
+        if (scrollY > exitThreshold) {
+          const exitRatio = Math.min(1, (scrollY - exitThreshold) / (heroHeight - exitThreshold));
+          heroContentWrapper.style.opacity = Math.max(0.4, 1 - (exitRatio * 0.6));
+        } else {
+          heroContentWrapper.style.opacity = 1;
+        }
+        heroContentWrapper.style.transform = 'none';
       }
     };
 
@@ -618,6 +666,8 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(handleHeroParallax);
       }
     }, { passive: true });
+
+    handleHeroParallax();
   }
 
   // 10-C. StatBar Animated Counting Up

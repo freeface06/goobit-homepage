@@ -490,20 +490,17 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
 }
 
 @media (max-width: 639px) {
-  .scrolly-card.is-active {
-    transform: translateX(0) !important;
-    padding: 0.625rem 0.75rem !important;
-  }
+  .scrolly-card,
+  .scrolly-card.is-active,
+  .scrolly-card.is-completed,
   .scrolly-card.is-inactive {
-    padding: 0.4rem 0.75rem !important;
+    transform: translateX(0) !important;
+    padding: 0.5rem 0.75rem !important;
   }
   .scrolly-panel {
     inset: 0.5rem !important;
     width: calc(100% - 1rem) !important;
     height: calc(100% - 1rem) !important;
-  }
-  .scrolly-card .scrolly-card-body {
-    max-height: 145px;
   }
 }
 
@@ -512,9 +509,6 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   .ai-showcase-frame {
     padding-top: 0.375rem !important;
     padding-bottom: 0.375rem !important;
-  }
-  .scrolly-card.is-active .scrolly-card-body {
-    max-height: 155px;
   }
 }
 
@@ -540,31 +534,32 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   z-index: 10 !important;
 }
 
-/* Scrollytelling Step Cards (Right Column) */
+/* Scrollytelling Step Cards (Right Column - Stable Layout Architecture) */
 .scrolly-card {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
   will-change: transform, opacity, border-color, background-color;
+  border-width: 1.5px;
 }
 
 .scrolly-card.is-active {
   background-color: rgba(255, 255, 255, 0.08) !important;
   opacity: 1 !important;
-  transform: translateX(6px) !important;
+  transform: translateX(4px) !important;
 }
 
 .scrolly-card[data-scrolly-card="1"].is-active {
-  border-color: rgba(245, 158, 11, 0.75) !important; /* amber-500 */
-  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(245, 158, 11, 0.85) !important; /* amber-500 */
+  box-shadow: 0 0 25px -3px rgba(245, 158, 11, 0.22), 0 10px 20px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
 .scrolly-card[data-scrolly-card="2"].is-active {
-  border-color: rgba(6, 182, 212, 0.75) !important; /* cyan-500 */
-  box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(6, 182, 212, 0.85) !important; /* cyan-500 */
+  box-shadow: 0 0 25px -3px rgba(6, 182, 212, 0.22), 0 10px 20px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
 .scrolly-card[data-scrolly-card="3"].is-active {
-  border-color: rgba(59, 130, 246, 0.75) !important; /* blue-500 */
-  box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.22), 0 16px 20px -5px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(59, 130, 246, 0.85) !important; /* blue-500 */
+  box-shadow: 0 0 25px -3px rgba(59, 130, 246, 0.22), 0 10px 20px -5px rgba(0, 0, 0, 0.4) !important;
 }
 
 @media (max-width: 1023px) {
@@ -573,52 +568,56 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   }
 }
 
-.scrolly-card.is-inactive {
-  opacity: 0.65 !important;
+.scrolly-card.is-completed {
+  opacity: 0.72 !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  background-color: rgba(255, 255, 255, 0.035) !important;
   transform: translateX(0) !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
-  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.scrolly-card.is-inactive {
+  opacity: 0.48 !important;
+  transform: translateX(0) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+  background-color: rgba(255, 255, 255, 0.015) !important;
 }
 
 .scrolly-card.is-inactive:hover {
-  opacity: 0.9 !important;
+  opacity: 0.8 !important;
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Accordion body for scrolly cards */
+/* Stable card body: Never collapses or shifts vertical positions */
 .scrolly-card .scrolly-card-body {
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              margin 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
+  transition: opacity 0.3s ease;
+  overflow: visible;
 }
 
 .scrolly-card.is-active .scrolly-card-body {
-  max-height: 220px;
   opacity: 1;
-  margin-top: 0.5rem;
-  pointer-events: auto;
+}
+
+.scrolly-card.is-completed .scrolly-card-body {
+  opacity: 0.75;
 }
 
 .scrolly-card.is-inactive .scrolly-card-body {
-  max-height: 0;
-  opacity: 0;
-  margin-top: 0;
-  pointer-events: none;
+  opacity: 0.6;
 }
 
-.scrolly-card.is-active .tab-indicator {
-  transform: scaleX(1);
-  opacity: 1;
+/* Live micro-progress rail inside each card */
+.scrolly-card-progress {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.scrolly-card.is-inactive .tab-indicator {
-  transform: scaleX(0);
-  opacity: 0;
+.scrolly-card-progress-bar {
+  transition: width 0.08s ease-out;
+  will-change: width;
 }
 
 .scrolly-progress-fill {
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.15s ease-out;
 }
 
 .stat-counter {
