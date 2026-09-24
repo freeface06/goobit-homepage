@@ -711,6 +711,27 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   background-color: rgba(17, 25, 43, 0.85) !important;
 }
 
+/* ==========================================================================
+   Flagship Products Cockpit & Service Matrix Styles
+   ========================================================================== */
+.product-cockpit-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease, background-color 0.3s ease;
+  will-change: transform, border-color, box-shadow;
+}
+
+.service-matrix-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.3s ease, background-color 0.25s ease;
+  will-change: transform, border-color, box-shadow;
+}
+
+@media (max-width: 639px) {
+  .product-cockpit-card:hover,
+  .service-matrix-card:hover {
+    transform: none !important;
+  }
+}
+
+
 
 
 
