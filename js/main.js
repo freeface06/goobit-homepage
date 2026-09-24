@@ -539,8 +539,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScrollyProgress = () => {
       isScrollingTrack = false;
 
-      // On mobile/tablet (< 1024px, including Galaxy Z Fold), preserve natural native scroll flow without pinning
-      if (window.innerWidth < 1024) return;
+      // On mobile/tablet (< 1024px, including Galaxy Z Fold) or extreme short height (< 520px), preserve natural native scroll flow without pinning
+      if (window.innerWidth < 1024 || window.innerHeight < 520) return;
 
       const rect = scrollyTrack.getBoundingClientRect();
       const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', () => {
-      if (window.innerWidth >= 1024 && !isScrollingTrack) {
+      if (window.innerWidth >= 1024 && window.innerHeight >= 520 && !isScrollingTrack) {
         isScrollingTrack = true;
         requestAnimationFrame(handleScrollyProgress);
       }
@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
           indicator.textContent = stageTitles[activeStage];
         }
       }
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
         stopMobileCycle();
         handleScrollyProgress();
       } else {
@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // Initial check
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
       handleScrollyProgress();
     }
 
@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
 
-        if (window.innerWidth >= 1024) {
+        if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
           const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
           const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
           if (trackHeight > 0) {
@@ -823,8 +823,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleCaseScrollProgress = () => {
       isScrollingCaseTrack = false;
 
-      // On mobile/tablet (< 1024px, including Galaxy Z Fold), preserve natural native scroll flow
-      if (window.innerWidth < 1024) return;
+      // On mobile/tablet (< 1024px, including Galaxy Z Fold) or extreme short height (< 520px), preserve natural native scroll flow
+      if (window.innerWidth < 1024 || window.innerHeight < 520) return;
 
       const rect = caseTrack.getBoundingClientRect();
       const trackHeight = caseTrack.offsetHeight - window.innerHeight;
@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', () => {
-      if (window.innerWidth >= 1024 && !isScrollingCaseTrack) {
+      if (window.innerWidth >= 1024 && window.innerHeight >= 520 && !isScrollingCaseTrack) {
         isScrollingCaseTrack = true;
         requestAnimationFrame(handleCaseScrollProgress);
       }
@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
           caseIndicator.textContent = caseTitles[activeCaseStage];
         }
       }
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
         stopMobileCaseCycle();
         handleCaseScrollProgress();
       } else {
@@ -908,7 +908,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // Initial check
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
       handleCaseScrollProgress();
     }
 
@@ -921,7 +921,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stageNum = parseInt(card.getAttribute('data-case-card'), 10);
 
-        if (window.innerWidth >= 1024) {
+        if (window.innerWidth >= 1024 && window.innerHeight >= 520) {
           const trackTop = caseTrack.getBoundingClientRect().top + window.scrollY;
           const trackHeight = caseTrack.offsetHeight - window.innerHeight;
           if (trackHeight > 0) {
