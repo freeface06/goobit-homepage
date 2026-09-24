@@ -538,6 +538,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let isScrollingTrack = false;
     const handleScrollyProgress = () => {
       isScrollingTrack = false;
+
+      // On mobile/tablet (< 1024px, including Galaxy Z Fold), preserve natural native scroll flow without pinning
+      if (window.innerWidth < 1024) return;
+
       const rect = scrollyTrack.getBoundingClientRect();
       const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
       if (trackHeight <= 0) return;
@@ -560,11 +564,46 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', () => {
-      if (!isScrollingTrack) {
+      if (window.innerWidth >= 1024 && !isScrollingTrack) {
         isScrollingTrack = true;
         requestAnimationFrame(handleScrollyProgress);
       }
     }, { passive: true });
+
+    // Mobile (< 1024px) subtle auto-cycle when section is in viewport
+    let mobileCycleTimer = null;
+    const startMobileCycle = () => {
+      if (window.innerWidth >= 1024 || mobileCycleTimer) return;
+      mobileCycleTimer = setInterval(() => {
+        if (window.innerWidth >= 1024) {
+          clearInterval(mobileCycleTimer);
+          mobileCycleTimer = null;
+          return;
+        }
+        const nextStage = activeStage >= 3 ? 1 : activeStage + 1;
+        setScrollyStage(nextStage);
+      }, 5000);
+    };
+
+    const stopMobileCycle = () => {
+      if (mobileCycleTimer) {
+        clearInterval(mobileCycleTimer);
+        mobileCycleTimer = null;
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const showcaseObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && window.innerWidth < 1024) {
+            startMobileCycle();
+          } else {
+            stopMobileCycle();
+          }
+        });
+      }, { threshold: 0.25 });
+      showcaseObserver.observe(scrollyTrack);
+    }
 
     window.addEventListener('resize', () => {
       if (indicator) {
@@ -574,26 +613,38 @@ document.addEventListener('DOMContentLoaded', () => {
           indicator.textContent = stageTitles[activeStage];
         }
       }
-      handleScrollyProgress();
+      if (window.innerWidth >= 1024) {
+        stopMobileCycle();
+        handleScrollyProgress();
+      } else {
+        startMobileCycle();
+      }
     }, { passive: true });
 
     // Initial check
-    handleScrollyProgress();
+    if (window.innerWidth >= 1024) {
+      handleScrollyProgress();
+    }
 
-    // Click on Card smoothly jumps to exact stage scroll height
+    // Click on Card: On desktop smoothly jumps to stage scroll height; on mobile cleanly switches active stage
     scrollyCards.forEach((card) => {
       card.addEventListener('click', (e) => {
         // If clicking on detail link inside card, let link navigate
         if (e.target.closest('a')) return;
 
+        stopMobileCycle(); // User interaction pauses auto-cycle
+
         const stageNum = parseInt(card.getAttribute('data-scrolly-card'), 10);
-        const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
-        const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
-        if (trackHeight > 0) {
-          const totalTravel = trackHeight + 64;
-          const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.50 : 0.90;
-          const targetY = trackTop - 64 + (ratio * totalTravel);
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+        if (window.innerWidth >= 1024) {
+          const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
+          const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
+          if (trackHeight > 0) {
+            const totalTravel = trackHeight + 64;
+            const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.50 : 0.90;
+            const targetY = trackTop - 64 + (ratio * totalTravel);
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }
         }
         setScrollyStage(stageNum);
       });
