@@ -620,21 +620,6 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   opacity: 0.6;
 }
 
-/* Live micro-progress rail inside each card */
-.scrolly-card-progress {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.scrolly-card-progress-bar {
-  transition: width 0.08s ease-out;
-  will-change: width;
-}
-
-.scrolly-progress-fill {
-  transition: width 0.15s ease-out;
-}
-
 .stat-counter {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;

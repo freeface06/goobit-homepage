@@ -467,18 +467,12 @@ document.addEventListener('DOMContentLoaded', () => {
    * @date   2026-09-23
    */
 
-  // 10-A. Scrollytelling Showcase Controller (Sticky track pinning across 3 stages with live micro-progress)
+  // 10-A. Scrollytelling Showcase Controller (Sticky track pinning across 3 stages)
   const scrollyTrack = document.getElementById('ai-scrolly-track');
   if (scrollyTrack) {
     const scrollyPanels = scrollyTrack.querySelectorAll('[data-scrolly-panel]');
     const scrollyCards = scrollyTrack.querySelectorAll('[data-scrolly-card]');
-    const progressBar = document.getElementById('scrolly-progress-bar');
     const indicator = document.getElementById('scrolly-stage-indicator');
-    const cardBars = {
-      1: scrollyTrack.querySelector('[data-scrolly-bar="1"]'),
-      2: scrollyTrack.querySelector('[data-scrolly-bar="2"]'),
-      3: scrollyTrack.querySelector('[data-scrolly-bar="3"]'),
-    };
     const cardStatuses = {
       1: scrollyTrack.querySelector('[data-scrolly-status="1"]'),
       2: scrollyTrack.querySelector('[data-scrolly-status="2"]'),
@@ -553,35 +547,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentScroll = Math.max(0, 64 - rect.top);
       const progress = Math.max(0, Math.min(1, currentScroll / totalTravel));
 
-      if (progressBar) {
-        const widthPercent = Math.min(100, Math.max(6, progress * 100));
-        progressBar.style.width = `${widthPercent}%`;
-      }
-
-      // Calculate micro-progress for each stage continuously
       let stage = 1;
-      let s1 = 0, s2 = 0, s3 = 0;
-
       if (progress < 0.333) {
         stage = 1;
-        s1 = Math.min(100, Math.max(0, (progress / 0.333) * 100));
-        s2 = 0;
-        s3 = 0;
       } else if (progress < 0.666) {
         stage = 2;
-        s1 = 100;
-        s2 = Math.min(100, Math.max(0, ((progress - 0.333) / 0.333) * 100));
-        s3 = 0;
       } else {
         stage = 3;
-        s1 = 100;
-        s2 = 100;
-        s3 = Math.min(100, Math.max(0, ((progress - 0.666) / 0.334) * 100));
       }
-
-      if (cardBars[1]) cardBars[1].style.width = `${s1}%`;
-      if (cardBars[2]) cardBars[2].style.width = `${s2}%`;
-      if (cardBars[3]) cardBars[3].style.width = `${s3}%`;
 
       setScrollyStage(stage);
     };
