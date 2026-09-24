@@ -761,6 +761,101 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  /**
+   * @intent Case Studies Interactive Showcase (Inverted layout, KPI HUD panels, auto-cycle)
+   * @agent  manager-develop
+   * @branch feat/case-study-showcase
+   * @author @goobit-dev
+   * @date   2026-09-24
+   */
+  // 10-E. Enterprise Case Studies Interactive Showcase Controller
+  const caseContainer = document.getElementById('case-showcase-container');
+  if (caseContainer) {
+    const casePanels = caseContainer.querySelectorAll('[data-case-panel]');
+    const caseCards = caseContainer.querySelectorAll('[data-case-card]');
+    let activeCaseStage = 1;
+    let isCaseVisible = false;
+    let caseCycleTimer = null;
+
+    const setCaseStage = (targetStage) => {
+      activeCaseStage = targetStage;
+
+      casePanels.forEach((panel) => {
+        const stageNum = parseInt(panel.getAttribute('data-case-panel'), 10);
+        if (stageNum === targetStage) {
+          panel.classList.add('is-active');
+        } else {
+          panel.classList.remove('is-active');
+        }
+      });
+
+      caseCards.forEach((card) => {
+        const stageNum = parseInt(card.getAttribute('data-case-card'), 10);
+        card.setAttribute('aria-selected', stageNum === targetStage ? 'true' : 'false');
+        if (stageNum === targetStage) {
+          card.classList.add('is-active');
+          card.classList.remove('is-inactive');
+        } else {
+          card.classList.remove('is-active');
+          card.classList.add('is-inactive');
+        }
+      });
+    };
+
+    const startCaseCycle = () => {
+      if (caseCycleTimer) return;
+      caseCycleTimer = setInterval(() => {
+        const nextStage = activeCaseStage >= 4 ? 1 : activeCaseStage + 1;
+        setCaseStage(nextStage);
+      }, 5500);
+    };
+
+    const stopCaseCycle = () => {
+      if (caseCycleTimer) {
+        clearInterval(caseCycleTimer);
+        caseCycleTimer = null;
+      }
+    };
+
+    // Pause on desktop hover
+    caseContainer.addEventListener('mouseenter', () => {
+      stopCaseCycle();
+    });
+    caseContainer.addEventListener('mouseleave', () => {
+      if (isCaseVisible) {
+        startCaseCycle();
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const caseObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isCaseVisible = true;
+            startCaseCycle();
+          } else {
+            isCaseVisible = false;
+            stopCaseCycle();
+          }
+        });
+      }, { threshold: 0.2 });
+      caseObserver.observe(caseContainer);
+    }
+
+    // Click on Card: Switches active stage and pauses auto-cycle
+    caseCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        stopCaseCycle();
+        const stageNum = parseInt(card.getAttribute('data-case-card'), 10);
+        setCaseStage(stageNum);
+      });
+    });
+
+    // Initialize initial active stage
+    setCaseStage(1);
+  }
+
   // 11. Interactive Certificate Gallery Filter (Clean Minimalist View without Modal)
   const certCards = document.querySelectorAll('[data-cert-id]');
   const certFilterBtns = document.querySelectorAll('[data-cert-filter]');

@@ -983,184 +983,287 @@
       </div>
     </section>
 
-    <!-- 7. ReferenceSection (Asymmetric Split 2x2 Showcase - BI MATRIX Style) -->
-    <section class="py-28 lg:py-36 bg-[#070A12] border-t border-white/10 relative overflow-hidden" aria-label="고객 성공 사례">
+    <!-- 7. ReferenceSection: Interactive Enterprise Reference Showcase (Asymmetric Split HUD) -->
+    <section id="reference-showcase-section" class="py-24 sm:py-28 lg:py-32 bg-[#070A12] border-t border-white/10 relative overflow-hidden" aria-label="고객 성공 사례">
       <!-- Ambient Cyber Glows -->
       <div class="absolute top-1/4 -left-40 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-10 right-0 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 right-0 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Section Header with Trust Chips -->
+        <div class="text-center max-w-4xl mx-auto mb-10 sm:mb-14 space-y-3" data-reveal="fade-up" data-delay="0">
+          <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-pink-950/60 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+            <span>엔터프라이즈 구축 실적 · Reference</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tight leading-snug">
+            구비트의 다양한 산업 분야<br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-amber-300 to-cyan-400">성공 사례를 확인해보세요</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
+            대용량 통신망 무중단 운영부터 중앙부처 공공 정보화, 문화예술 오케스트라 ERP, 글로벌 기업 DX까지 대한민국 주요 기관 및 기업이 구비트를 선택한 이유를 소개합니다.
+          </p>
+
+          <!-- Trust Badges Bar -->
+          <div class="pt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>100+ 누적 프로젝트
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>99.99% 미션 가용성
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>10+년 장기 운영 신뢰
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>공공·통신·대기업 검증
+            </span>
+          </div>
+        </div>
+
+        <!-- Asymmetric Split Showcase (Left: 4 Interactive Case Cards 5 cols, Right: Dynamic Impact HUD Visual 7 cols) -->
+        <div id="case-showcase-container" class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center">
           
-          <!-- Left Sticky Header Column -->
-          <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-6" data-reveal="fade-right" data-delay="0">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-pink-950/60 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-widest">
-              <span class="w-2 h-2 rounded-full bg-pink-500"></span>
-              <span>성공 사례 (Reference)</span>
-            </div>
-
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.25]">
-              구비트의 다양한 산업 분야<br />
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-amber-300 to-cyan-400">성공 사례를 확인해보세요</span>
-            </h2>
-
-            <p class="text-slate-400 text-base sm:text-lg leading-relaxed font-normal">
-              대용량 통신망 무중단 운영부터 중앙부처 공공 정보화, 문화예술 오케스트라 ERP, 글로벌 기업 DX까지 대한민국 주요 기관 및 기업이 구비트를 선택한 이유를 소개합니다.
-            </p>
-
-            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-              <a href="services.html#cases" class="inline-flex items-center justify-between sm:justify-start gap-4 px-6 py-3.5 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-pink-500/60 text-white text-sm font-bold transition-all duration-300 group shadow-lg hover:shadow-pink-500/10 whitespace-nowrap shrink-0">
-                <span class="whitespace-nowrap">고객사 구축사례 전체보기</span>
-                <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-pink-500 group-hover:text-white transition-colors shrink-0">
-                  <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform shrink-0"></i>
+          <!-- Left: 4 Interactive Case Cards (lg:col-span-5) -->
+          <div class="lg:col-span-5 space-y-2.5 sm:space-y-3 order-2 lg:order-1" role="tablist">
+            
+            <!-- Case 1: KT -->
+            <div data-case-card="1" role="tab" aria-selected="true" class="case-card is-active p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-pink-500/90 bg-white/10 shadow-enterprise transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-pink-400">01 · 통신·미디어 ITO</span>
+                <span data-case-status="1" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-300 border border-pink-400/30">가용성 99.99%</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-pink-300 transition-colors tracking-tight">
+                KT (케이티)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-0.5 leading-relaxed font-normal">
+                올레닷컴 &amp; C-Cube 통합 포털 무중단 ITO 운영 (일 5,000만 뷰 대규모 트래픽 분산)
+              </p>
+              <div class="flex items-center justify-between pt-2 mt-2 border-t border-white/10 text-xs">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#트래픽분산</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#8개년무중단</span>
                 </div>
-              </a>
+                <span class="text-pink-400 font-bold text-[11px] group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">상세보기 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+              </div>
             </div>
 
-            <!-- Mini Trust Stats -->
-            <div class="pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
-              <div>
-                <div class="text-2xl lg:text-3xl font-black text-white">100+</div>
-                <div class="text-xs text-slate-400 mt-1">누적 프로젝트 완수</div>
+            <!-- Case 2: 농림축산식품부 -->
+            <div data-case-card="2" role="tab" aria-selected="false" class="case-card is-inactive p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-white/10 bg-transparent transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-cyan-400">02 · 공공 정보화 SI</span>
+                <span data-case-status="2" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 text-slate-400">웹접근성 100%</span>
               </div>
-              <div>
-                <div class="text-2xl lg:text-3xl font-black text-pink-400">99.99%</div>
-                <div class="text-xs text-slate-400 mt-1">미션 크리티컬 가용성</div>
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                농림축산식품부
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-0.5 leading-relaxed font-normal">
+                차세대 대국민 농정 포털 및 산하 15개 행정 시스템 단일 플랫폼 통합 구축
+              </p>
+              <div class="flex items-center justify-between pt-2 mt-2 border-t border-white/10 text-xs">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#TBCMS</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#전자정부표준</span>
+                </div>
+                <span class="text-cyan-400 font-bold text-[11px] group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">상세보기 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
               </div>
             </div>
+
+            <!-- Case 3: 서울시립교향악단 -->
+            <div data-case-card="3" role="tab" aria-selected="false" class="case-card is-inactive p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-white/10 bg-transparent transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-400">03 · 문화예술 DX</span>
+                <span data-case-status="3" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 text-slate-400">일정 자동화 80%</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-amber-300 transition-colors tracking-tight">
+                서울시립교향악단
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-0.5 leading-relaxed font-normal">
+                국내 최초 문화예술 특화 ERP (OPMS) 구축 및 악보 바코드 추적 분실률 0%
+              </p>
+              <div class="flex items-center justify-between pt-2 mt-2 border-t border-white/10 text-xs">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#OPMS</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#악보디지털자산</span>
+                </div>
+                <span class="text-amber-400 font-bold text-[11px] group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">상세보기 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+              </div>
+            </div>
+
+            <!-- Case 4: 현대자동차 -->
+            <div data-case-card="4" role="tab" aria-selected="false" class="case-card is-inactive p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-white/10 bg-transparent transition-all duration-300 cursor-pointer group select-none relative">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-blue-400">04 · 스마트 교육 &amp; LMS</span>
+                <span data-case-status="4" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 text-slate-400">동시접속 3만 명</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
+                현대자동차 글로벌 인재개발원
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-0.5 leading-relaxed font-normal">
+                엔터프라이즈 디지털 학습 플랫폼 및 직무별 AI 맞춤 추천 엔진 구축
+              </p>
+              <div class="flex items-center justify-between pt-2 mt-2 border-t border-white/10 text-xs">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#클라우드LMS</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">#이수율35%향상</span>
+                </div>
+                <span class="text-blue-400 font-bold text-[11px] group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">상세보기 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Right 2x2 Dark Cards Column -->
-          <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-5" data-reveal="fade-left" data-delay="100">
-            
-            <!-- Card 1: KT -->
-            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-pink-500/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(236,72,153,0.18)]">
-              <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.8)]"></span>
-                    <span class="text-xs font-bold text-pink-400 tracking-wide uppercase">통신·미디어</span>
+          <!-- Right: Dynamic Impact HUD Visual Container (lg:col-span-7) -->
+          <div class="lg:col-span-7 order-1 lg:order-2" data-reveal="fade-left" data-delay="100">
+            <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] max-h-[260px] sm:max-h-[340px] lg:max-h-[460px] rounded-xl sm:rounded-2xl lg:rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/15 via-white/5 to-transparent border border-white/10 shadow-2xl bg-slate-950 overflow-hidden">
+              
+              <!-- Panel 1: KT -->
+              <div data-case-panel="1" class="case-panel is-active rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_dashboard.jpg" alt="KT 통합 포털 무중단 ITO 운영 관제" class="w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent"></div>
+                
+                <!-- Top Badge -->
+                <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-pink-500/40 text-pink-300 text-[10px] sm:text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+                  <span>KT 올레닷컴 &amp; C-Cube 24/7 무중단 관제</span>
+                </div>
+
+                <!-- Bottom Glassmorphism HUD -->
+                <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl p-3 sm:p-4 text-white">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] sm:text-xs font-bold text-pink-400 uppercase tracking-wider">미션 크리티컬 통신 ITO 성과</span>
+                    <span class="text-[10px] text-slate-400 font-mono">2016 - 2024 (8년 연속)</span>
                   </div>
-                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-pink-400 group-hover:bg-pink-500/20 transition-all duration-200" title="상세 제안서 요청">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                  </a>
+                  <div class="grid grid-cols-3 gap-2 text-center pt-1 border-t border-white/10">
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-pink-400">99.99%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">서비스 가용성</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-white">5,000만+</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">일 트래픽 뷰</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-emerald-400">0건</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">보안 침해 사고</div>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="space-y-1.5">
-                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">KT (케이티)</div>
-                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-pink-300 transition-colors leading-snug">
-                    올레닷컴 &amp; C-Cube 통합 포털 무중단 ITO 운영
-                  </h3>
-                </div>
-
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  일 평균 5,000만 뷰의 대규모 트래픽 분산 아키텍처와 24/7 실시간 모니터링 체계를 구축하여 8개년 연속 무중단 안정 운영을 달성했습니다.
-                </p>
               </div>
 
-              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">2016 - 2024</span>
-                <span class="font-extrabold text-pink-400 bg-pink-500/10 px-2.5 py-1 rounded-md border border-pink-500/20">가용성 99.99% 달성</span>
+              <!-- Panel 2: 농림축산식품부 -->
+              <div data-case-panel="2" class="case-panel rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_agent_flow.jpg" alt="농림축산식품부 대국민 포털 통합" class="w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent"></div>
+                
+                <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-[10px] sm:text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  <span>농림축산식품부 TBCMS 행정 통합 플랫폼</span>
+                </div>
+
+                <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl p-3 sm:p-4 text-white">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider">중앙부처 공공 정보화 통합 성과</span>
+                    <span class="text-[10px] text-slate-400 font-mono">전자정부 프레임워크 4.x</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-2 text-center pt-1 border-t border-white/10">
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-cyan-400">15개</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">산하 시스템 통합</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-white">100%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">웹 접근성 인증</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-emerald-400">60%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">운영비용 절감</div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              <!-- Panel 3: 서울시립교향악단 -->
+              <div data-case-panel="3" class="case-panel rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_video_poster.jpg" alt="서울시립교향악단 스마트 오케스트라 OPMS" class="w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent"></div>
+                
+                <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-amber-400/40 text-amber-300 text-[10px] sm:text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <span>서울시립교향악단 OPMS 특화 ERP</span>
+                </div>
+
+                <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl p-3 sm:p-4 text-white">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider">문화예술 오케스트라 DX 성과</span>
+                    <span class="text-[10px] text-slate-400 font-mono">특허 등록 솔루션</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-2 text-center pt-1 border-t border-white/10">
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-amber-400">80%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">연주 일정 자동화</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-white">0%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">악보 분실률 (바코드)</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-emerald-400">100인+</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">동시 연주자 관리</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Panel 4: 현대자동차 -->
+              <div data-case-panel="4" class="case-panel rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950">
+                <img src="images/goobit_ai_brain_chip.jpg" alt="현대자동차 글로벌 인재개발원 클라우드 LMS" class="w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent"></div>
+                
+                <div class="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-blue-400/40 text-blue-300 text-[10px] sm:text-xs font-bold shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <span>현대자동차 글로벌 클라우드 LMS &amp; AI 추천</span>
+                </div>
+
+                <div class="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 bg-slate-900/85 backdrop-blur-md border border-white/15 rounded-xl p-3 sm:p-4 text-white">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] sm:text-xs font-bold text-blue-400 uppercase tracking-wider">글로벌 엔터프라이즈 교육 플랫폼 성과</span>
+                    <span class="text-[10px] text-slate-400 font-mono">멀티테넌트 SaaS</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-2 text-center pt-1 border-t border-white/10">
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-blue-400">3만 명</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">동시 접속 트래픽</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-white">+35%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">사내 교육 이수율</div>
+                    </div>
+                    <div>
+                      <div class="text-base sm:text-xl lg:text-2xl font-black text-emerald-400">94.2%</div>
+                      <div class="text-[9px] sm:text-[11px] text-slate-300">맞춤 추천 정확도</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            <!-- Card 2: 농림축산식품부 -->
-            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-cyan-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(6,182,212,0.18)]">
-              <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]"></span>
-                    <span class="text-xs font-bold text-cyan-400 tracking-wide uppercase">공공 정보화</span>
-                  </div>
-                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-cyan-400 group-hover:bg-cyan-400/20 transition-all duration-200" title="상세 제안서 요청">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                  </a>
-                </div>
-
-                <div class="space-y-1.5">
-                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">농림축산식품부</div>
-                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">
-                    차세대 대국민 농정 포털 및 산하 15개 시스템 통합
-                  </h3>
-                </div>
-
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  독자 개발 CMS TBCMS 엔진을 기반으로 15개 산하 행정 웹페이지를 단일 플랫폼으로 통합하고 웹 접근성(WA) 품질인증 마크를 획득했습니다.
-                </p>
-              </div>
-
-              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">2021 - 2023</span>
-                <span class="font-extrabold text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-md border border-cyan-400/20">웹접근성 100% 획득</span>
-              </div>
+            <!-- Bottom CTA Link Bar -->
+            <div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-2">
+              <span class="text-xs text-slate-400">고객사의 상세 구축 아키텍처와 제안서가 필요하신가요?</span>
+              <a href="contact.html#inquiry" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-pink-400 hover:text-pink-300 transition-colors shrink-0">
+                <span>구축 제안서 요청하기</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
             </div>
-
-            <!-- Card 3: 서울시립교향악단 -->
-            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-amber-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(245,158,11,0.18)]">
-              <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"></span>
-                    <span class="text-xs font-bold text-amber-400 tracking-wide uppercase">문화예술 DX</span>
-                  </div>
-                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-amber-400 group-hover:bg-amber-400/20 transition-all duration-200" title="상세 제안서 요청">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                  </a>
-                </div>
-
-                <div class="space-y-1.5">
-                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">서울시립교향악단</div>
-                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-amber-300 transition-colors leading-snug">
-                    스마트 오케스트라 운영관리 (OPMS) 및 악보 디지털 자산화
-                  </h3>
-                </div>
-
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  국내 최초 문화예술 특화 ERP OPMS를 도입하여 수작업 연주자 일정 관리를 80% 자동화하고 고유 악보 바코드 추적으로 분실률 0%를 기록했습니다.
-                </p>
-              </div>
-
-              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">2018 - 2024</span>
-                <span class="font-extrabold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md border border-amber-400/20">일정 관리 80% 절감</span>
-              </div>
-            </div>
-
-            <!-- Card 4: 현대자동차 -->
-            <div class="bg-[#0C121E]/90 backdrop-blur-md rounded-2xl border border-white/10 p-7 hover:border-blue-400/60 hover:bg-[#11192B] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between hover:shadow-[0_12px_30px_rgba(59,130,246,0.18)]">
-              <div class="space-y-5">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-                    <span class="text-xs font-bold text-blue-400 tracking-wide uppercase">스마트 교육 &amp; LMS</span>
-                  </div>
-                  <a href="contact.html#inquiry" class="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400 group-hover:bg-blue-400/20 transition-all duration-200" title="상세 제안서 요청">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                  </a>
-                </div>
-
-                <div class="space-y-1.5">
-                  <div class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">현대자동차 글로벌 인재개발원</div>
-                  <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-blue-300 transition-colors leading-snug">
-                    엔터프라이즈 디지털 학습 플랫폼 및 맞춤형 추천 엔진
-                  </h3>
-                </div>
-
-                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                  임직원 3만 명 동시 접속을 수용하는 클라우드 LMS를 구축하고 직무별 맞춤형 추천 알고리즘을 적용하여 사내 교육 이수율 35% 향상을 달성했습니다.
-                </p>
-              </div>
-
-              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">2019 - 2021</span>
-                <span class="font-extrabold text-blue-400 bg-blue-400/10 px-2.5 py-1 rounded-md border border-blue-400/20">이수율 35% 향상</span>
-              </div>
-            </div>
-
           </div>
 
         </div>
+
       </div>
     </section>
 
