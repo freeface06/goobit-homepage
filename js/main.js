@@ -507,21 +507,21 @@ document.addEventListener('DOMContentLoaded', () => {
           card.classList.remove('is-completed', 'is-inactive');
           if (cardStatuses[stageNum]) {
             cardStatuses[stageNum].textContent = '진행 중';
-            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-300';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 border border-amber-300';
           }
         } else if (stageNum < targetStage) {
           card.classList.add('is-completed');
           card.classList.remove('is-active', 'is-inactive');
           if (cardStatuses[stageNum]) {
             cardStatuses[stageNum].textContent = '완료';
-            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-300';
           }
         } else {
           card.classList.add('is-inactive');
           card.classList.remove('is-active', 'is-completed');
           if (cardStatuses[stageNum]) {
             cardStatuses[stageNum].textContent = '대기';
-            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 text-slate-400';
+            cardStatuses[stageNum].className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200';
           }
         }
       });
