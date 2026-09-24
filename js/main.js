@@ -762,20 +762,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * @intent Case Studies Interactive Showcase (Inverted layout, KPI HUD panels, auto-cycle)
+   * @intent Case Studies Scrollytelling Pinning on Desktop, Fluid & Auto-Cycle on Mobile
    * @agent  manager-develop
-   * @branch feat/case-study-showcase
+   * @branch feat/case-study-scrollytelling
    * @author @goobit-dev
    * @date   2026-09-24
    */
-  // 10-E. Enterprise Case Studies Interactive Showcase Controller
+  // 10-E. Enterprise Case Studies Scrollytelling Pinning & Showcase Controller
+  const caseTrack = document.getElementById('case-scrolly-track');
   const caseContainer = document.getElementById('case-showcase-container');
-  if (caseContainer) {
+  if (caseTrack && caseContainer) {
     const casePanels = caseContainer.querySelectorAll('[data-case-panel]');
     const caseCards = caseContainer.querySelectorAll('[data-case-card]');
+    const caseIndicator = document.getElementById('case-stage-indicator');
+
+    const caseTitles = {
+      1: 'CASE 01 / 04 : KT TELECOM & MEDIA ITO',
+      2: 'CASE 02 / 04 : MAFRA PUBLIC SECTOR SI',
+      3: 'CASE 03 / 04 : SEOUL PHILHARMONIC OPMS ERP',
+      4: 'CASE 04 / 04 : HYUNDAI MOTOR CLOUD LMS',
+    };
+
     let activeCaseStage = 1;
-    let isCaseVisible = false;
-    let caseCycleTimer = null;
 
     const setCaseStage = (targetStage) => {
       activeCaseStage = targetStage;
@@ -800,54 +808,129 @@ document.addEventListener('DOMContentLoaded', () => {
           card.classList.add('is-inactive');
         }
       });
+
+      if (caseIndicator) {
+        if (window.innerWidth < 640) {
+          caseIndicator.textContent = `CASE 0${targetStage} / 04`;
+        } else if (caseTitles[targetStage]) {
+          caseIndicator.textContent = caseTitles[targetStage];
+        }
+      }
     };
 
-    const startCaseCycle = () => {
-      if (caseCycleTimer) return;
-      caseCycleTimer = setInterval(() => {
+    // Desktop Scroll Progress Calculation (Sticky track pinning across 4 stages)
+    let isScrollingCaseTrack = false;
+    const handleCaseScrollProgress = () => {
+      isScrollingCaseTrack = false;
+
+      // On mobile/tablet (< 1024px, including Galaxy Z Fold), preserve natural native scroll flow
+      if (window.innerWidth < 1024) return;
+
+      const rect = caseTrack.getBoundingClientRect();
+      const trackHeight = caseTrack.offsetHeight - window.innerHeight;
+      if (trackHeight <= 0) return;
+
+      // Frame starts sticking at top: 64px. Total travel spans from rect.top = 64 down to rect.top = -trackHeight
+      const totalTravel = trackHeight + 64;
+      const currentScroll = Math.max(0, 64 - rect.top);
+      const progress = Math.max(0, Math.min(1, currentScroll / totalTravel));
+
+      let stage = 1;
+      if (progress < 0.25) {
+        stage = 1;
+      } else if (progress < 0.50) {
+        stage = 2;
+      } else if (progress < 0.75) {
+        stage = 3;
+      } else {
+        stage = 4;
+      }
+
+      setCaseStage(stage);
+    };
+
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth >= 1024 && !isScrollingCaseTrack) {
+        isScrollingCaseTrack = true;
+        requestAnimationFrame(handleCaseScrollProgress);
+      }
+    }, { passive: true });
+
+    // Mobile (< 1024px) gentle auto-cycle when section is in viewport
+    let mobileCaseTimer = null;
+    const startMobileCaseCycle = () => {
+      if (window.innerWidth >= 1024 || mobileCaseTimer) return;
+      mobileCaseTimer = setInterval(() => {
+        if (window.innerWidth >= 1024) {
+          clearInterval(mobileCaseTimer);
+          mobileCaseTimer = null;
+          return;
+        }
         const nextStage = activeCaseStage >= 4 ? 1 : activeCaseStage + 1;
         setCaseStage(nextStage);
       }, 5500);
     };
 
-    const stopCaseCycle = () => {
-      if (caseCycleTimer) {
-        clearInterval(caseCycleTimer);
-        caseCycleTimer = null;
+    const stopMobileCaseCycle = () => {
+      if (mobileCaseTimer) {
+        clearInterval(mobileCaseTimer);
+        mobileCaseTimer = null;
       }
     };
-
-    // Pause on desktop hover
-    caseContainer.addEventListener('mouseenter', () => {
-      stopCaseCycle();
-    });
-    caseContainer.addEventListener('mouseleave', () => {
-      if (isCaseVisible) {
-        startCaseCycle();
-      }
-    });
 
     if ('IntersectionObserver' in window) {
       const caseObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            isCaseVisible = true;
-            startCaseCycle();
+          if (entry.isIntersecting && window.innerWidth < 1024) {
+            startMobileCaseCycle();
           } else {
-            isCaseVisible = false;
-            stopCaseCycle();
+            stopMobileCaseCycle();
           }
         });
       }, { threshold: 0.2 });
-      caseObserver.observe(caseContainer);
+      caseObserver.observe(caseTrack);
     }
 
-    // Click on Card: Switches active stage and pauses auto-cycle
+    window.addEventListener('resize', () => {
+      if (caseIndicator) {
+        if (window.innerWidth < 640) {
+          caseIndicator.textContent = `CASE 0${activeCaseStage} / 04`;
+        } else if (caseTitles[activeCaseStage]) {
+          caseIndicator.textContent = caseTitles[activeCaseStage];
+        }
+      }
+      if (window.innerWidth >= 1024) {
+        stopMobileCaseCycle();
+        handleCaseScrollProgress();
+      } else {
+        startMobileCaseCycle();
+      }
+    }, { passive: true });
+
+    // Initial check
+    if (window.innerWidth >= 1024) {
+      handleCaseScrollProgress();
+    }
+
+    // Click on Card: On desktop smoothly jumps to stage scroll height; on mobile cleanly switches active stage
     caseCards.forEach((card) => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('a')) return;
-        stopCaseCycle();
+
+        stopMobileCaseCycle(); // User interaction pauses auto-cycle
+
         const stageNum = parseInt(card.getAttribute('data-case-card'), 10);
+
+        if (window.innerWidth >= 1024) {
+          const trackTop = caseTrack.getBoundingClientRect().top + window.scrollY;
+          const trackHeight = caseTrack.offsetHeight - window.innerHeight;
+          if (trackHeight > 0) {
+            const totalTravel = trackHeight + 64;
+            const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.35 : stageNum === 3 ? 0.65 : 0.90;
+            const targetY = trackTop - 64 + (ratio * totalTravel);
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }
+        }
         setCaseStage(stageNum);
       });
     });
