@@ -674,7 +674,14 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideoContainer.style.transform = `scale(${scale})`;
       }
 
-      // Hero content stays 100% crisp throughout reading, buttons, and cockpit dock
+      /**
+       * @intent (Modified: 히어로 3단 카드 도크 제거 후 헤드라인 및 CTA 버튼 가독성 100% 선명도 유지 및 자연스러운 마키 전환)
+       * @agent  Gemini
+       * @branch main
+       * @author @developer_name
+       * @date   2026-09-24
+       */
+      // Hero headline and CTAs stay 100% crisp throughout reading
       // Only as the very bottom approaches the exit into the marquee does it gently ease
       if (heroContentWrapper) {
         const exitThreshold = Math.max(300, heroHeight - window.innerHeight);
