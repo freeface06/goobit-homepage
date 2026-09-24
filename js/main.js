@@ -548,7 +548,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
       if (trackHeight <= 0) return;
 
-      const progress = Math.max(0, Math.min(1, (-rect.top) / trackHeight));
+      // Frame starts sticking at top: 64px. Total travel spans from rect.top = 64 down to rect.top = -trackHeight
+      const totalTravel = trackHeight + 64;
+      const currentScroll = Math.max(0, 64 - rect.top);
+      const progress = Math.max(0, Math.min(1, currentScroll / totalTravel));
 
       if (progressBar) {
         const widthPercent = Math.min(100, Math.max(6, progress * 100));
@@ -614,8 +617,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const trackTop = scrollyTrack.getBoundingClientRect().top + window.scrollY;
         const trackHeight = scrollyTrack.offsetHeight - window.innerHeight;
         if (trackHeight > 0) {
-          const ratio = stageNum === 1 ? 0.08 : stageNum === 2 ? 0.50 : 0.88;
-          const targetY = trackTop + (ratio * trackHeight);
+          const totalTravel = trackHeight + 64;
+          const ratio = stageNum === 1 ? 0.05 : stageNum === 2 ? 0.50 : 0.90;
+          const targetY = trackTop - 64 + (ratio * totalTravel);
           window.scrollTo({ top: targetY, behavior: 'smooth' });
         }
         setScrollyStage(stageNum);

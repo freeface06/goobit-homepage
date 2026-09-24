@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -22,7 +23,8 @@ body {
   background-color: #FFFFFF;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all;
@@ -454,28 +456,41 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
    Interactive Scrollytelling & Parallax Storytelling Styles
    ========================================================================== */
 
-/* Scrollytelling Pinning & Adaptive Layout (Enabled on portrait mobile, tablets, desktops >= 580px) */
-@media (min-height: 580px) {
+/* Robust Scrollytelling Pinning & Adaptive Frame across PC, Tablet & Mobile */
+#ai-scrolly-track {
+  min-height: 240vh !important;
+}
+
+@media (min-width: 640px) {
   #ai-scrolly-track {
-    min-height: 240vh;
-  }
-  .ai-showcase-frame {
-    position: sticky;
-    top: 64px;
-    height: calc(100vh - 64px);
-    max-height: calc(100vh - 64px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: clamp(0.375rem, 1.2vh, 1rem) !important;
-    padding-bottom: clamp(0.375rem, 1.2vh, 1rem) !important;
-    box-sizing: border-box;
-    overflow: visible;
+    min-height: 260vh !important;
   }
 }
 
-/* Fallback for ultra-low height viewports (e.g. mobile in landscape mode < 580px) */
-@media (max-height: 579px) {
+@media (min-width: 1024px) {
+  #ai-scrolly-track {
+    min-height: 280vh !important;
+  }
+}
+
+.ai-showcase-frame {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 64px !important;
+  height: calc(100vh - 64px) !important;
+  max-height: calc(100vh - 64px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding-top: clamp(0.375rem, 1.2vh, 1rem) !important;
+  padding-bottom: clamp(0.375rem, 1.2vh, 1rem) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  z-index: 20 !important;
+}
+
+/* Fallback for ultra-low height viewports in landscape mode (e.g. mobile turned sideways < 440px) */
+@media (max-height: 440px) and (orientation: landscape) {
   #ai-scrolly-track {
     min-height: auto !important;
   }
@@ -483,8 +498,8 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
     position: relative !important;
     top: auto !important;
     height: auto !important;
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
     overflow: visible !important;
   }
 }
