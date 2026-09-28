@@ -1,7 +1,7 @@
 /**
- * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, mobile drawer, video resizing, hero AI typing animation, and Lucide icons
+ * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, Korean telemetry indicators, mobile drawer, video resizing, hero AI typing animation, and Lucide icons
  * @agent  manager-develop
- * @branch task-hero-ai-typing-motion
+ * @branch feat/korean-telemetry-indicators
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -481,9 +481,9 @@ if (typeof document !== 'undefined') {
     };
 
     const stageTitles = {
-      1: 'STAGE 01 / 03 : KNOWLEDGE GRAPH & RAG',
-      2: 'STAGE 02 / 03 : AGENTIC AI & AUTOMATION',
-      3: 'STAGE 03 / 03 : AIR-GAPPED ON-PREMISE SLLM',
+      1: '단계 01 / 03 : 지식그래프 & RAG',
+      2: '단계 02 / 03 : 자율 에이전트 & 자동화',
+      3: '단계 03 / 03 : 폐쇄망 온프레미스 sLLM',
     };
 
     let activeStage = 1;
@@ -529,7 +529,7 @@ if (typeof document !== 'undefined') {
 
       if (indicator) {
         if (window.innerWidth < 640) {
-          indicator.textContent = `STAGE 0${targetStage} / 03`;
+          indicator.textContent = `단계 0${targetStage} / 03`;
         } else if (stageTitles[targetStage]) {
           indicator.textContent = stageTitles[targetStage];
         }
@@ -609,7 +609,7 @@ if (typeof document !== 'undefined') {
     window.addEventListener('resize', () => {
       if (indicator) {
         if (window.innerWidth < 640) {
-          indicator.textContent = `STAGE 0${activeStage} / 03`;
+          indicator.textContent = `단계 0${activeStage} / 03`;
         } else if (stageTitles[activeStage]) {
           indicator.textContent = stageTitles[activeStage];
         }
@@ -785,10 +785,10 @@ if (typeof document !== 'undefined') {
     const caseIndicator = document.getElementById('case-stage-indicator');
 
     const caseTitles = {
-      1: 'CASE 01 / 04 : KT TELECOM & MEDIA ITO',
-      2: 'CASE 02 / 04 : MAFRA PUBLIC SECTOR SI',
-      3: 'CASE 03 / 04 : SEOUL PHILHARMONIC OPMS ERP',
-      4: 'CASE 04 / 04 : HYUNDAI MOTOR CLOUD LMS',
+      1: '사례 01 / 04 : KT 통신·미디어 ITO',
+      2: '사례 02 / 04 : 농림축산식품부 공공 SI',
+      3: '사례 03 / 04 : 서울시립교향악단 ERP 구축',
+      4: '사례 04 / 04 : 현대자동차 클라우드 LMS',
     };
 
     let activeCaseStage = 1;
@@ -819,7 +819,7 @@ if (typeof document !== 'undefined') {
 
       if (caseIndicator) {
         if (window.innerWidth < 640) {
-          caseIndicator.textContent = `CASE 0${targetStage} / 04`;
+          caseIndicator.textContent = `사례 0${targetStage} / 04`;
         } else if (caseTitles[targetStage]) {
           caseIndicator.textContent = caseTitles[targetStage];
         }
@@ -902,7 +902,7 @@ if (typeof document !== 'undefined') {
     window.addEventListener('resize', () => {
       if (caseIndicator) {
         if (window.innerWidth < 640) {
-          caseIndicator.textContent = `CASE 0${activeCaseStage} / 04`;
+          caseIndicator.textContent = `사례 0${activeCaseStage} / 04`;
         } else if (caseTitles[activeCaseStage]) {
           caseIndicator.textContent = caseTitles[activeCaseStage];
         }

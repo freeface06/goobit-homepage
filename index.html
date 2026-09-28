@@ -375,6 +375,13 @@
     </section>
 
     <!-- 3. Core AI Interactive Technology Showcase (Scrollytelling Pinning on Desktop, Fluid on Mobile - Bright Enterprise Theme) -->
+    <!--
+     * @intent Dignified Korean telemetry indicators and removal of blinking ping dots for AI architecture and case study showcases
+     * @agent  manager-develop
+     * @branch feat/korean-telemetry-indicators
+     * @author @goobit-dev
+     * @date   2026-09-28
+    -->
     <div id="ai-scrolly-track" class="relative lg:min-h-[280vh] bg-slate-50 border-t border-slate-200">
       
       <!-- Sticky Frame pinned on Desktop (>= 1024px), Fluid Natural Flow on Mobile (< 1024px) -->
@@ -388,9 +395,8 @@
           <!-- Top Scrollytelling Telemetry (Mobile & Desktop) -->
           <div class="ai-telemetry-bar flex items-center justify-between mb-2 sm:mb-3 pb-1.5 sm:pb-2 border-b border-slate-200/90">
             <div class="flex items-center gap-2 sm:gap-3">
-              <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-500 animate-ping"></span>
               <span id="scrolly-stage-indicator" class="text-[11px] sm:text-xs font-mono font-bold text-amber-800 tracking-wider bg-amber-100/90 border border-amber-300/80 px-2.5 py-0.5 rounded-full">
-                STAGE 01 / 03
+                단계 01 / 03 : 지식그래프 &amp; RAG
               </span>
             </div>
           </div>
@@ -1186,13 +1192,12 @@
           <!-- Top Scrollytelling Telemetry (Mobile & Desktop) -->
           <div class="case-telemetry-bar flex items-center justify-between mb-2 sm:mb-3 pb-1.5 sm:pb-2 border-b border-white/10">
             <div class="flex items-center gap-2 sm:gap-3">
-              <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-pink-500 animate-ping"></span>
               <span id="case-stage-indicator" class="text-[11px] sm:text-xs font-mono font-bold text-pink-400 tracking-wider">
-                CASE 01 / 04 : KT TELECOM &amp; MEDIA ITO
+                사례 01 / 04 : KT 통신·미디어 ITO
               </span>
             </div>
             <div class="hidden sm:flex items-center gap-2 text-[11px] font-mono text-slate-400">
-              <span>SCROLL DOWN TO EXPLORE</span>
+              <span>스크롤하여 사례 탐색</span>
               <i data-lucide="chevrons-down" class="w-3.5 h-3.5 text-pink-400 animate-bounce"></i>
             </div>
           </div>
@@ -1201,7 +1206,7 @@
           <div class="case-header-block text-center max-w-4xl mx-auto mb-2.5 sm:mb-3 lg:mb-3 xl:mb-3.5 space-y-1 sm:space-y-1.5" data-reveal="fade-up" data-delay="0">
             <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-pink-950/60 border border-pink-500/30 text-pink-400 text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-sm">
               <span class="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse"></span>
-              <span>엔터프라이즈 구축 실적 · Reference</span>
+              <span>엔터프라이즈 구축 실적 · 레퍼런스</span>
             </div>
             <h2 class="text-lg sm:text-2xl lg:text-2xl xl:text-3xl font-black text-white tracking-tight leading-snug">
               구비트의 다양한 산업 분야 <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-amber-300 to-cyan-400">성공 사례를 확인해보세요</span>
