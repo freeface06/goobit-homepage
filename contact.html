@@ -2,11 +2,11 @@
 <html lang="ko" class="scroll-smooth">
 <head>
   <!--
-   * @intent Contact & Support page featuring interactive inquiry form, fast support desk, Naver map, and FAQ accordion
+   * @intent Contact & Support page featuring interactive inquiry form, fast support desk, Naver map, FAQ accordion, and scrollspy subnav
    * @agent  manager-develop
-   * @branch feat/homepage-skeleton
+   * @branch feat/scrollspy-header-subnav
    * @author @goobit-dev
-   * @date   2026-09-23
+   * @date   2026-09-28
   -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -271,12 +271,12 @@
     </div>
 
     <!-- Sub-nav Anchor Bar -->
-    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs">
+    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs" data-subnav-container>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600">
-          <a href="#inquiry" class="hover:text-blue-600 whitespace-nowrap">1:1 도입 문의 양식</a>
-          <a href="#support" class="hover:text-blue-600 whitespace-nowrap">기술 지원 데스크</a>
-          <a href="#directions" class="hover:text-blue-600 whitespace-nowrap">본사 오시는 길</a>
+        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600 no-scrollbar">
+          <a href="#inquiry" class="subnav-link is-active-anchor is-active whitespace-nowrap">1:1 도입 문의 양식</a>
+          <a href="#support" class="subnav-link whitespace-nowrap">기술 지원 데스크</a>
+          <a href="#directions" class="subnav-link whitespace-nowrap">본사 오시는 길</a>
         </div>
       </div>
     </div>

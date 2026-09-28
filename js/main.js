@@ -1,6 +1,7 @@
 /**
- * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, Korean telemetry indicators, mobile drawer, video resizing, hero AI typing animation, and Lucide icons
+ * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, Korean telemetry indicators, mobile drawer, video resizing, hero AI typing animation, scrollspy subnav, and Lucide icons
  * @agent  manager-develop
+ * @branch feat/scrollspy-header-subnav
  * @branch feat/korean-telemetry-indicators
  * @author @goobit-dev
  * @date   2026-09-28
@@ -1080,6 +1081,11 @@ if (typeof document !== 'undefined') {
     });
     heroAnimationObserver.observe(heroObserverTarget);
   }
+
+  // Initialize Sub-navigation Scrollspy
+  if (typeof initScrollspy === 'function') {
+    initScrollspy();
+  }
   });
 }
 
@@ -1217,13 +1223,178 @@ function initHeroTypingAnimation() {
   };
 }
 
+/**
+ * @intent Sticky Sub-navigation Anchor Scrollspy & Active States Controller
+ * @agent  manager-develop
+ * @branch feat/scrollspy-header-subnav
+ * @author @goobit-dev
+ * @date   2026-09-28
+ */
+function initScrollspy() {
+  if (typeof document === 'undefined') return null;
+
+  const subnavContainers = document.querySelectorAll('[data-subnav-container], .sticky.top-16');
+  if (!subnavContainers.length) return null;
+
+  // Collect all anchor links within subnav containers
+  const items = [];
+  subnavContainers.forEach((container) => {
+    const links = container.querySelectorAll('a[href^="#"]');
+    links.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+      const targetId = href.substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        items.push({
+          link,
+          section: targetSection,
+          id: targetId,
+          container
+        });
+      }
+    });
+  });
+
+  if (!items.length) return null;
+
+  let currentActiveId = null;
+  let isTicking = false;
+
+  const setActiveLink = (targetId) => {
+    if (!targetId || targetId === currentActiveId) return;
+    currentActiveId = targetId;
+
+    let activeLinkElement = null;
+
+    items.forEach((item) => {
+      if (item.id === targetId) {
+        item.link.classList.add('is-active-anchor', 'is-active');
+        activeLinkElement = item.link;
+      } else {
+        item.link.classList.remove('is-active-anchor', 'is-active');
+      }
+    });
+
+    // Horizontal scroll sync for mobile viewports
+    if (activeLinkElement) {
+      const scrollParent = activeLinkElement.closest('.overflow-x-auto');
+      if (scrollParent && scrollParent.scrollWidth > scrollParent.clientWidth) {
+        if (typeof activeLinkElement.scrollIntoView === 'function') {
+          activeLinkElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+          });
+        }
+      }
+    }
+  };
+
+  const calculateActiveSection = () => {
+    const scrollY = typeof window !== 'undefined' ? window.scrollY || window.pageYOffset || 0 : 0;
+    const windowHeight = typeof window !== 'undefined' ? window.innerHeight || 0 : 0;
+    const docHeight = typeof document !== 'undefined' ? document.documentElement.scrollHeight || 0 : 0;
+
+    // Fixed header offset: GNB (64px) + Subnav (~48px) + clearance (~18px) = ~130px
+    const headerOffset = 130;
+
+    // End-of-page bottom detection: Force activate last section when reaching footer
+    if (windowHeight + scrollY >= docHeight - 50) {
+      const lastItem = items[items.length - 1];
+      setActiveLink(lastItem.id);
+      return lastItem.id;
+    }
+
+    const checkPosition = scrollY + headerOffset;
+    let selectedId = items[0].id;
+
+    for (let i = 0; i < items.length; i++) {
+      const section = items[i].section;
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top + scrollY;
+
+      if (checkPosition >= sectionTop) {
+        selectedId = items[i].id;
+      } else {
+        break;
+      }
+    }
+
+    setActiveLink(selectedId);
+    return selectedId;
+  };
+
+  const onScroll = () => {
+    if (!isTicking) {
+      if (typeof window !== 'undefined' && window.requestAnimationFrame) {
+        window.requestAnimationFrame(() => {
+          calculateActiveSection();
+          isTicking = false;
+        });
+      } else {
+        calculateActiveSection();
+        isTicking = false;
+      }
+      isTicking = true;
+    }
+  };
+
+  // Attach smooth click handlers to subnav links
+  items.forEach((item) => {
+    item.link.addEventListener('click', (e) => {
+      const href = item.link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const targetY = targetEl.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0) - 116;
+          if (typeof window !== 'undefined' && window.scrollTo) {
+            window.scrollTo({
+              top: Math.max(0, targetY),
+              behavior: 'smooth'
+            });
+          }
+          setActiveLink(targetId);
+          if (typeof history !== 'undefined' && history.pushState) {
+            history.pushState(null, '', `#${targetId}`);
+          }
+        }
+      }
+    });
+  });
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
+  // Initial calculation on mount
+  calculateActiveSection();
+
+  return {
+    update: calculateActiveSection,
+    getActiveId: () => currentActiveId,
+    getItems: () => items,
+    destroy: () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    }
+  };
+}
+
 if (typeof window !== 'undefined') {
   window.initHeroTypingAnimation = initHeroTypingAnimation;
+  window.initScrollspy = initScrollspy;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
-    initHeroTypingAnimation
+    initHeroTypingAnimation,
+    initScrollspy
   };
 }
 

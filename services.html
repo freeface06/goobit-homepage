@@ -2,11 +2,11 @@
 <html lang="ko" class="scroll-smooth">
 <head>
   <!--
-   * @intent Professional engineering services page showcasing public SI, telecom ITO, edutech, AI consulting, and 4-phase methodology
+   * @intent Professional engineering services page showcasing public SI, telecom ITO, edutech, AI consulting, 4-phase methodology, and scrollspy subnav
    * @agent  manager-develop
-   * @branch feat/homepage-skeleton
+   * @branch feat/scrollspy-header-subnav
    * @author @goobit-dev
-   * @date   2026-09-23
+   * @date   2026-09-28
   -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -272,14 +272,14 @@
     </div>
 
     <!-- Sub-nav Anchor Bar -->
-    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs">
+    <div class="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-xs" data-subnav-container>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600">
-          <a href="#methodology" class="hover:text-blue-600 whitespace-nowrap">구축 방법론 (Methodology)</a>
-          <a href="#public-si" class="hover:text-blue-600 whitespace-nowrap">공공 정보화 SI</a>
-          <a href="#telecom-ito" class="hover:text-blue-600 whitespace-nowrap">통신·미디어 ITO</a>
-          <a href="#edutech" class="hover:text-blue-600 whitespace-nowrap">스마트 교육 &amp; LMS</a>
-          <a href="#consulting" class="hover:text-blue-600 whitespace-nowrap">AI·DX 컨설팅</a>
+        <div class="flex overflow-x-auto py-3 gap-6 text-sm font-semibold text-gray-600 no-scrollbar">
+          <a href="#methodology" class="subnav-link is-active-anchor is-active whitespace-nowrap">구축 방법론 (Methodology)</a>
+          <a href="#public-si" class="subnav-link whitespace-nowrap">공공 정보화 SI</a>
+          <a href="#telecom-ito" class="subnav-link whitespace-nowrap">통신·미디어 ITO</a>
+          <a href="#edutech" class="subnav-link whitespace-nowrap">스마트 교육 &amp; LMS</a>
+          <a href="#consulting" class="subnav-link whitespace-nowrap">AI·DX 컨설팅</a>
         </div>
       </div>
     </div>
