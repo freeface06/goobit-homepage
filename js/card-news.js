@@ -1,9 +1,9 @@
 /**
  * @intent Dedicated full-screen interactive Card News Reader modal controller supporting segmented progress, keyboard navigation, touch swipe, and URL copy
  * @agent  manager-develop
- * @branch feat/homepage-skeleton
+ * @branch task-dedicated-news-detail-page
  * @author @goobit-dev
- * @date   2026-09-23
+ * @date   2026-09-28
  */
 
 class CardNewsReader {
@@ -26,13 +26,19 @@ class CardNewsReader {
     }
     this.container = container;
 
-    // Attach click listener for any elements with [data-news-id]
+    // Attach click listener only for explicit modal triggers, never hijack regular links
     document.addEventListener('click', (e) => {
-      const trigger = e.target.closest('[data-news-id]');
+      const trigger = e.target.closest('[data-news-modal="true"], [data-card-modal="true"]');
       if (trigger) {
+        // If trigger has standard anchor link or is inside an anchor with href, allow default navigation
+        if (trigger.closest('a[href]') && !trigger.hasAttribute('data-force-modal')) {
+          return;
+        }
         e.preventDefault();
         const newsId = trigger.getAttribute('data-news-id');
-        this.open(newsId);
+        if (newsId) {
+          this.open(newsId);
+        }
       }
     });
   }

@@ -2,11 +2,11 @@
 <html lang="ko" class="scroll-smooth">
 <head>
   <!--
-   * @intent Complete Main Landing Page with top scroll progress, expanding video showcase, 4-stat metrics, AI highlights, product suite, case studies, card news preview, and bright-tone footer
+   * @intent Complete Main Landing Page with hero kinetic typography, top scroll progress, expanding video showcase, 4-stat metrics, AI highlights, product suite, case studies, card news preview, and bright-tone footer
    * @agent  manager-develop
-   * @branch feat/homepage-skeleton
+   * @branch task-hero-kinetic-text-animation
    * @author @goobit-dev
-   * @date   2026-09-23
+   * @date   2026-09-28
   -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -226,7 +226,7 @@
   <main id="main-content" class="flex-1 focus:outline-none" tabindex="-1">
     
     <!-- 1. Hero Screen: Deep Cyber Canvas with 3D Holographic AI Showcase & Ambient Video Background -->
-    <section class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 lg:pt-48 lg:pb-36 bg-[#070A12] text-white overflow-hidden text-center" aria-label="메인 비주얼">
+    <section id="hero-section" class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 lg:pt-48 lg:pb-36 bg-[#070A12] text-white overflow-hidden text-center" aria-label="메인 비주얼">
       
       <!-- High-Performance Ambient AI Video Background (Adaptive PC & Mobile) -->
       <div id="hero-video-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -261,15 +261,28 @@
           <span class="tracking-wide">차세대 엔터프라이즈 AI 아키텍처 · GS 1등급 &amp; 특허 등록 기술력</span>
         </div>
 
-        <!-- Giant Headline Typography -->
-        <div class="relative max-w-5xl mx-auto px-2 sm:px-6 space-y-6" data-reveal data-delay="100">
-          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.12]">
-            인공지능으로 이끄는 혁신,<br />
-            가치를 완성하는<br />
-            <span class="bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500 bg-clip-text text-transparent">엔터프라이즈 AI &amp; DX</span>
+        <!--
+         * @intent Hero Kinetic Slogan 3D Motion System with staggered perspective lift and aurora glow
+         * @agent  manager-develop
+         * @branch task-hero-kinetic-text-animation
+         * @author @goobit-dev
+         * @date   2026-09-28
+        -->
+        <div class="relative max-w-5xl mx-auto px-2 sm:px-6 space-y-6">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.14]">
+            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1">
+              <span class="hero-title-line hero-title-line-1 block">인공지능으로 이끄는 혁신,</span>
+            </span>
+            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1">
+              <span class="hero-title-line hero-title-line-2 block">가치를 완성하는</span>
+            </span>
+            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1 relative">
+              <span class="hero-glow-backdrop pointer-events-none" aria-hidden="true"></span>
+              <span class="hero-title-line hero-title-line-3 hero-aurora-text block relative z-10">엔터프라이즈 AI &amp; DX</span>
+            </span>
           </h1>
 
-          <p class="text-base sm:text-lg md:text-xl font-normal text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p class="hero-subtext-reveal text-base sm:text-lg md:text-xl font-normal text-slate-300 max-w-3xl mx-auto leading-relaxed">
             가치에 진심을 담다 | 공공·통신 10년의 미션 크리티컬 신뢰 위에 지식그래프와 자율 Agentic AI를 결합하여 기업의 진정한 AI 전환을 실현합니다.
           </p>
         </div>
@@ -1442,7 +1455,7 @@
           
           <!-- Card 1 -->
           <div class="h-full" data-reveal data-delay="0">
-            <article data-news-id="news-rag-national-project" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+            <a href="news-detail.html?id=news-rag-national-project" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="구비트, AI 지식그래프 기반 하이브리드 RAG 국책 연구과제 주관기관 최종 선정">
               <div class="relative aspect-[4/3] bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between overflow-hidden text-white">
                 <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
@@ -1493,12 +1506,12 @@
                   </span>
                 </div>
               </div>
-            </article>
+            </a>
           </div>
 
           <!-- Card 2 -->
           <div class="h-full" data-reveal data-delay="150">
-            <article data-news-id="news-tbcms-update" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+            <a href="news-detail.html?id=news-tbcms-update" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="TBCMS 3.0 대규모 업데이트: 웹 접근성 KWCAG 2.2 인증 및 차세대 공공 CMS 엔진 혁신">
               <div class="relative aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 p-6 flex flex-col justify-between overflow-hidden text-white">
                 <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
@@ -1549,12 +1562,12 @@
                   </span>
                 </div>
               </div>
-            </article>
+            </a>
           </div>
 
           <!-- Card 3 -->
           <div class="h-full" data-reveal data-delay="300">
-            <article data-news-id="news-office-expansion" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-2.5 shimmer-card h-full">
+            <a href="news-detail.html?id=news-office-expansion" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="문정 현대지식산업센터 신사옥 확장 이전 및 AI R&D 연구소 신설">
               <div class="relative aspect-[4/3] bg-gradient-to-br from-amber-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between overflow-hidden text-white">
                 <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
@@ -1605,7 +1618,7 @@
                   </span>
                 </div>
               </div>
-            </article>
+            </a>
           </div>
 
         </div>

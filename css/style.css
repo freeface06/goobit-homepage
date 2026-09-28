@@ -1,9 +1,9 @@
 /**
- * @intent Enterprise global stylesheet featuring Pretendard typography, keyframe animations, card interactions, scrollbar, and Krds accessibility rules
+ * @intent Enterprise global stylesheet featuring Pretendard typography, hero kinetic motion system, keyframe animations, card interactions, and Krds accessibility rules
  * @agent  manager-develop
- * @branch feat/homepage-skeleton
+ * @branch task-hero-kinetic-text-animation
  * @author @goobit-dev
- * @date   2026-09-23
+ * @date   2026-09-28
  */
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
@@ -994,7 +994,316 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   }
 }
 
+/* ==========================================================================
+   Hero Kinetic Text & Cybernetic AI Motion Graphics System
+   @intent Enterprise kinetic typography reveals with 3D perspective lifting,
+           aurora color stream, neon glow pulse, and silver/amber shine sweep.
+   @agent  manager-develop
+   @branch task-hero-kinetic-text-animation
+   @author @goobit-dev
+   @date   2026-09-28
+   ========================================================================== */
+
+/* 1. Keyframe Definitions */
+@keyframes heroLineLift {
+  0% {
+    transform: translateY(115%) perspective(800px) rotateX(25deg);
+    opacity: 0;
+    filter: blur(14px);
+  }
+  100% {
+    transform: translateY(0) perspective(800px) rotateX(0deg);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes heroSubtextReveal {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes heroShineSweep {
+  0% {
+    transform: translateX(-140%) skewX(-22deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(240%) skewX(-22deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heroAuroraShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes heroPulseGlow {
+  0% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 16px rgba(245, 166, 35, 0.45)) blur(20px);
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 38px rgba(245, 166, 35, 0.8)) drop-shadow(0 0 65px rgba(255, 122, 0, 0.5)) blur(28px);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 16px rgba(245, 166, 35, 0.45)) blur(20px);
+    transform: scale(0.96);
+  }
+}
+
+/* 2. Kinetic Slogan Containers and Lines */
+.hero-title-mask {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Diagonal Silver/Amber Light Shine Overlay Across Titles */
+.hero-title-mask::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(252, 211, 77, 0.5) 50%,
+    rgba(255, 255, 255, 0.8) 55%,
+    rgba(245, 166, 35, 0.4) 75%,
+    transparent 100%
+  );
+  transform: translateX(-140%) skewX(-22deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 25;
+}
+
+.hero-title-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(115%) perspective(800px) rotateX(25deg);
+  filter: blur(14px);
+  will-change: transform, opacity, filter;
+  transform-origin: center bottom;
+  backface-visibility: hidden;
+}
+
+.hero-subtext-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px);
+  will-change: transform, opacity, filter;
+}
+
+/* 3. Activation Triggers (with cubic-bezier timing and exact staggered delays) */
+.hero-animated-active .hero-title-line {
+  animation-name: heroLineLift;
+  animation-duration: 1.15s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+
+.hero-animated-active .hero-title-line-1 {
+  animation-delay: 0.1s;
+}
+
+.hero-animated-active .hero-title-line-2 {
+  animation-delay: 0.28s;
+}
+
+.hero-animated-active .hero-title-line-3 {
+  animation-delay: 0.48s;
+}
+
+.hero-animated-active .hero-subtext-reveal {
+  animation: heroSubtextReveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.72s forwards;
+}
+
+.hero-animated-active .hero-title-mask::after {
+  animation: heroShineSweep 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.96s 1 forwards;
+}
+
+/* 4. Aurora Text Flow & Neon Glow Backdrop */
+.hero-aurora-text {
+  background-image: linear-gradient(135deg, #F5A623 0%, #FF7A00 25%, #FCD34D 50%, #38BDF8 75%, #F5A623 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 18px rgba(245, 166, 35, 0.4));
+}
+
+.hero-animated-active .hero-aurora-text {
+  animation: heroLineLift 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards,
+             heroAuroraShift 9s ease-in-out 1.25s infinite;
+}
+
+.hero-glow-backdrop {
+  position: absolute;
+  inset: -15% -10%;
+  margin: auto;
+  width: 90%;
+  height: 120%;
+  background: radial-gradient(ellipse at center, rgba(245, 166, 35, 0.45) 0%, rgba(255, 122, 0, 0.22) 40%, rgba(56, 189, 248, 0) 72%);
+  filter: blur(24px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transform: scale(0.96);
+  will-change: transform, opacity, filter;
+}
+
+.hero-animated-active .hero-glow-backdrop {
+  opacity: 0.65;
+  animation: heroPulseGlow 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+}
+
+/* 5. Accessibility Support - prefers-reduced-motion: reduce */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title-line,
+  .hero-subtext-reveal,
+  .hero-glow-backdrop,
+  .hero-title-mask::after,
+  .hero-animated-active .hero-title-line,
+  .hero-animated-active .hero-subtext-reveal,
+  .hero-animated-active .hero-glow-backdrop,
+  .hero-animated-active .hero-title-mask::after,
+  .hero-animated-active .hero-aurora-text {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s ease-in-out !important;
+  }
+
+  .hero-title-mask::after {
+    display: none !important;
+  }
+
+  .hero-aurora-text {
+    background-position: 0% 50% !important;
+  }
+}
 
 
+/* ==========================================================================
+ * Dedicated News Detail & Inline Dual-Viewer Card Styles
+ * @intent Card news detail inline dual-viewer slider, expanded view, animations, and Krds accessibility
+ * @agent  manager-develop
+ * @branch task-dedicated-news-detail-page
+ * @author @goobit-dev
+ * @date   2026-09-28
+ * ========================================================================== */
 
+@keyframes newsSlideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
+@keyframes newsToastSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.news-slide-animate {
+  animation: newsSlideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.news-toast-animate {
+  animation: newsToastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.news-card-perspective {
+  perspective: 1000px;
+}
+
+.news-card-inner {
+  transform: translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.news-card-inner:hover {
+  transform: translateY(-4px) translateZ(0);
+}
+
+.news-thumb-strip {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 #0b1120;
+}
+
+.news-thumb-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.news-thumb-strip::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+
+.news-thumb-strip::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+.news-thumb-strip::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Accessibility: prefers-reduced-motion for news detail elements */
+@media (prefers-reduced-motion: reduce) {
+  .news-slide-animate,
+  .news-toast-animate,
+  .news-card-inner,
+  .news-card-inner:hover {
+    animation: none !important;
+    transform: none !important;
+    transition: opacity 0.2s ease-in-out !important;
+  }
+}

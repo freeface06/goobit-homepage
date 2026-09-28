@@ -1,9 +1,9 @@
 /**
- * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, mobile drawer, video resizing, and Lucide icons
+ * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, mobile drawer, video resizing, hero kinetic typography trigger, and Lucide icons
  * @agent  manager-develop
- * @branch feat/homepage-skeleton
+ * @branch task-hero-kinetic-text-animation
  * @author @goobit-dev
- * @date   2026-09-23
+ * @date   2026-09-28
  */
 
 // 1. Dynamic Tailwind Configuration
@@ -978,6 +978,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloaderBar = document.getElementById('preloader-bar');
   const preloaderText = document.getElementById('preloader-text');
   const heroBgVideo = document.getElementById('hero-bg-video');
+  const heroSection = document.getElementById('hero-section') || document.querySelector('section[aria-label="메인 비주얼"]');
+  const heroContentWrapper = document.getElementById('hero-content-wrapper');
+
+  /**
+   * Activates cybernetic kinetic text animation on hero containers
+   */
+  const triggerHeroAnimation = () => {
+    if (heroSection && !heroSection.classList.contains('hero-animated-active')) {
+      heroSection.classList.add('hero-animated-active');
+    }
+    if (heroContentWrapper && !heroContentWrapper.classList.contains('hero-animated-active')) {
+      heroContentWrapper.classList.add('hero-animated-active');
+    }
+  };
 
   if (preloader) {
     let isDismissed = false;
@@ -995,6 +1009,8 @@ document.addEventListener('DOMContentLoaded', () => {
           heroBgVideo.play().catch(() => {});
         }
         preloader.classList.add('opacity-0', 'pointer-events-none');
+        // Trigger kinetic hero animation right when preloader fades out
+        triggerHeroAnimation();
         setTimeout(() => {
           preloader.style.display = 'none';
         }, 750);
@@ -1033,6 +1049,32 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       setTimeout(dismissPreloader, 400);
     }
+  }
+
+  // Safety Fallback Guard: Trigger hero kinetic text animation within 300ms if no preloader or delayed
+  if (!preloader) {
+    setTimeout(triggerHeroAnimation, 300);
+  } else {
+    setTimeout(triggerHeroAnimation, 2800);
+  }
+
+  // IntersectionObserver safety guard for hero section
+  const heroObserverTarget = heroSection || heroContentWrapper;
+  if (heroObserverTarget && 'IntersectionObserver' in window) {
+    const heroAnimationObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!preloader || preloader.style.display === 'none' || preloader.classList.contains('opacity-0')) {
+            triggerHeroAnimation();
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, {
+      rootMargin: '0px',
+      threshold: 0.1,
+    });
+    heroAnimationObserver.observe(heroObserverTarget);
   }
 });
 
