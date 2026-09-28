@@ -652,7 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 10-B. Hero Atmospheric Depth & Smooth Scroll Transition
-  const heroSection = document.querySelector('main > section:first-of-type');
+  const heroSection = document.getElementById('hero-section') || document.querySelector('main > section:first-of-type') || document.querySelector('section[aria-label="메인 비주얼"]');
   const heroVideoContainer = document.getElementById('hero-video-container');
   const heroContentWrapper = document.getElementById('hero-content-wrapper');
   if (heroVideoContainer || heroContentWrapper) {
@@ -978,8 +978,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloaderBar = document.getElementById('preloader-bar');
   const preloaderText = document.getElementById('preloader-text');
   const heroBgVideo = document.getElementById('hero-bg-video');
-  const heroSection = document.getElementById('hero-section') || document.querySelector('section[aria-label="메인 비주얼"]');
-  const heroContentWrapper = document.getElementById('hero-content-wrapper');
 
   /**
    * Activates cybernetic kinetic text animation on hero containers
