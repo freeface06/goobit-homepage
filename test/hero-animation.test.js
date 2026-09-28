@@ -1,7 +1,7 @@
 /**
- * @intent Test suite for AI Prompt Typing Animation and Neon Amber Cursor System
+ * @intent Test suite for AI Prompt Typing Animation and Living Aurora Text Gradient Restoration
  * @agent  manager-develop
- * @branch task-hero-ai-typing-motion
+ * @branch task-hero-aurora-text-gradient-restoration
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -32,7 +32,7 @@ function runTest(testName, testFn) {
 }
 
 console.log('================================================================');
-console.log('Starting Hero AI Prompt Typing Animation Test Suite');
+console.log('Starting Hero AI Prompt Typing & Living Aurora Text Gradient Test Suite');
 console.log('================================================================');
 
 // Read files
@@ -51,10 +51,10 @@ runTest('Strict No-Emoji Policy: index.html must not contain unicode emoji in he
   assert.strictEqual(emojiRegex.test(heroMatch[0]), false, 'Hero section in index.html must not contain emoji');
 });
 
-runTest('Strict No-Emoji Policy: css/style.css hero typing styles must not contain unicode emoji', () => {
+runTest('Strict No-Emoji Policy: css/style.css hero typing and aurora styles must not contain unicode emoji', () => {
   const typingBlockMatch = cssContent.match(/Hero AI Prompt Typing Motion[\s\S]*?Dedicated News Detail/);
   assert.ok(typingBlockMatch, 'Hero AI prompt typing style block must exist in style.css');
-  assert.strictEqual(emojiRegex.test(typingBlockMatch[0]), false, 'Typing styles must not contain emoji');
+  assert.strictEqual(emojiRegex.test(typingBlockMatch[0]), false, 'Typing and aurora styles must not contain emoji');
 });
 
 runTest('Strict No-Emoji Policy: js/main.js hero animation controller must not contain unicode emoji', () => {
@@ -68,22 +68,22 @@ runTest('Strict No-Emoji Policy: test script itself must not contain unicode emo
 });
 
 // 2. Annotation Metadata Verification
-runTest('Annotation: index.html must contain standard header and hero typing annotations', () => {
+runTest('Annotation: index.html must contain standard header and hero typing annotations with branch name', () => {
   assert.ok(htmlContent.includes('@intent') && htmlContent.includes('@agent') && htmlContent.includes('@branch'), 'Header comment annotation missing');
-  assert.ok(htmlContent.includes('task-hero-ai-typing-motion'), 'Branch task-hero-ai-typing-motion missing in index.html');
+  assert.ok(htmlContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in index.html');
 });
 
-runTest('Annotation: css/style.css must contain standard block annotations with task-hero-ai-typing-motion', () => {
+runTest('Annotation: css/style.css must contain standard block annotations with branch name', () => {
   assert.ok(cssContent.includes('@intent') && cssContent.includes('@agent') && cssContent.includes('@branch'), 'CSS block annotation missing');
-  assert.ok(cssContent.includes('task-hero-ai-typing-motion'), 'Branch task-hero-ai-typing-motion missing in css/style.css');
+  assert.ok(cssContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in css/style.css');
 });
 
-runTest('Annotation: js/main.js must contain standard block annotations with task-hero-ai-typing-motion', () => {
+runTest('Annotation: js/main.js must contain standard block annotations with branch name', () => {
   assert.ok(jsContent.includes('@intent') && jsContent.includes('@agent') && jsContent.includes('@branch'), 'JS block annotation missing');
-  assert.ok(jsContent.includes('task-hero-ai-typing-motion'), 'Branch task-hero-ai-typing-motion missing in js/main.js');
+  assert.ok(jsContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in js/main.js');
 });
 
-// 3. HTML Markup & Slogan Structure Verification
+// 3. HTML Markup & Exclusion Verification
 runTest('HTML Markup: h1 tag must have aria-label and accessible sr-only text for screen readers', () => {
   const h1Match = htmlContent.match(/<h1[^>]*aria-label="인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI (?:&amp;|&) DX"[^>]*>/);
   assert.ok(h1Match, 'h1 must contain required aria-label attribute');
@@ -101,25 +101,55 @@ runTest('HTML Markup: 3 Hero Type Line containers must exist with required IDs a
   assert.ok(htmlContent.includes('hero-type-line block min-h-[1.18em]'), 'hero-type-line class structure missing');
 });
 
-runTest('HTML Markup: Line 3 gradient target and neon amber cursor elements must exist', () => {
+runTest('HTML Markup: Line 3 gradient target must match exact restoration specification', () => {
   assert.ok(htmlContent.includes('id="hero-type-gradient-target"'), 'hero-type-gradient-target missing');
-  assert.ok(htmlContent.includes('from-amber-400 via-orange-300 to-amber-500'), 'Brand gold-amber gradient classes missing');
+  assert.ok(htmlContent.includes('class="hero-aurora-text bg-clip-text text-transparent"'), 'hero-aurora-text classes missing on gradient target');
+  assert.ok(
+    htmlContent.includes('<span id="hero-type-line-3" class="hero-type-line block min-h-[1.18em]"><span id="hero-type-gradient-target" class="hero-aurora-text bg-clip-text text-transparent"></span></span>'),
+    'Exact line-3 container structure must match specification'
+  );
+});
+
+runTest('Strict Exclusion: hero-glow-backdrop must NEVER exist in index.html', () => {
+  assert.strictEqual(htmlContent.includes('hero-glow-backdrop'), false, 'hero-glow-backdrop backdrop must NOT exist in index.html');
+});
+
+runTest('HTML Markup: Neon amber cursor elements and subtext must exist', () => {
   assert.ok(htmlContent.includes('id="hero-typing-cursor"'), 'hero-typing-cursor missing');
   assert.ok(htmlContent.includes('hero-typing-cursor'), 'hero-typing-cursor class missing');
   assert.ok(htmlContent.includes('bg-amber-400'), 'bg-amber-400 missing on cursor');
   assert.ok(htmlContent.includes('shadow-[0_0_12px_rgba(245,166,35,0.85)]'), 'Neon glow shadow missing on cursor');
-});
-
-runTest('HTML Markup: Subtext element must have id="hero-subtext" and .hero-subtext-reveal class', () => {
   assert.ok(htmlContent.includes('id="hero-subtext"'), 'id="hero-subtext" missing');
   assert.ok(htmlContent.includes('hero-subtext-reveal'), 'hero-subtext-reveal missing');
-  assert.ok(
-    htmlContent.includes('가치에 진심을 담다 | 공공·통신 10년의 미션 크리티컬 신뢰 위에 지식그래프와 자율 Agentic AI를 결합하여 기업의 진정한 AI 전환을 실현합니다.'),
-    'Subtext copy missing or mismatch'
-  );
 });
 
 // 4. CSS Keyframes and Styling Rules Verification
+runTest('CSS Keyframes: @keyframes heroAuroraShift must be defined with 0%, 50%, 100% background-position points', () => {
+  assert.ok(cssContent.includes('@keyframes heroAuroraShift'), '@keyframes heroAuroraShift missing');
+  const auroraKeyframes = cssContent.slice(cssContent.indexOf('@keyframes heroAuroraShift'));
+  const closingBraceIdx = auroraKeyframes.indexOf('}');
+  const fullBlock = auroraKeyframes.slice(0, auroraKeyframes.indexOf('}', closingBraceIdx + 15));
+  assert.ok(fullBlock.includes('background-position: 0% 50%'), '0% background-position missing');
+  assert.ok(fullBlock.includes('background-position: 100% 50%'), '50% background-position missing');
+});
+
+runTest('CSS Styling: .hero-aurora-text and #hero-type-gradient-target must implement full living aurora gradient specification', () => {
+  assert.ok(cssContent.includes('.hero-aurora-text'), '.hero-aurora-text selector missing');
+  assert.ok(cssContent.includes('#hero-type-gradient-target'), '#hero-type-gradient-target selector missing');
+  assert.ok(cssContent.includes('linear-gradient(135deg, #F5A623 0%, #FF7A00 25%, #FCD34D 50%, #38BDF8 75%, #F5A623 100%)'), 'Living aurora color stops missing');
+  assert.ok(cssContent.includes('background-size: 280% 280%'), 'background-size: 280% 280% missing');
+  assert.ok(cssContent.includes('-webkit-background-clip: text'), '-webkit-background-clip missing');
+  assert.ok(cssContent.includes('background-clip: text'), 'background-clip: text missing');
+  assert.ok(cssContent.includes('-webkit-text-fill-color: transparent'), '-webkit-text-fill-color missing');
+  assert.ok(cssContent.includes('display: inline-block'), 'display: inline-block missing');
+  assert.ok(cssContent.includes('animation: heroAuroraShift 8s ease-in-out infinite'), 'heroAuroraShift 8s ease-in-out infinite animation missing');
+  assert.ok(cssContent.includes('drop-shadow(0 2px 14px rgba(245, 166, 35, 0.35))'), 'drop-shadow glow filter missing');
+});
+
+runTest('Strict Exclusion: hero-glow-backdrop must NEVER exist in css/style.css', () => {
+  assert.strictEqual(cssContent.includes('hero-glow-backdrop'), false, 'hero-glow-backdrop styles must NOT exist in style.css');
+});
+
 runTest('CSS Keyframes: @keyframes heroCursorBlink must have high-visibility blinking opacity curve', () => {
   assert.ok(cssContent.includes('@keyframes heroCursorBlink'), '@keyframes heroCursorBlink missing');
   assert.ok(cssContent.includes('0%, 45%'), 'heroCursorBlink 0%, 45% missing');
@@ -128,20 +158,20 @@ runTest('CSS Keyframes: @keyframes heroCursorBlink must have high-visibility bli
   assert.ok(cssContent.includes('.hero-cursor-hidden'), '.hero-cursor-hidden missing');
 });
 
-runTest('CSS Timing & Composited Properties: cubic-bezier(0.16, 1, 0.3, 1) and composited properties only', () => {
+runTest('CSS Timing & Composited Properties: cubic-bezier(0.16, 1, 0.3, 1) and composited properties only for subtext', () => {
   assert.ok(cssContent.includes('cubic-bezier(0.16, 1, 0.3, 1)'), 'cubic-bezier(0.16, 1, 0.3, 1) must be used');
   assert.ok(cssContent.includes('.hero-subtext-reveal'), '.hero-subtext-reveal styles missing');
   assert.ok(cssContent.includes('.hero-subtext-active .hero-subtext-reveal') || cssContent.includes('.hero-subtext-reveal.revealed'), 'Subtext revealed rule missing');
 });
 
-runTest('CSS Accessibility: @media (prefers-reduced-motion: reduce) must disable blinking and reveal subtext instantly', () => {
+runTest('CSS Accessibility: @media (prefers-reduced-motion: reduce) must disable aurora animation and blinking', () => {
   assert.ok(cssContent.includes('@media (prefers-reduced-motion: reduce)'), '@media (prefers-reduced-motion: reduce) block missing');
   const typingBlock = cssContent.slice(cssContent.indexOf('Hero AI Prompt Typing Motion'));
   const reducedMotionIdx = typingBlock.indexOf('@media (prefers-reduced-motion: reduce)');
   assert.ok(reducedMotionIdx !== -1, 'Reduced motion block inside hero typing section missing');
   const reducedMotionSection = typingBlock.slice(reducedMotionIdx, typingBlock.indexOf('/* ===', reducedMotionIdx));
   assert.ok(reducedMotionSection.includes('animation: none !important'), 'Animation reset in reduced-motion missing');
-  assert.ok(reducedMotionSection.includes('opacity: 1 !important') || reducedMotionSection.includes('opacity: 0 !important'), 'Opacity reset in reduced-motion missing');
+  assert.ok(reducedMotionSection.includes('background-position: 0% 50% !important'), 'Aurora background-position reset in reduced-motion missing');
 });
 
 // 5. JS Controller Logic Verification
@@ -169,7 +199,6 @@ runTest('JS Controller: Integration with dismissPreloader, triggerHeroAnimation 
 
 // 6. Controller Simulation in Mock DOM Environment
 runTest('JS Simulation: initHeroTypingAnimation finishInstantly sets text and hides cursor', () => {
-  // Setup minimal DOM mocks
   const line1 = { textContent: '', appendChild: (c) => { line1._cursor = c; } };
   const line2 = { textContent: '', appendChild: (c) => { line2._cursor = c; } };
   const line3 = { textContent: '', appendChild: (c) => { line3._cursor = c; } };

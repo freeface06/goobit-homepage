@@ -995,10 +995,10 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
 }
 
 /* ==========================================================================
- * Hero AI Prompt Typing Motion & Neon Amber Cursor System
- * @intent AI prompt typing animation with neon amber cursor, smooth subtext reveal, and Krds accessibility
+ * Hero AI Prompt Typing Motion & Living Aurora Text Gradient System
+ * @intent Living Aurora Text Gradient restoration with AI typing animation and Krds accessibility
  * @agent  manager-develop
- * @branch task-hero-ai-typing-motion
+ * @branch task-hero-aurora-text-gradient-restoration
  * @author @goobit-dev
  * @date   2026-09-28
  * ========================================================================== */
@@ -1022,7 +1022,33 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   transition: opacity 0.8s ease-out;
 }
 
-/* 2. Hero Typing Elements and Lines */
+/* 2. Living Aurora Text Gradient Keyframes & Styles */
+@keyframes heroAuroraShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-aurora-text,
+#hero-type-gradient-target {
+  background-image: linear-gradient(135deg, #F5A623 0%, #FF7A00 25%, #FCD34D 50%, #38BDF8 75%, #F5A623 100%);
+  background-size: 280% 280%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  animation: heroAuroraShift 8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 14px rgba(245, 166, 35, 0.35));
+}
+
+/* 3. Hero Typing Elements and Lines */
 .hero-type-line {
   position: relative;
   letter-spacing: -0.02em;
@@ -1033,7 +1059,7 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   will-change: opacity;
 }
 
-/* 3. Subtext Reveal Transitions */
+/* 4. Subtext Reveal Transitions */
 .hero-subtext-reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -1049,7 +1075,7 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   filter: blur(0);
 }
 
-/* 4. Accessibility Support - prefers-reduced-motion: reduce */
+/* 5. Accessibility Support - prefers-reduced-motion: reduce */
 @media (prefers-reduced-motion: reduce) {
   .hero-cursor-blink {
     animation: none !important;
@@ -1057,6 +1083,11 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   .hero-typing-cursor {
     opacity: 0 !important;
     display: none !important;
+  }
+  .hero-aurora-text,
+  #hero-type-gradient-target {
+    animation: none !important;
+    background-position: 0% 50% !important;
   }
   .hero-subtext-reveal,
   .hero-subtext-active .hero-subtext-reveal,

@@ -1084,9 +1084,9 @@ if (typeof document !== 'undefined') {
 }
 
 /**
- * @intent AI Prompt Typing Motion Controller with Neon Amber Cursor
+ * @intent AI Prompt Typing Motion Controller with Living Aurora Text Gradient
  * @agent  manager-develop
- * @branch task-hero-ai-typing-motion
+ * @branch task-hero-aurora-text-gradient-restoration
  * @author @goobit-dev
  * @date   2026-09-28
  */
