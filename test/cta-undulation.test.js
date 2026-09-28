@@ -1,7 +1,7 @@
 /**
- * @intent Test suite for bottom CTA 3D luminous neon background organic wave undulation & breathing drift motion
+ * @intent Test suite for bottom CTA 3D luminous neon background ultra-subtle serene organic wave undulation & breathing drift motion
  * @agent  manager-develop
- * @branch feat/cta-background-undulation
+ * @branch feat/cta-undulation-subtle
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -60,24 +60,24 @@ runTest('Strict No-Emoji Policy: css/style.css CTA undulation styles must not co
 });
 
 // 2. Annotation Metadata Verification
-runTest('Annotation: index.html bottom CTA section must contain standard annotations with branch feat/cta-background-undulation', () => {
+runTest('Annotation: index.html bottom CTA section must contain standard annotations with branch feat/cta-undulation-subtle', () => {
   const ctaSecCommentMatch = indexHtmlContent.match(/<!-- 9\. BottomCta[\s\S]*?<section id="bottom-cta-section"/);
   assert.ok(ctaSecCommentMatch, 'CTA header comment block missing in index.html');
   const comment = ctaSecCommentMatch[0];
   assert.ok(comment.includes('@intent'), '@intent missing in CTA section annotation');
   assert.ok(comment.includes('@agent'), '@agent missing in CTA section annotation');
-  assert.ok(comment.includes('@branch feat/cta-background-undulation'), 'Branch feat/cta-background-undulation missing in CTA section annotation');
+  assert.ok(comment.includes('@branch feat/cta-undulation-subtle'), 'Branch feat/cta-undulation-subtle missing in CTA section annotation');
   assert.ok(comment.includes('@author'), '@author missing in CTA section annotation');
   assert.ok(comment.includes('@date'), '@date missing in CTA section annotation');
 });
 
-runTest('Annotation: css/style.css must contain standard block annotations with branch feat/cta-background-undulation', () => {
+runTest('Annotation: css/style.css must contain standard block annotations with branch feat/cta-undulation-subtle', () => {
   const ctaCssMatch = cssContent.match(/Bottom CTA Background Organic Wave Undulation[\s\S]*$/);
   assert.ok(ctaCssMatch, 'CTA style block missing in style.css');
   const block = ctaCssMatch[0];
   assert.ok(block.includes('@intent'), '@intent missing in style.css CTA annotation');
   assert.ok(block.includes('@agent'), '@agent missing in style.css CTA annotation');
-  assert.ok(block.includes('@branch feat/cta-background-undulation'), 'Branch feat/cta-background-undulation missing in style.css CTA annotation');
+  assert.ok(block.includes('@branch feat/cta-undulation-subtle'), 'Branch feat/cta-undulation-subtle missing in style.css CTA annotation');
   assert.ok(block.includes('@author'), '@author missing in style.css CTA annotation');
   assert.ok(block.includes('@date'), '@date missing in style.css CTA annotation');
 });
@@ -106,44 +106,45 @@ runTest('HTML Markup: .cta-wave-motion-wrap container must enclose animated imag
   assert.ok(fs.existsSync(imgPath), `Background image file must exist: ${imgPath}`);
 });
 
-runTest('HTML Markup: SVG fluid distortion ripple filter #cta-wave-ripple must be defined', () => {
+runTest('HTML Markup: SVG fluid distortion ripple filter #cta-wave-ripple must be tuned for ultra-subtle 30s micro-ripple', () => {
   assert.ok(indexHtmlContent.includes('id="cta-wave-ripple"'), '#cta-wave-ripple filter must exist in index.html');
   assert.ok(indexHtmlContent.includes('<feTurbulence'), 'feTurbulence element must exist inside SVG');
   assert.ok(indexHtmlContent.includes('attributeName="baseFrequency"'), 'Animated baseFrequency must exist inside feTurbulence');
+  assert.ok(indexHtmlContent.includes('dur="30s"'), 'Animation duration must be extended to 30s for slow serenity');
   assert.ok(indexHtmlContent.includes('<feDisplacementMap'), 'feDisplacementMap element must exist inside filter');
-  assert.ok(indexHtmlContent.includes('scale="18"'), 'Displacement scale must be set to 18');
+  assert.ok(indexHtmlContent.includes('scale="5"'), 'Displacement scale must be lowered to 5 for subtle undulation');
 });
 
 // 4. CSS Keyframes & Styles Verification
-runTest('CSS Styling: .cta-wave-animated-img must declare SVG ripple filter, dual animations, and will-change', () => {
+runTest('CSS Styling: .cta-wave-animated-img must declare 32s drift and 18s breathe animations with SVG filter', () => {
   assert.ok(cssContent.includes('.cta-wave-animated-img'), '.cta-wave-animated-img class missing in style.css');
   assert.ok(cssContent.includes('filter: url(#cta-wave-ripple) blur(0.3px)'), 'SVG ripple filter missing on animated img');
-  assert.ok(cssContent.includes('ctaWaveDrift 16s ease-in-out infinite alternate'), 'ctaWaveDrift animation declaration missing');
-  assert.ok(cssContent.includes('ctaWaveBreathe 8s ease-in-out infinite'), 'ctaWaveBreathe animation declaration missing');
+  assert.ok(cssContent.includes('ctaWaveDrift 32s ease-in-out infinite alternate'), 'ctaWaveDrift 32s animation declaration missing');
+  assert.ok(cssContent.includes('ctaWaveBreathe 18s ease-in-out infinite'), 'ctaWaveBreathe 18s animation declaration missing');
   assert.ok(cssContent.includes('will-change: transform, opacity, filter'), 'will-change declaration missing on animated img');
 });
 
-runTest('CSS Styling: .cta-wave-shimmer must declare radial gradient and ctaShimmerPulse animation', () => {
+runTest('CSS Styling: .cta-wave-shimmer must declare radial gradient and 22s ctaShimmerPulse animation', () => {
   assert.ok(cssContent.includes('.cta-wave-shimmer'), '.cta-wave-shimmer class missing in style.css');
-  assert.ok(cssContent.includes('ctaShimmerPulse 9s ease-in-out infinite alternate'), 'ctaShimmerPulse animation declaration missing');
+  assert.ok(cssContent.includes('ctaShimmerPulse 22s ease-in-out infinite alternate'), 'ctaShimmerPulse 22s animation declaration missing');
 });
 
-runTest('CSS Keyframes: @keyframes ctaWaveDrift must be defined with organic 2D/3D wave motion points', () => {
+runTest('CSS Keyframes: @keyframes ctaWaveDrift must be defined with micro-displacement wave motion points', () => {
   assert.ok(cssContent.includes('@keyframes ctaWaveDrift'), '@keyframes ctaWaveDrift missing in style.css');
   const driftMatch = cssContent.match(/@keyframes ctaWaveDrift\s*\{([\s\S]*?)\n\}/);
   assert.ok(driftMatch, 'ctaWaveDrift block could not be extracted');
   const body = driftMatch[1];
-  assert.ok(body.includes('scale('), 'ctaWaveDrift must contain scale transforms');
+  assert.ok(body.includes('scale(1.06)'), 'ctaWaveDrift must start with subtle scale(1.06)');
   assert.ok(body.includes('translate('), 'ctaWaveDrift must contain translate transforms');
   assert.ok(body.includes('rotate('), 'ctaWaveDrift must contain rotate transforms');
 });
 
-runTest('CSS Keyframes: @keyframes ctaWaveBreathe must pulse opacity and filter brightness', () => {
+runTest('CSS Keyframes: @keyframes ctaWaveBreathe must gently modulate opacity between 0.36 and 0.44', () => {
   assert.ok(cssContent.includes('@keyframes ctaWaveBreathe'), '@keyframes ctaWaveBreathe missing in style.css');
   const breatheMatch = cssContent.match(/@keyframes ctaWaveBreathe\s*\{([\s\S]*?)\n\}/);
   assert.ok(breatheMatch, 'ctaWaveBreathe block could not be extracted');
   const body = breatheMatch[1];
-  assert.ok(body.includes('opacity: 0.36') || body.includes('opacity: 0.52'), 'ctaWaveBreathe must modulate opacity');
+  assert.ok(body.includes('opacity: 0.36') && body.includes('opacity: 0.44'), 'ctaWaveBreathe must modulate opacity gently between 0.36 and 0.44');
   assert.ok(body.includes('brightness('), 'ctaWaveBreathe must modulate filter brightness');
 });
 
@@ -152,7 +153,7 @@ runTest('CSS Keyframes: @keyframes ctaShimmerPulse must modulate opacity and tra
   const shimmerMatch = cssContent.match(/@keyframes ctaShimmerPulse\s*\{([\s\S]*?)\n\}/);
   assert.ok(shimmerMatch, 'ctaShimmerPulse block could not be extracted');
   const body = shimmerMatch[1];
-  assert.ok(body.includes('opacity:'), 'ctaShimmerPulse must modulate opacity');
+  assert.ok(body.includes('opacity: 0.18') || body.includes('opacity: 0.32'), 'ctaShimmerPulse must modulate opacity');
   assert.ok(body.includes('transform: scale('), 'ctaShimmerPulse must modulate transform scale');
 });
 

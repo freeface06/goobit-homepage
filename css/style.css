@@ -1274,8 +1274,9 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
    ========================================================================== */
 
 /**
- * @intent Organic wave undulation & breathing drift motion for bottom CTA 3D luminous neon background
+ * @intent Ultra-subtle serene organic wave undulation & breathing drift motion for bottom CTA 3D luminous neon background
  * @agent  manager-develop
+ * @branch feat/cta-undulation-subtle
  * @branch feat/cta-background-undulation
  * @author @goobit-dev
  * @date   2026-09-28
@@ -1296,7 +1297,7 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   object-position: center;
   transform-origin: center center;
   filter: url(#cta-wave-ripple) blur(0.3px);
-  animation: ctaWaveDrift 16s ease-in-out infinite alternate, ctaWaveBreathe 8s ease-in-out infinite;
+  animation: ctaWaveDrift 32s ease-in-out infinite alternate, ctaWaveBreathe 18s ease-in-out infinite;
   will-change: transform, opacity, filter;
 }
 
@@ -1305,26 +1306,26 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   inset: 0;
   pointer-events: none;
   background: radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.45) 0%, rgba(236, 72, 153, 0.3) 40%, transparent 70%);
-  animation: ctaShimmerPulse 9s ease-in-out infinite alternate;
+  animation: ctaShimmerPulse 22s ease-in-out infinite alternate;
   will-change: transform, opacity;
 }
 
 /* 2D/3D Organic Floating Wave Drift Motion */
 @keyframes ctaWaveDrift {
   0% {
-    transform: scale(1.10) translate(0%, 0%) rotate(0deg);
+    transform: scale(1.06) translate(0%, 0%) rotate(0deg);
   }
   25% {
-    transform: scale(1.14) translate(1.4%, -1.6%) rotate(0.6deg);
+    transform: scale(1.08) translate(0.5%, -0.4%) rotate(0.2deg);
   }
   50% {
-    transform: scale(1.11) translate(-1.8%, 1.2%) rotate(-0.8deg);
+    transform: scale(1.07) translate(-0.6%, 0.4%) rotate(-0.25deg);
   }
   75% {
-    transform: scale(1.15) translate(-0.8%, -1.5%) rotate(0.5deg);
+    transform: scale(1.09) translate(-0.3%, -0.5%) rotate(0.15deg);
   }
   100% {
-    transform: scale(1.12) translate(1.5%, 1.0%) rotate(-0.5deg);
+    transform: scale(1.07) translate(0.5%, 0.3%) rotate(-0.15deg);
   }
 }
 
@@ -1335,24 +1336,24 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
     filter: url(#cta-wave-ripple) blur(0.3px) brightness(1.0);
   }
   50% {
-    opacity: 0.52;
-    filter: url(#cta-wave-ripple) blur(0.3px) brightness(1.18);
+    opacity: 0.44;
+    filter: url(#cta-wave-ripple) blur(0.3px) brightness(1.08);
   }
 }
 
 /* Ambient Cyan & Pink Ribbon Surface Aurora Shimmer */
 @keyframes ctaShimmerPulse {
   0% {
-    opacity: 0.20;
+    opacity: 0.18;
     transform: scale(1.0) translate(0%, 0%);
   }
   50% {
-    opacity: 0.45;
-    transform: scale(1.10) translate(1.8%, -1.2%);
+    opacity: 0.32;
+    transform: scale(1.05) translate(0.8%, -0.6%);
   }
   100% {
-    opacity: 0.25;
-    transform: scale(0.96) translate(-1.6%, 1.0%);
+    opacity: 0.22;
+    transform: scale(0.98) translate(-0.7%, 0.5%);
   }
 }
 
