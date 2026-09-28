@@ -1368,3 +1368,34 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
   }
 }
 
+/* ==========================================================================
+   Map High-Visibility Marker Animations
+   @intent Enterprise map location pin subtle breathing bounce motion and accessibility
+   @agent manager-develop
+   @branch feat/map-marker-and-app-links
+   @author @goobit-dev
+   @date 2026-09-28
+   ========================================================================== */
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translate(-50%, -100%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -100%) translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce-gentle {
+    animation: none !important;
+    transform: translate(-50%, -100%) !important;
+  }
+}
+
+
