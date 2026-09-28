@@ -2,9 +2,9 @@
 <html lang="ko" class="scroll-smooth">
 <head>
   <!--
-   * @intent Complete Main Landing Page with hero kinetic typography, top scroll progress, expanding video showcase, 4-stat metrics, AI highlights, product suite, case studies, card news preview, and bright-tone footer
+   * @intent Complete Main Landing Page with hero kinetic typography, unified telemetry HUD band, dark glassmorphism engineering cockpit deck, product suite, case studies, and KRDS accessibility
    * @agent  manager-develop
-   * @branch task-hero-kinetic-text-animation
+   * @branch task-metrics-and-domains-redesign
    * @author @goobit-dev
    * @date   2026-09-28
   -->
@@ -560,84 +560,121 @@
       </section>
     </div>
 
-    <!-- 4. StatBar (Social Proof 4-stat metrics in Light Prestigious Cards) -->
-    <section id="metrics-section" class="bg-white border-b border-slate-200/90 py-16 sm:py-20 lg:py-24 relative z-20 text-slate-900" aria-label="주요 실적 지표">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+    <!-- 4. StatBar: Unified High-Tech Telemetry HUD Band -->
+    <!--
+     * @intent Unified Telemetry HUD Metrics Band with interactive neon backlight beams and dark cybernetic precision grid
+     * @agent  manager-develop
+     * @branch task-metrics-and-domains-redesign
+     * @author @goobit-dev
+     * @date   2026-09-28
+    -->
+    <section id="metrics-section" class="bg-[#0A0F1D] border-y border-white/10 py-14 sm:py-18 lg:py-20 relative z-20 text-white overflow-hidden" aria-label="주요 실적 지표">
+      <!-- Ambient Cyber Glow & Precision Tech Dot Matrix Grid Overlay -->
+      <div class="absolute -top-24 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Unified High-Tech Telemetry HUD Band Container -->
+        <div class="telemetry-hud-band grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]" data-reveal data-delay="0">
           
-          <div class="h-full" data-reveal data-delay="0">
-            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-50/80 border border-slate-200/90 hover:border-amber-500/70 hover:bg-white hover:shadow-xl transition-all duration-300 group cursor-default h-full overflow-hidden">
-              <div class="flex items-center justify-between w-full mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 group-hover:bg-amber-50/50 transition-all duration-300">
-                  <i data-lucide="calendar" class="w-5 h-5 text-amber-500"></i>
-                </div>
-                <span class="text-[11px] font-bold tracking-wider text-slate-600 px-2.5 py-1 rounded-full bg-white border border-slate-200 uppercase">01 / TRACK RECORD</span>
+          <!-- Column 01: TRACK RECORD -->
+          <div class="telemetry-hud-col p-6 sm:p-8 lg:p-8 flex flex-col justify-between group cursor-default relative overflow-hidden transition-all duration-300">
+            <!-- Neon HUD Beam Backlight -->
+            <div class="telemetry-col-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,rgba(245,158,11,0.18)_0%,transparent_70%)]"></div>
+
+            <div class="relative z-10 flex items-center justify-between w-full mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 group-hover:bg-amber-500/20 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all duration-300">
+                <i data-lucide="calendar" class="w-5 h-5 text-amber-400"></i>
               </div>
-              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
-                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-slate-950 tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="10" data-suffix="+">10+</span>
-                  <span class="text-sm sm:text-base font-bold text-amber-600 shrink-0">년</span>
-                </div>
-                <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight break-keep">엔터프라이즈 업력</div>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal break-keep break-words">2015년 법인 설립 이래 미션 크리티컬 SI/ITO 전담</p>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 group-hover:border-amber-400/40 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-amber-300 uppercase">01 / TRACK RECORD</span>
               </div>
+            </div>
+
+            <div class="relative z-10 space-y-2.5 min-w-0 w-full flex-1 flex flex-col justify-end">
+              <div class="flex items-baseline gap-2 flex-wrap min-w-0">
+                <span class="stat-counter text-4xl sm:text-5xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="10" data-suffix="+">10+</span>
+                <span class="text-base sm:text-lg font-bold text-amber-400 shrink-0">년</span>
+              </div>
+              <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep group-hover:text-amber-200 transition-colors">엔터프라이즈 업력</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep break-words">2015년 법인 설립 이래 미션 크리티컬 SI/ITO 전담</p>
             </div>
           </div>
 
-          <div class="h-full" data-reveal data-delay="120">
-            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-50/80 border border-slate-200/90 hover:border-cyan-500/70 hover:bg-white hover:shadow-xl transition-all duration-300 group cursor-default h-full overflow-hidden">
-              <div class="flex items-center justify-between w-full mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-400 group-hover:bg-cyan-50/50 transition-all duration-300">
-                  <i data-lucide="check-square" class="w-5 h-5 text-cyan-600"></i>
-                </div>
-                <span class="text-[11px] font-bold tracking-wider text-slate-600 px-2.5 py-1 rounded-full bg-white border border-slate-200 uppercase">02 / PROJECTS</span>
+          <!-- Column 02: PROJECTS -->
+          <div class="telemetry-hud-col p-6 sm:p-8 lg:p-8 flex flex-col justify-between group cursor-default relative overflow-hidden transition-all duration-300">
+            <!-- Neon HUD Beam Backlight -->
+            <div class="telemetry-col-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,rgba(6,182,212,0.18)_0%,transparent_70%)]"></div>
+
+            <div class="relative z-10 flex items-center justify-between w-full mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-cyan-400 group-hover:bg-cyan-500/20 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all duration-300">
+                <i data-lucide="check-square" class="w-5 h-5 text-cyan-400"></i>
               </div>
-              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
-                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-slate-950 tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="100" data-suffix="+">100+</span>
-                  <span class="text-sm sm:text-base font-bold text-amber-600 shrink-0">건</span>
-                </div>
-                <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight break-keep">메이저 프로젝트 완수</div>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal break-keep break-words">중앙부처, 지자체, 통신 대기업 정보화 레퍼런스</p>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 group-hover:border-cyan-400/40 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span class="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-cyan-300 uppercase">02 / PROJECTS</span>
               </div>
+            </div>
+
+            <div class="relative z-10 space-y-2.5 min-w-0 w-full flex-1 flex flex-col justify-end">
+              <div class="flex items-baseline gap-2 flex-wrap min-w-0">
+                <span class="stat-counter text-4xl sm:text-5xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="100" data-suffix="+">100+</span>
+                <span class="text-base sm:text-lg font-bold text-amber-400 shrink-0">건</span>
+              </div>
+              <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep group-hover:text-cyan-200 transition-colors">메이저 프로젝트 완수</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep break-words">중앙부처, 지자체, 통신 대기업 정보화 레퍼런스</p>
             </div>
           </div>
 
-          <div class="h-full" data-reveal data-delay="240">
-            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-50/80 border border-slate-200/90 hover:border-amber-500/70 hover:bg-white hover:shadow-xl transition-all duration-300 group cursor-default h-full overflow-hidden">
-              <div class="flex items-center justify-between w-full mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 group-hover:bg-amber-50/50 transition-all duration-300">
-                  <i data-lucide="activity" class="w-5 h-5 text-amber-500"></i>
-                </div>
-                <span class="text-[11px] font-bold tracking-wider text-slate-600 px-2.5 py-1 rounded-full bg-white border border-slate-200 uppercase">03 / AVAILABILITY</span>
+          <!-- Column 03: AVAILABILITY -->
+          <div class="telemetry-hud-col p-6 sm:p-8 lg:p-8 flex flex-col justify-between group cursor-default relative overflow-hidden transition-all duration-300">
+            <!-- Neon HUD Beam Backlight -->
+            <div class="telemetry-col-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,rgba(245,158,11,0.18)_0%,transparent_70%)]"></div>
+
+            <div class="relative z-10 flex items-center justify-between w-full mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-amber-400 group-hover:bg-amber-500/20 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all duration-300">
+                <i data-lucide="activity" class="w-5 h-5 text-amber-400"></i>
               </div>
-              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
-                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-slate-950 tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="99.9" data-decimals="1" data-suffix="%">99.9%</span>
-                  <span class="text-sm sm:text-base font-bold text-amber-600 shrink-0">가용성</span>
-                </div>
-                <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight break-keep">무중단 서비스 연속성</div>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal break-keep break-words">일 트래픽 5,000만 뷰 통신 포털 8개년 연속 무장애</p>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 group-hover:border-amber-400/40 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-amber-300 uppercase">03 / AVAILABILITY</span>
               </div>
+            </div>
+
+            <div class="relative z-10 space-y-2.5 min-w-0 w-full flex-1 flex flex-col justify-end">
+              <div class="flex items-baseline gap-2 flex-wrap min-w-0">
+                <span class="stat-counter text-4xl sm:text-5xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="99.9" data-decimals="1" data-suffix="%">99.9%</span>
+                <span class="text-base sm:text-lg font-bold text-amber-400 shrink-0">가용성</span>
+              </div>
+              <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep group-hover:text-amber-200 transition-colors">무중단 서비스 연속성</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep break-words">일 트래픽 5,000만 뷰 통신 포털 8개년 연속 무장애</p>
             </div>
           </div>
 
-          <div class="h-full" data-reveal data-delay="360">
-            <div class="flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-slate-50/80 border border-slate-200/90 hover:border-blue-500/70 hover:bg-white hover:shadow-xl transition-all duration-300 group cursor-default h-full overflow-hidden">
-              <div class="flex items-center justify-between w-full mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-blue-400 group-hover:bg-blue-50/50 transition-all duration-300">
-                  <i data-lucide="handshake" class="w-5 h-5 text-blue-600"></i>
-                </div>
-                <span class="text-[11px] font-bold tracking-wider text-slate-600 px-2.5 py-1 rounded-full bg-white border border-slate-200 uppercase">04 / PARTNERS</span>
+          <!-- Column 04: PARTNERS -->
+          <div class="telemetry-hud-col p-6 sm:p-8 lg:p-8 flex flex-col justify-between group cursor-default relative overflow-hidden transition-all duration-300">
+            <!-- Neon HUD Beam Backlight -->
+            <div class="telemetry-col-glow absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.18)_0%,transparent_70%)]"></div>
+
+            <div class="relative z-10 flex items-center justify-between w-full mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-blue-400 group-hover:bg-blue-500/20 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <i data-lucide="handshake" class="w-5 h-5 text-blue-400"></i>
               </div>
-              <div class="space-y-2 min-w-0 w-full flex-1 flex flex-col justify-end">
-                <div class="flex items-baseline gap-1.5 flex-wrap min-w-0">
-                  <span class="stat-counter text-3xl sm:text-4xl lg:text-3xl xl:text-4xl font-black text-slate-950 tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="15" data-suffix="+">15+</span>
-                  <span class="text-sm sm:text-base font-bold text-amber-600 shrink-0">개사</span>
-                </div>
-                <div class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight break-keep">핵심 고객사 &amp; 파트너</div>
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal break-keep break-words">KT, 농림축산식품부, 서울시향 등 장기 파트너십</p>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 group-hover:border-blue-400/40 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                <span class="text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-blue-300 uppercase">04 / PARTNERS</span>
               </div>
+            </div>
+
+            <div class="relative z-10 space-y-2.5 min-w-0 w-full flex-1 flex flex-col justify-end">
+              <div class="flex items-baseline gap-2 flex-wrap min-w-0">
+                <span class="stat-counter text-4xl sm:text-5xl font-black text-white tracking-tight group-hover:scale-105 inline-block transition-transform duration-200 origin-left" data-target="15" data-suffix="+">15+</span>
+                <span class="text-base sm:text-lg font-bold text-amber-400 shrink-0">개사</span>
+              </div>
+              <div class="text-base sm:text-lg font-extrabold text-white tracking-tight break-keep group-hover:text-blue-200 transition-colors">핵심 고객사 &amp; 파트너</div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal break-keep break-words">KT, 농림축산식품부, 서울시향 등 장기 파트너십</p>
             </div>
           </div>
 
@@ -864,257 +901,267 @@
       </div>
     </section>
 
-    <!-- 6. ServiceSection: Mission-Critical Engineering Matrix (Bright White Theme) -->
-    <section id="services-matrix-section" class="py-24 sm:py-28 lg:py-32 bg-slate-50 text-slate-900 border-t border-slate-200/80 relative overflow-hidden" aria-label="구비트 사업 영역">
-      <!-- Ambient Cyber Glows -->
-      <div class="absolute top-1/3 -right-40 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-10 -left-40 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- 6. ServiceSection: Dark Glassmorphism Engineering Cockpit Deck -->
+    <!--
+     * @intent Dark Glassmorphism Engineering Cockpit Deck redesign with neon blueprints and 3-step pipeline rails
+     * @agent  manager-develop
+     * @branch task-metrics-and-domains-redesign
+     * @author @goobit-dev
+     * @date   2026-09-28
+    -->
+    <section id="services-matrix-section" class="py-24 sm:py-28 lg:py-32 bg-[#070B16] text-white border-t border-white/10 relative overflow-hidden" aria-label="구비트 사업 영역">
+      <!-- 4 Ambient Aura Glows in 4 Corners & Fine Blueprint Grid -->
+      <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
       
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Header -->
         <div class="text-center max-w-4xl mx-auto mb-14 sm:mb-18 lg:mb-20 space-y-4" data-reveal data-delay="0">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs sm:text-sm font-extrabold text-blue-700 shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-blue-400/30 text-xs sm:text-sm font-extrabold text-blue-300 shadow-lg backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
             <span>MISSION-CRITICAL ENGINEERING</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-snug">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-snug">
             전문 엔지니어링 서비스 영역
           </h2>
-          <p class="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
+          <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
             공공 행정부터 대용량 통신망, 에듀테크, 엔터프라이즈 AI 컨설팅까지 대한민국 핵심 인프라를 지탱하는 4대 엔지니어링 역량을 제공합니다.
           </p>
         </div>
 
-        <!-- 4-Domain Cockpit Matrix (2x2 Grid) -->
+        <!-- 4-Domain Glass Blueprint Cockpit Panels (2x2 Grid) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-8">
           
-          <!-- Domain 1: 공공 정보화 SI -->
+          <!-- Domain 1: 공공 정보화 SI (Theme: Neon Cyan) -->
           <div class="h-full" data-reveal data-delay="0">
-            <div class="service-matrix-card bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-6 sm:p-8 lg:p-9 flex flex-col justify-between hover:border-cyan-500/70 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group h-full shadow-xs">
+            <div class="domain-cockpit-panel domain-panel-cyan bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur-2xl border border-white/10 hover:border-white/30 rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group h-full relative overflow-hidden">
               <div class="space-y-6">
                 <!-- Top Header & Code -->
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="p-3 sm:p-3.5 rounded-xl bg-cyan-50 border border-cyan-200 text-cyan-600 group-hover:scale-105 transition-transform">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 group-hover:bg-cyan-500/20 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-all">
                       <i data-lucide="landmark" class="w-6 h-6"></i>
                     </div>
                     <div>
-                      <div class="text-[10px] sm:text-xs font-mono font-bold text-cyan-700 tracking-wider">DOMAIN // 01</div>
-                      <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-cyan-700 transition-colors">공공 정보화 SI</h3>
+                      <div class="text-[10px] sm:text-xs font-mono font-bold text-cyan-400 tracking-wider">DOMAIN // 01</div>
+                      <h3 class="text-xl sm:text-2xl font-black text-white group-hover:text-cyan-300 transition-colors">공공 정보화 SI</h3>
                     </div>
                   </div>
-                  <a href="services.html#public-si" class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-cyan-700 group-hover:border-cyan-300 group-hover:bg-cyan-50 transition-all" title="서비스 상세 보기">
+                  <a href="services.html#public-si" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-slate-300 group-hover:text-cyan-400 group-hover:border-cyan-400/60 group-hover:bg-cyan-500/10 transition-all" title="서비스 상세 보기">
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                   </a>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                   전자정부 표준프레임워크 기반 공공 행정 포털 및 대국민 정보화 시스템을 수립하고 국가 지정 웹 접근성(WA) 및 보안 규격을 완벽하게 충족합니다.
                 </p>
 
                 <!-- 3-Step Engineering Rail -->
                 <div class="space-y-2">
-                  <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">엔지니어링 표준 프로세스</div>
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">엔지니어링 표준 프로세스</div>
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">표준 아키텍처</div>
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">웹 접근성 100%</div>
-                    <div class="py-1.5 px-1 rounded bg-cyan-50 border border-cyan-200 text-cyan-800 font-bold">국정원 보안검증</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-cyan-400/40 hover:text-white transition-all">표준 아키텍처</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-cyan-400/40 hover:text-white transition-all">웹 접근성 100%</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 font-bold hover:bg-cyan-500/25 transition-all">국정원 보안검증</div>
                   </div>
                 </div>
 
                 <!-- Client Chips -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-cyan-50 text-cyan-800 border border-cyan-200">농림축산식품부</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-cyan-50 text-cyan-800 border border-cyan-200">국립농산물품질관리원</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">중앙부처 공공기관</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-cyan-400/30">농림축산식품부</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-cyan-400/30">국립농산물품질관리원</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-cyan-400/30">중앙부처 공공기관</span>
                 </div>
               </div>
 
               <!-- Bottom Metric Bar -->
-              <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">15개 산하 기관 연계 통합</span>
-                <span class="font-extrabold text-cyan-800 bg-cyan-50 px-2.5 py-1 rounded-md border border-cyan-200">보안 침해 사고 0건</span>
+              <div class="pt-5 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-mono">15개 산하 기관 연계 통합</span>
+                <span class="font-extrabold text-cyan-300 bg-cyan-500/15 px-2.5 py-1 rounded-md border border-cyan-400/30 shadow-[0_0_10px_rgba(6,182,212,0.15)]">보안 침해 사고 0건</span>
               </div>
             </div>
           </div>
 
-          <!-- Domain 2: 통신·미디어 ITO -->
+          <!-- Domain 2: 통신·미디어 ITO (Theme: Electric Pink) -->
           <div class="h-full" data-reveal data-delay="120">
-            <div class="service-matrix-card bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-6 sm:p-8 lg:p-9 flex flex-col justify-between hover:border-pink-500/70 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group h-full shadow-xs">
+            <div class="domain-cockpit-panel domain-panel-pink bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur-2xl border border-white/10 hover:border-white/30 rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group h-full relative overflow-hidden">
               <div class="space-y-6">
                 <!-- Top Header & Code -->
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="p-3 sm:p-3.5 rounded-xl bg-pink-50 border border-pink-200 text-pink-600 group-hover:scale-105 transition-transform">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-pink-500/10 border border-pink-400/30 text-pink-400 group-hover:scale-105 group-hover:border-pink-400 group-hover:bg-pink-500/20 group-hover:shadow-[0_0_15px_rgba(244,63,94,0.3)] transition-all">
                       <i data-lucide="radio" class="w-6 h-6"></i>
                     </div>
                     <div>
-                      <div class="text-[10px] sm:text-xs font-mono font-bold text-pink-700 tracking-wider">DOMAIN // 02</div>
-                      <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-pink-700 transition-colors">통신·미디어 ITO</h3>
+                      <div class="text-[10px] sm:text-xs font-mono font-bold text-pink-400 tracking-wider">DOMAIN // 02</div>
+                      <h3 class="text-xl sm:text-2xl font-black text-white group-hover:text-pink-300 transition-colors">통신·미디어 ITO</h3>
                     </div>
                   </div>
-                  <a href="services.html#telecom-ito" class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-pink-700 group-hover:border-pink-300 group-hover:bg-pink-50 transition-all" title="서비스 상세 보기">
+                  <a href="services.html#telecom-ito" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-slate-300 group-hover:text-pink-400 group-hover:border-pink-400/60 group-hover:bg-pink-500/10 transition-all" title="서비스 상세 보기">
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                   </a>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                   일 트래픽 5,000만 뷰 이상의 미션 크리티컬 대용량 통신망 포털을 8개년 연속 무중단으로 운영하며 국가 최고 수준의 SLA 99.99%를 유지합니다.
                 </p>
 
                 <!-- 3-Step Engineering Rail -->
                 <div class="space-y-2">
-                  <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">무중단 분산 운영 프로세스</div>
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">무중단 분산 운영 프로세스</div>
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">5천만 트래픽 분산</div>
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">24/7/365 관제</div>
-                    <div class="py-1.5 px-1 rounded bg-pink-50 border border-pink-200 text-pink-800 font-bold">SLA 99.99%</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-pink-400/40 hover:text-white transition-all">5천만 트래픽 분산</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-pink-400/40 hover:text-white transition-all">24/7/365 관제</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-pink-500/15 border border-pink-400/40 text-pink-300 font-bold hover:bg-pink-500/25 transition-all">SLA 99.99%</div>
                   </div>
                 </div>
 
                 <!-- Client Chips -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-pink-50 text-pink-800 border border-pink-200">KT 올레닷컴</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-pink-50 text-pink-800 border border-pink-200">KT C-Cube 미디어</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">대용량 분산 ITO</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-pink-400/30">KT 올레닷컴</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-pink-400/30">KT C-Cube 미디어</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-pink-400/30">대용량 분산 ITO</span>
                 </div>
               </div>
 
               <!-- Bottom Metric Bar -->
-              <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">8개년 연속 전담 운영</span>
-                <span class="font-extrabold text-pink-800 bg-pink-50 px-2.5 py-1 rounded-md border border-pink-200">가용성 99.99% 무중단</span>
+              <div class="pt-5 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-mono">8개년 연속 전담 운영</span>
+                <span class="font-extrabold text-pink-300 bg-pink-500/15 px-2.5 py-1 rounded-md border border-pink-400/30 shadow-[0_0_10px_rgba(244,63,94,0.15)]">가용성 99.99% 무중단</span>
               </div>
             </div>
           </div>
 
-          <!-- Domain 3: 스마트 교육 & 에듀테크 -->
+          <!-- Domain 3: 스마트 교육 & 에듀테크 (Theme: Royal Blue) -->
           <div class="h-full" data-reveal data-delay="240">
-            <div class="service-matrix-card bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-6 sm:p-8 lg:p-9 flex flex-col justify-between hover:border-blue-500/70 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group h-full shadow-xs">
+            <div class="domain-cockpit-panel domain-panel-blue bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur-2xl border border-white/10 hover:border-white/30 rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group h-full relative overflow-hidden">
               <div class="space-y-6">
                 <!-- Top Header & Code -->
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="p-3 sm:p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 group-hover:scale-105 transition-transform">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-blue-500/10 border border-blue-400/30 text-blue-400 group-hover:scale-105 group-hover:border-blue-400 group-hover:bg-blue-500/20 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all">
                       <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                     </div>
                     <div>
-                      <div class="text-[10px] sm:text-xs font-mono font-bold text-blue-700 tracking-wider">DOMAIN // 03</div>
-                      <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-blue-700 transition-colors">스마트 교육 &amp; 에듀테크</h3>
+                      <div class="text-[10px] sm:text-xs font-mono font-bold text-blue-400 tracking-wider">DOMAIN // 03</div>
+                      <h3 class="text-xl sm:text-2xl font-black text-white group-hover:text-blue-300 transition-colors">스마트 교육 &amp; 에듀테크</h3>
                     </div>
                   </div>
-                  <a href="services.html#edutech" class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-blue-700 group-hover:border-blue-300 group-hover:bg-blue-50 transition-all" title="서비스 상세 보기">
+                  <a href="services.html#edutech" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-slate-300 group-hover:text-blue-400 group-hover:border-blue-400/60 group-hover:bg-blue-500/10 transition-all" title="서비스 상세 보기">
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                   </a>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                   클라우드 기반 대용량 SaaS 학습 플랫폼을 구축하고 직무별 맞춤형 추천 알고리즘을 결합하여 기업 교육 이수율과 참여도를 극대화합니다.
                 </p>
 
                 <!-- 3-Step Engineering Rail -->
                 <div class="space-y-2">
-                  <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">에듀테크 엔진 아키텍처</div>
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">에듀테크 엔진 아키텍처</div>
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">3만 명 동시 접속</div>
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">개인화 추천 AI</div>
-                    <div class="py-1.5 px-1 rounded bg-blue-50 border border-blue-200 text-blue-800 font-bold">이수율 +35% 향상</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-blue-400/40 hover:text-white transition-all">3만 명 동시 접속</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-blue-400/40 hover:text-white transition-all">개인화 추천 AI</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-blue-500/15 border border-blue-400/40 text-blue-300 font-bold hover:bg-blue-500/25 transition-all">이수율 +35% 향상</div>
                   </div>
                 </div>
 
                 <!-- Client Chips -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-blue-50 text-blue-800 border border-blue-200">현대자동차 글로벌 인재원</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-blue-50 text-blue-800 border border-blue-200">동아출판</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">두산에듀테크</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-blue-400/30">현대자동차 글로벌 인재원</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-blue-400/30">동아출판</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-blue-400/30">두산에듀테크</span>
                 </div>
               </div>
 
               <!-- Bottom Metric Bar -->
-              <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">임직원 30,000명 수용</span>
-                <span class="font-extrabold text-blue-800 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">추천 정확도 94.2%</span>
+              <div class="pt-5 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-mono">임직원 30,000명 수용</span>
+                <span class="font-extrabold text-blue-300 bg-blue-500/15 px-2.5 py-1 rounded-md border border-blue-400/30 shadow-[0_0_10px_rgba(59,130,246,0.15)]">추천 정확도 94.2%</span>
               </div>
             </div>
           </div>
 
-          <!-- Domain 4: AI & 클라우드 컨설팅 -->
+          <!-- Domain 4: AI & 클라우드 컨설팅 (Theme: Gold Amber) -->
           <div class="h-full" data-reveal data-delay="360">
-            <div class="service-matrix-card bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 p-6 sm:p-8 lg:p-9 flex flex-col justify-between hover:border-amber-500/70 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group h-full shadow-xs">
+            <div class="domain-cockpit-panel domain-panel-amber bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur-2xl border border-white/10 hover:border-white/30 rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group h-full relative overflow-hidden">
               <div class="space-y-6">
                 <!-- Top Header & Code -->
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-3">
-                    <div class="p-3 sm:p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-600 group-hover:scale-105 transition-transform">
+                    <div class="p-3 sm:p-3.5 rounded-xl bg-amber-500/10 border border-amber-400/30 text-amber-400 group-hover:scale-105 group-hover:border-amber-400 group-hover:bg-amber-500/20 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all">
                       <i data-lucide="compass" class="w-6 h-6"></i>
                     </div>
                     <div>
-                      <div class="text-[10px] sm:text-xs font-mono font-bold text-amber-700 tracking-wider">DOMAIN // 04</div>
-                      <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-amber-700 transition-colors">AI &amp; 클라우드 컨설팅</h3>
+                      <div class="text-[10px] sm:text-xs font-mono font-bold text-amber-400 tracking-wider">DOMAIN // 04</div>
+                      <h3 class="text-xl sm:text-2xl font-black text-white group-hover:text-amber-300 transition-colors">AI &amp; 클라우드 컨설팅</h3>
                     </div>
                   </div>
-                  <a href="services.html#consulting" class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-amber-700 group-hover:border-amber-300 group-hover:bg-amber-50 transition-all" title="서비스 상세 보기">
+                  <a href="services.html#consulting" class="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-slate-300 group-hover:text-amber-400 group-hover:border-amber-400/60 group-hover:bg-amber-500/10 transition-all" title="서비스 상세 보기">
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                   </a>
                 </div>
 
-                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                   사내 폐쇄망 환경을 위한 온프레미스 sLLM 도입, RAG 파이프라인 검증, 마이크로서비스 클라우드 네이티브 전환 전략을 컨설팅합니다.
                 </p>
 
                 <!-- 3-Step Engineering Rail -->
                 <div class="space-y-2">
-                  <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">엔터프라이즈 AI DX 로드맵</div>
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">엔터프라이즈 AI DX 로드맵</div>
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] sm:text-[11px] font-semibold">
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">지식자산화 PoC</div>
-                    <div class="py-1.5 px-1 rounded bg-slate-100 border border-slate-200 text-slate-700">망분리 sLLM 실증</div>
-                    <div class="py-1.5 px-1 rounded bg-amber-50 border border-amber-200 text-amber-800 font-bold">사내 RAG 안착</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-amber-400/40 hover:text-white transition-all">지식자산화 PoC</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 hover:border-amber-400/40 hover:text-white transition-all">망분리 sLLM 실증</div>
+                    <div class="engineering-rail-step py-2 px-1 rounded-lg bg-amber-500/15 border border-amber-400/40 text-amber-300 font-bold hover:bg-amber-500/25 transition-all">사내 RAG 안착</div>
                   </div>
                 </div>
 
                 <!-- Client Chips -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-200">엔터프라이즈 대기업</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-200">공공 DX 추진단</span>
-                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200">제조·금융 그룹</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-amber-400/30">엔터프라이즈 대기업</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-amber-400/30">공공 DX 추진단</span>
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/[0.05] text-slate-200 border border-white/10 group-hover:border-amber-400/30">제조·금융 그룹</span>
                 </div>
               </div>
 
               <!-- Bottom Metric Bar -->
-              <div class="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500 font-mono">외부 데이터 유출 0%</span>
-                <span class="font-extrabold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">검색 정확도 98.7%</span>
+              <div class="pt-5 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-mono">외부 데이터 유출 0%</span>
+                <span class="font-extrabold text-amber-300 bg-amber-500/15 px-2.5 py-1 rounded-md border border-amber-400/30 shadow-[0_0_10px_rgba(245,158,11,0.15)]">검색 정확도 98.7%</span>
               </div>
             </div>
           </div>
 
         </div>
 
-        <!-- Engineering Lifecycle Framework Bar -->
-        <div class="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-sm">
+        <!-- Engineering Lifecycle Framework Bar (Unified Dark Glassmorphism) -->
+        <div class="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-2xl">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div class="space-y-1">
-              <div class="text-[10px] sm:text-xs font-mono font-bold text-blue-700 uppercase tracking-wider">STANDARD METHODOLOGY</div>
-              <h4 class="text-lg sm:text-xl font-bold text-slate-900">구비트 엔터프라이즈 4단계 품질 보증 라이프사이클</h4>
-              <p class="text-xs sm:text-sm text-slate-600">철저한 사전 분석부터 설계, 구축, 24/7 무중단 운영까지 단일 책임 보장 체계를 운영합니다.</p>
+              <div class="text-[10px] sm:text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">STANDARD METHODOLOGY</div>
+              <h4 class="text-lg sm:text-xl font-bold text-white">구비트 엔터프라이즈 4단계 품질 보증 라이프사이클</h4>
+              <p class="text-xs sm:text-sm text-slate-300">철저한 사전 분석부터 설계, 구축, 24/7 무중단 운영까지 단일 책임 보장 체계를 운영합니다.</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 shrink-0">
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <div class="text-xs font-mono font-bold text-cyan-700">PHASE 01</div>
-                <div class="text-xs font-bold text-slate-900 mt-0.5">정밀 도메인 분석</div>
+              <div class="p-3.5 rounded-xl bg-white/[0.04] border border-cyan-400/20 text-center hover:border-cyan-400/50 transition-colors">
+                <div class="text-xs font-mono font-bold text-cyan-400">PHASE 01</div>
+                <div class="text-xs font-bold text-white mt-0.5">정밀 도메인 분석</div>
               </div>
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <div class="text-xs font-mono font-bold text-blue-700">PHASE 02</div>
-                <div class="text-xs font-bold text-slate-900 mt-0.5">클린 아키텍처 설계</div>
+              <div class="p-3.5 rounded-xl bg-white/[0.04] border border-blue-400/20 text-center hover:border-blue-400/50 transition-colors">
+                <div class="text-xs font-mono font-bold text-blue-400">PHASE 02</div>
+                <div class="text-xs font-bold text-white mt-0.5">클린 아키텍처 설계</div>
               </div>
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <div class="text-xs font-mono font-bold text-pink-700">PHASE 03</div>
-                <div class="text-xs font-bold text-slate-900 mt-0.5">애자일 구축 &amp; 검증</div>
+              <div class="p-3.5 rounded-xl bg-white/[0.04] border border-pink-400/20 text-center hover:border-pink-400/50 transition-colors">
+                <div class="text-xs font-mono font-bold text-pink-400">PHASE 03</div>
+                <div class="text-xs font-bold text-white mt-0.5">애자일 구축 &amp; 검증</div>
               </div>
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                <div class="text-xs font-mono font-bold text-emerald-700">PHASE 04</div>
-                <div class="text-xs font-bold text-slate-900 mt-0.5">24/7 SLA 무중단</div>
+              <div class="p-3.5 rounded-xl bg-white/[0.04] border border-emerald-400/20 text-center hover:border-emerald-400/50 transition-colors">
+                <div class="text-xs font-mono font-bold text-emerald-400">PHASE 04</div>
+                <div class="text-xs font-bold text-white mt-0.5">24/7 SLA 무중단</div>
               </div>
             </div>
           </div>
