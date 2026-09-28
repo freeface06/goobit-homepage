@@ -1,7 +1,7 @@
 /**
- * @intent Test suite for Hero Kinetic Text & Cybernetic AI Motion Graphics System
+ * @intent Test suite for Clean Hero Kinetic Typography Reveal System (removed distracting background pulse/color shifts)
  * @agent  manager-develop
- * @branch task-hero-kinetic-text-animation
+ * @branch fix/hero-text-clean-reveal
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -32,7 +32,7 @@ function runTest(testName, testFn) {
 }
 
 console.log('================================================================');
-console.log('Starting Hero Kinetic Text Animation Test Suite');
+console.log('Starting Hero Kinetic Typography Clean Reveal Test Suite');
 console.log('================================================================');
 
 // Read files
@@ -51,13 +51,13 @@ runTest('Strict No-Emoji Policy: index.html must not contain unicode emoji in he
 });
 
 runTest('Strict No-Emoji Policy: css/style.css kinetic styles must not contain unicode emoji', () => {
-  const kineticBlockMatch = cssContent.match(/Hero Kinetic Text & Cybernetic AI Motion Graphics System[\s\S]*$/);
-  assert.ok(kineticBlockMatch, 'Kinetic style block must exist in style.css');
+  const kineticBlockMatch = cssContent.match(/Hero Kinetic Typography Reveal System[\s\S]*?Dedicated News Detail/);
+  assert.ok(kineticBlockMatch, 'Kinetic typography style block must exist in style.css');
   assert.strictEqual(emojiRegex.test(kineticBlockMatch[0]), false, 'Kinetic styles must not contain emoji');
 });
 
 runTest('Strict No-Emoji Policy: js/main.js hero animation controller must not contain unicode emoji', () => {
-  const jsHeroBlockMatch = jsContent.match(/Landing Hero Video & Fullscreen Preloader Controller[\s\S]*?<\/script>|Landing Hero Video & Fullscreen Preloader Controller[\s\S]*$/);
+  const jsHeroBlockMatch = jsContent.match(/Landing Hero Video & Fullscreen Preloader Controller[\s\S]*$/);
   assert.ok(jsHeroBlockMatch, 'Preloader and hero controller must exist in main.js');
   assert.strictEqual(emojiRegex.test(jsHeroBlockMatch[0]), false, 'Hero controller in main.js must not contain emoji');
 });
@@ -65,17 +65,14 @@ runTest('Strict No-Emoji Policy: js/main.js hero animation controller must not c
 // 2. Annotation Metadata Verification
 runTest('Annotation: index.html must contain standard header and hero section annotations', () => {
   assert.ok(htmlContent.includes('@intent') && htmlContent.includes('@agent') && htmlContent.includes('@branch'), 'Header comment annotation missing');
-  assert.ok(htmlContent.includes('task-hero-kinetic-text-animation'), 'Branch task-hero-kinetic-text-animation missing in index.html');
 });
 
 runTest('Annotation: css/style.css must contain standard block annotations', () => {
   assert.ok(cssContent.includes('@intent') && cssContent.includes('@agent') && cssContent.includes('@branch'), 'CSS block annotation missing');
-  assert.ok(cssContent.includes('task-hero-kinetic-text-animation'), 'Branch task-hero-kinetic-text-animation missing in css/style.css');
 });
 
 runTest('Annotation: js/main.js must contain standard block annotations', () => {
   assert.ok(jsContent.includes('@intent') && jsContent.includes('@agent') && jsContent.includes('@branch'), 'JS block annotation missing');
-  assert.ok(jsContent.includes('task-hero-kinetic-text-animation'), 'Branch task-hero-kinetic-text-animation missing in js/main.js');
 });
 
 // 3. HTML Markup & Slogan Structure Verification
@@ -97,10 +94,11 @@ runTest('HTML Markup: Slogan Line 2 class (.hero-title-line-2) and text must mat
   assert.ok(htmlContent.includes('가치를 완성하는'), 'Line 2 text "가치를 완성하는" missing');
 });
 
-runTest('HTML Markup: Slogan Line 3 class (.hero-title-line-3), aurora text, and glow backdrop must match', () => {
+runTest('HTML Markup: Slogan Line 3 class (.hero-title-line-3) and solid brand gradient must match without distracting pulse', () => {
   assert.ok(htmlContent.includes('hero-title-line-3'), 'Class .hero-title-line-3 missing');
-  assert.ok(htmlContent.includes('hero-aurora-text'), 'Class .hero-aurora-text missing');
-  assert.ok(htmlContent.includes('hero-glow-backdrop'), 'Class .hero-glow-backdrop missing');
+  assert.ok(!htmlContent.includes('hero-aurora-text'), 'Distracting hero-aurora-text should be removed');
+  assert.ok(!htmlContent.includes('hero-glow-backdrop'), 'Distracting hero-glow-backdrop should be removed');
+  assert.ok(htmlContent.includes('from-amber-400 via-orange-300 to-amber-500'), 'Brand amber gradient must be present');
   assert.ok(htmlContent.includes('엔터프라이즈 AI &amp; DX') || htmlContent.includes('엔터프라이즈 AI & DX'), 'Line 3 text missing');
 });
 
@@ -113,47 +111,30 @@ runTest('HTML Markup: Subtext (.hero-subtext-reveal) and text must match exactly
 });
 
 // 4. CSS Keyframes and Styling Rules Verification
-runTest('CSS Keyframes: @keyframes heroLineLift must have exact 0% and 100% 3D transform properties', () => {
+runTest('CSS Keyframes: @keyframes heroLineLift must have smooth vertical transform and blur properties', () => {
   assert.ok(cssContent.includes('@keyframes heroLineLift'), '@keyframes heroLineLift missing');
-  assert.ok(cssContent.includes('translateY(115%) perspective(800px) rotateX(25deg)'), 'heroLineLift 0% transform missing');
-  assert.ok(cssContent.includes('filter: blur(14px)'), 'heroLineLift 0% blur filter missing');
-  assert.ok(cssContent.includes('translateY(0) perspective(800px) rotateX(0deg)'), 'heroLineLift 100% transform missing');
+  assert.ok(cssContent.includes('translateY(105%)'), 'heroLineLift 0% transform missing');
+  assert.ok(cssContent.includes('filter: blur(8px)'), 'heroLineLift 0% blur filter missing');
+  assert.ok(cssContent.includes('translateY(0)'), 'heroLineLift 100% transform missing');
   assert.ok(cssContent.includes('filter: blur(0)'), 'heroLineLift 100% blur(0) missing');
 });
 
-runTest('CSS Keyframes: @keyframes heroShineSweep must exist with skewX and translation sweep', () => {
-  assert.ok(cssContent.includes('@keyframes heroShineSweep'), '@keyframes heroShineSweep missing');
-  assert.ok(cssContent.includes('skewX'), 'heroShineSweep skewX effect missing');
+runTest('CSS Keyframes: Distracting color shift & pulse glow keyframes must be removed', () => {
+  assert.ok(!cssContent.includes('@keyframes heroAuroraShift'), 'heroAuroraShift keyframes should be removed');
+  assert.ok(!cssContent.includes('@keyframes heroPulseGlow'), 'heroPulseGlow keyframes should be removed');
+  assert.ok(!cssContent.includes('@keyframes heroShineSweep'), 'heroShineSweep keyframes should be removed');
 });
 
-runTest('CSS Keyframes: @keyframes heroAuroraShift must exist with background-position shifts', () => {
-  assert.ok(cssContent.includes('@keyframes heroAuroraShift'), '@keyframes heroAuroraShift missing');
-  assert.ok(cssContent.includes('background-position: 0% 50%'), 'heroAuroraShift 0% missing');
-  assert.ok(cssContent.includes('background-position: 100% 50%'), 'heroAuroraShift 50% missing');
-});
-
-runTest('CSS Keyframes: @keyframes heroPulseGlow must exist with drop-shadow and ambient glow', () => {
-  assert.ok(cssContent.includes('@keyframes heroPulseGlow'), '@keyframes heroPulseGlow missing');
-  assert.ok(cssContent.includes('drop-shadow'), 'heroPulseGlow drop-shadow missing');
-});
-
-runTest('CSS Timing & Composited Properties: cubic-bezier(0.16, 1, 0.3, 1) must be used on animations', () => {
+runTest('CSS Timing & Composited Properties: cubic-bezier(0.16, 1, 0.3, 1) must be used on line lift animation', () => {
   const cubicBezierOccurrences = (cssContent.match(/cubic-bezier\(0\.16,\s*1,\s*0\.3,\s*1\)/g) || []).length;
-  assert.strictEqual(cubicBezierOccurrences >= 4, true, `Expected multiple cubic-bezier(0.16, 1, 0.3, 1) usages, found ${cubicBezierOccurrences}`);
+  assert.strictEqual(cubicBezierOccurrences >= 2, true, `Expected cubic-bezier(0.16, 1, 0.3, 1) usages, found ${cubicBezierOccurrences}`);
 });
 
 runTest('CSS Staggered Delays: Lines and subtext must match required delays', () => {
   assert.ok(cssContent.includes('animation-delay: 0.1s') || cssContent.includes('0.1s forwards'), 'Line 1 0.1s delay missing');
-  assert.ok(cssContent.includes('animation-delay: 0.28s') || cssContent.includes('0.28s forwards'), 'Line 2 0.28s delay missing');
-  assert.ok(cssContent.includes('animation-delay: 0.48s') || cssContent.includes('0.48s forwards'), 'Line 3 0.48s delay missing');
-  assert.ok(cssContent.includes('0.72s forwards') || cssContent.includes('animation-delay: 0.72s'), 'Subtext 0.72s delay missing');
-});
-
-runTest('CSS Aurora Text Colors: Must include Amber, Orange, Gold, and Neon Cyan hex colors', () => {
-  assert.ok(cssContent.includes('#F5A623'), 'Amber #F5A623 missing in aurora gradient');
-  assert.ok(cssContent.includes('#FF7A00'), 'Orange #FF7A00 missing in aurora gradient');
-  assert.ok(cssContent.includes('#FCD34D'), 'Gold #FCD34D missing in aurora gradient');
-  assert.ok(cssContent.includes('#38BDF8'), 'Neon Cyan #38BDF8 missing in aurora gradient');
+  assert.ok(cssContent.includes('animation-delay: 0.26s') || cssContent.includes('0.26s forwards'), 'Line 2 0.26s delay missing');
+  assert.ok(cssContent.includes('animation-delay: 0.44s') || cssContent.includes('0.44s forwards'), 'Line 3 0.44s delay missing');
+  assert.ok(cssContent.includes('0.65s forwards') || cssContent.includes('animation-delay: 0.65s'), 'Subtext 0.65s delay missing');
 });
 
 runTest('CSS Accessibility: @media (prefers-reduced-motion: reduce) must disable transforms and blurs', () => {
