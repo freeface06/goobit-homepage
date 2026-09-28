@@ -262,28 +262,24 @@
         </div>
 
         <!--
-         * @intent Hero Kinetic Slogan Staggered Lift Motion with clean brand typography (removed distracting background pulse/color shifts)
+         * @intent Hero AI Prompt Typing Animation with Neon Amber Cursor
          * @agent  manager-develop
-         * @branch fix/hero-text-clean-reveal
+         * @branch task-hero-ai-typing-motion
          * @author @goobit-dev
          * @date   2026-09-28
         -->
         <div class="relative max-w-5xl mx-auto px-2 sm:px-6 space-y-6">
-          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.14]">
-            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1">
-              <span class="hero-title-line hero-title-line-1 block">인공지능으로 이끄는 혁신,</span>
-            </span>
-            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1">
-              <span class="hero-title-line hero-title-line-2 block">가치를 완성하는</span>
-            </span>
-            <span class="hero-title-mask overflow-hidden block py-0.5 sm:py-1">
-              <span class="hero-title-line hero-title-line-3 block">
-                <span class="bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500 bg-clip-text text-transparent">엔터프라이즈 AI &amp; DX</span>
-              </span>
+          <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.14]" aria-label="인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI & DX">
+            <span class="sr-only">인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI & DX</span>
+            <span aria-hidden="true" class="block">
+              <span id="hero-type-line-1" class="hero-type-line block min-h-[1.18em]"></span>
+              <span id="hero-type-line-2" class="hero-type-line block min-h-[1.18em]"></span>
+              <span id="hero-type-line-3" class="hero-type-line block min-h-[1.18em]"><span id="hero-type-gradient-target" class="bg-gradient-to-r from-amber-400 via-orange-300 to-amber-500 bg-clip-text text-transparent"></span></span>
+              <span id="hero-typing-cursor" class="hero-typing-cursor hero-cursor-blink inline-block w-[3px] sm:w-[4px] md:w-[5px] h-[0.82em] bg-amber-400 rounded-full align-middle ml-1.5 shadow-[0_0_12px_rgba(245,166,35,0.85)]" aria-hidden="true"></span>
             </span>
           </h1>
 
-          <p class="hero-subtext-reveal text-base sm:text-lg md:text-xl font-normal text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p id="hero-subtext" class="hero-subtext-reveal text-base sm:text-lg md:text-xl font-normal text-slate-300 max-w-3xl mx-auto leading-relaxed">
             가치에 진심을 담다 | 공공·통신 10년의 미션 크리티컬 신뢰 위에 지식그래프와 자율 Agentic AI를 결합하여 기업의 진정한 AI 전환을 실현합니다.
           </p>
         </div>

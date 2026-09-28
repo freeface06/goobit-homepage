@@ -1,7 +1,7 @@
 /**
- * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, mobile drawer, video resizing, hero kinetic typography trigger, and Lucide icons
+ * @intent Enterprise core interactive controller for Tailwind config, Mega Menu hover, scroll animations, mobile drawer, video resizing, hero AI typing animation, and Lucide icons
  * @agent  manager-develop
- * @branch task-hero-kinetic-text-animation
+ * @branch task-hero-ai-typing-motion
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -73,8 +73,9 @@ if (typeof tailwind !== 'undefined') {
   };
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide Icons
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Lucide Icons
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
@@ -979,8 +980,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloaderText = document.getElementById('preloader-text');
   const heroBgVideo = document.getElementById('hero-bg-video');
 
+  const heroTypingController = initHeroTypingAnimation();
+
   /**
-   * Activates cybernetic kinetic text animation on hero containers
+   * Activates cybernetic kinetic text animation and hero AI typing motion
    */
   const triggerHeroAnimation = () => {
     if (heroSection && !heroSection.classList.contains('hero-animated-active')) {
@@ -988,6 +991,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (heroContentWrapper && !heroContentWrapper.classList.contains('hero-animated-active')) {
       heroContentWrapper.classList.add('hero-animated-active');
+    }
+    if (heroTypingController && !heroTypingController.hasStarted()) {
+      heroTypingController.start();
     }
   };
 
@@ -1007,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
           heroBgVideo.play().catch(() => {});
         }
         preloader.classList.add('opacity-0', 'pointer-events-none');
-        // Trigger kinetic hero animation right when preloader fades out
+        // Trigger AI typing hero animation right when preloader fades out
         triggerHeroAnimation();
         setTimeout(() => {
           preloader.style.display = 'none';
@@ -1049,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Safety Fallback Guard: Trigger hero kinetic text animation within 300ms if no preloader or delayed
+  // Safety Fallback Guard: Trigger hero AI typing motion within 300ms if no preloader or delayed
   if (!preloader) {
     setTimeout(triggerHeroAnimation, 300);
   } else {
@@ -1074,6 +1080,151 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     heroAnimationObserver.observe(heroObserverTarget);
   }
-});
+  });
+}
+
+/**
+ * @intent AI Prompt Typing Motion Controller with Neon Amber Cursor
+ * @agent  manager-develop
+ * @branch task-hero-ai-typing-motion
+ * @author @goobit-dev
+ * @date   2026-09-28
+ */
+function initHeroTypingAnimation() {
+  if (typeof document === 'undefined') {
+    return {
+      start: () => {},
+      finishInstantly: () => {},
+      hasTyped: () => false,
+      hasStarted: () => false
+    };
+  }
+
+  const line1El = document.getElementById('hero-type-line-1');
+  const line2El = document.getElementById('hero-type-line-2');
+  const line3El = document.getElementById('hero-type-line-3');
+  const gradientTargetEl = document.getElementById('hero-type-gradient-target');
+  const cursorEl = document.getElementById('hero-typing-cursor');
+  const subtextEl = document.getElementById('hero-subtext') || document.querySelector('.hero-subtext-reveal');
+
+  if (!line1El || !line2El || !line3El || !gradientTargetEl || !cursorEl) {
+    return {
+      start: () => {},
+      finishInstantly: () => {},
+      hasTyped: () => true,
+      hasStarted: () => true
+    };
+  }
+
+  let hasStarted = false;
+  let hasTyped = false;
+
+  const lines = [
+    { text: '인공지능으로 이끄는 혁신,', target: line1El, container: line1El },
+    { text: '가치를 완성하는', target: line2El, container: line2El },
+    { text: '엔터프라이즈 AI & DX', target: gradientTargetEl, container: line3El }
+  ];
+
+  const prefersReduced = typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const finishInstantly = () => {
+    line1El.textContent = lines[0].text;
+    line2El.textContent = lines[1].text;
+    gradientTargetEl.textContent = lines[2].text;
+    line3El.appendChild(cursorEl);
+    cursorEl.classList.add('hero-cursor-hidden');
+    if (subtextEl) {
+      subtextEl.classList.add('revealed');
+    }
+    const heroSection = document.getElementById('hero-section');
+    if (heroSection) heroSection.classList.add('hero-subtext-active');
+    hasTyped = true;
+    hasStarted = true;
+  };
+
+  const startTyping = () => {
+    if (hasStarted) return;
+    hasStarted = true;
+
+    if (prefersReduced) {
+      finishInstantly();
+      return;
+    }
+
+    line1El.textContent = '';
+    line2El.textContent = '';
+    gradientTargetEl.textContent = '';
+    line1El.appendChild(cursorEl);
+    cursorEl.classList.remove('hero-cursor-hidden');
+    cursorEl.classList.add('hero-cursor-blink');
+
+    let currentLineIndex = 0;
+    let currentCharIndex = 0;
+
+    const typeNextChar = () => {
+      if (currentLineIndex >= lines.length) {
+        hasTyped = true;
+        // Keep blinking for 1.5s, then fade out cursor & reveal subtext
+        setTimeout(() => {
+          cursorEl.classList.add('hero-cursor-hidden');
+          if (subtextEl) {
+            subtextEl.classList.add('revealed');
+          }
+          const heroSection = document.getElementById('hero-section');
+          if (heroSection) heroSection.classList.add('hero-subtext-active');
+        }, 1500);
+        return;
+      }
+
+      const currentConfig = lines[currentLineIndex];
+      const targetEl = currentConfig.target;
+      const containerEl = currentConfig.container;
+      const text = currentConfig.text;
+
+      if (currentCharIndex < text.length) {
+        const char = text.charAt(currentCharIndex);
+        targetEl.textContent += char;
+        containerEl.appendChild(cursorEl);
+        currentCharIndex++;
+
+        // Typing speed: 35~40ms, comma pause: 140ms
+        let delay = Math.floor(Math.random() * 6) + 35; // 35-40ms
+        if (char === ',') {
+          delay += 140;
+        }
+        setTimeout(typeNextChar, delay);
+      } else {
+        // Line transition pause: 160ms
+        currentLineIndex++;
+        currentCharIndex = 0;
+        if (currentLineIndex < lines.length) {
+          lines[currentLineIndex].container.appendChild(cursorEl);
+        }
+        setTimeout(typeNextChar, 160);
+      }
+    };
+
+    setTimeout(typeNextChar, 100);
+  };
+
+  return {
+    start: startTyping,
+    finishInstantly,
+    hasTyped: () => hasTyped,
+    hasStarted: () => hasStarted
+  };
+}
+
+if (typeof window !== 'undefined') {
+  window.initHeroTypingAnimation = initHeroTypingAnimation;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    initHeroTypingAnimation
+  };
+}
 
 

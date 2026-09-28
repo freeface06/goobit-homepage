@@ -1,7 +1,7 @@
 /**
- * @intent Enterprise global stylesheet featuring Pretendard typography, hero kinetic motion system, keyframe animations, card interactions, and Krds accessibility rules
+ * @intent Enterprise global stylesheet featuring Pretendard typography, hero AI typing motion system, keyframe animations, card interactions, and Krds accessibility rules
  * @agent  manager-develop
- * @branch task-hero-kinetic-text-animation
+ * @branch task-hero-ai-typing-motion
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -995,96 +995,72 @@ header[data-theme="light"] nav a[data-menu-target].text-slate-900 {
 }
 
 /* ==========================================================================
-   Hero Kinetic Typography Reveal System
-   @intent Enterprise kinetic typography reveals with staggered masked vertical lifting.
-           Removed distracting color shifts, background glow pulses, and shine sweeps
-           in favor of clean, solid brand typography motion.
-   @agent  manager-develop
-   @branch fix/hero-text-clean-reveal
-   @author @goobit-dev
-   @date   2026-09-28
-   ========================================================================== */
+ * Hero AI Prompt Typing Motion & Neon Amber Cursor System
+ * @intent AI prompt typing animation with neon amber cursor, smooth subtext reveal, and Krds accessibility
+ * @agent  manager-develop
+ * @branch task-hero-ai-typing-motion
+ * @author @goobit-dev
+ * @date   2026-09-28
+ * ========================================================================== */
 
-/* 1. Keyframe Definitions */
-@keyframes heroLineLift {
-  0% {
-    transform: translateY(105%);
-    opacity: 0;
-    filter: blur(8px);
-  }
-  100% {
-    transform: translateY(0);
+/* 1. Neon Amber Cursor Blink Keyframes */
+@keyframes heroCursorBlink {
+  0%, 45% {
     opacity: 1;
-    filter: blur(0);
   }
-}
-
-@keyframes heroSubtextReveal {
-  0% {
-    transform: translateY(18px);
+  50%, 95% {
     opacity: 0;
-    filter: blur(6px);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-    filter: blur(0);
   }
 }
 
-/* 2. Kinetic Slogan Containers and Lines */
-.hero-title-mask {
-  display: block;
-  overflow: hidden;
-  will-change: transform;
+.hero-cursor-blink {
+  animation: heroCursorBlink 0.75s infinite;
 }
 
-.hero-title-line {
-  display: block;
-  opacity: 0;
-  transform: translateY(105%);
-  filter: blur(8px);
-  will-change: transform, opacity, filter;
-  backface-visibility: hidden;
+.hero-cursor-hidden {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease-out;
 }
 
+/* 2. Hero Typing Elements and Lines */
+.hero-type-line {
+  position: relative;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.hero-typing-cursor {
+  will-change: opacity;
+}
+
+/* 3. Subtext Reveal Transitions */
 .hero-subtext-reveal {
   opacity: 0;
-  transform: translateY(18px);
-  filter: blur(6px);
+  transform: translateY(16px);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity, filter;
 }
 
-/* 3. Activation Triggers (with cubic-bezier timing and exact staggered delays) */
-.hero-animated-active .hero-title-line {
-  animation-name: heroLineLift;
-  animation-duration: 1.1s;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  animation-fill-mode: forwards;
-}
-
-.hero-animated-active .hero-title-line-1 {
-  animation-delay: 0.1s;
-}
-
-.hero-animated-active .hero-title-line-2 {
-  animation-delay: 0.26s;
-}
-
-.hero-animated-active .hero-title-line-3 {
-  animation-delay: 0.44s;
-}
-
-.hero-animated-active .hero-subtext-reveal {
-  animation: heroSubtextReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+.hero-subtext-active .hero-subtext-reveal,
+.hero-subtext-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 /* 4. Accessibility Support - prefers-reduced-motion: reduce */
 @media (prefers-reduced-motion: reduce) {
-  .hero-title-line,
+  .hero-cursor-blink {
+    animation: none !important;
+  }
+  .hero-typing-cursor {
+    opacity: 0 !important;
+    display: none !important;
+  }
   .hero-subtext-reveal,
-  .hero-animated-active .hero-title-line,
-  .hero-animated-active .hero-subtext-reveal {
+  .hero-subtext-active .hero-subtext-reveal,
+  .hero-subtext-reveal.revealed {
     animation: none !important;
     transform: none !important;
     filter: none !important;
