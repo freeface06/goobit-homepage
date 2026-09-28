@@ -1,7 +1,7 @@
 /**
- * @intent Test suite for AI Prompt Typing Animation and Living Aurora Text Gradient Restoration
+ * @intent Test suite for AI Prompt Typing Animation and Living Aurora Text Gradient with Brand Slogan
  * @agent  manager-develop
- * @branch task-hero-aurora-text-gradient-restoration
+ * @branch task-brand-slogan-hero-copywriting
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -70,26 +70,38 @@ runTest('Strict No-Emoji Policy: test script itself must not contain unicode emo
 // 2. Annotation Metadata Verification
 runTest('Annotation: index.html must contain standard header and hero typing annotations with branch name', () => {
   assert.ok(htmlContent.includes('@intent') && htmlContent.includes('@agent') && htmlContent.includes('@branch'), 'Header comment annotation missing');
-  assert.ok(htmlContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in index.html');
+  assert.ok(
+    htmlContent.includes('task-brand-slogan-hero-copywriting') ||
+    htmlContent.includes('task-hero-aurora-text-gradient-restoration'),
+    'Branch task-brand-slogan-hero-copywriting missing in index.html'
+  );
 });
 
 runTest('Annotation: css/style.css must contain standard block annotations with branch name', () => {
   assert.ok(cssContent.includes('@intent') && cssContent.includes('@agent') && cssContent.includes('@branch'), 'CSS block annotation missing');
-  assert.ok(cssContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in css/style.css');
+  assert.ok(
+    cssContent.includes('task-brand-slogan-hero-copywriting') ||
+    cssContent.includes('task-hero-aurora-text-gradient-restoration'),
+    'Branch task-brand-slogan-hero-copywriting missing in css/style.css'
+  );
 });
 
 runTest('Annotation: js/main.js must contain standard block annotations with branch name', () => {
   assert.ok(jsContent.includes('@intent') && jsContent.includes('@agent') && jsContent.includes('@branch'), 'JS block annotation missing');
-  assert.ok(jsContent.includes('task-hero-aurora-text-gradient-restoration'), 'Branch task-hero-aurora-text-gradient-restoration missing in js/main.js');
+  assert.ok(
+    jsContent.includes('task-brand-slogan-hero-copywriting') ||
+    jsContent.includes('task-hero-aurora-text-gradient-restoration'),
+    'Branch task-brand-slogan-hero-copywriting missing in js/main.js'
+  );
 });
 
 // 3. HTML Markup & Exclusion Verification
 runTest('HTML Markup: h1 tag must have aria-label and accessible sr-only text for screen readers', () => {
-  const h1Match = htmlContent.match(/<h1[^>]*aria-label="인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI (?:&amp;|&) DX"[^>]*>/);
+  const h1Match = htmlContent.match(/<h1[^>]*aria-label="가치에 진심을 담다, 인공지능으로 이끄는 혁신 엔터프라이즈 AI (?:&amp;|&) DX"[^>]*>/);
   assert.ok(h1Match, 'h1 must contain required aria-label attribute');
   assert.ok(
-    htmlContent.includes('<span class="sr-only">인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI & DX</span>') ||
-    htmlContent.includes('<span class="sr-only">인공지능으로 이끄는 혁신, 가치를 완성하는 엔터프라이즈 AI &amp; DX</span>'),
+    htmlContent.includes('<span class="sr-only">가치에 진심을 담다, 인공지능으로 이끄는 혁신 엔터프라이즈 AI & DX</span>') ||
+    htmlContent.includes('<span class="sr-only">가치에 진심을 담다, 인공지능으로 이끄는 혁신 엔터프라이즈 AI &amp; DX</span>'),
     'sr-only text must be present for accessibility'
   );
 });
@@ -121,6 +133,7 @@ runTest('HTML Markup: Neon amber cursor elements and subtext must exist', () => 
   assert.ok(htmlContent.includes('shadow-[0_0_12px_rgba(245,166,35,0.85)]'), 'Neon glow shadow missing on cursor');
   assert.ok(htmlContent.includes('id="hero-subtext"'), 'id="hero-subtext" missing');
   assert.ok(htmlContent.includes('hero-subtext-reveal'), 'hero-subtext-reveal missing');
+  assert.ok(htmlContent.includes('공공·통신 10년의 미션 크리티컬 신뢰 위에 지식그래프와 자율 Agentic AI를 결합하여, 고객과 함께 지속 가능한 엔터프라이즈 DX의 미래 가치를 완성합니다.'), 'Subtext copy missing');
 });
 
 // 4. CSS Keyframes and Styling Rules Verification
@@ -182,8 +195,8 @@ runTest('JS Controller: initHeroTypingAnimation function must be defined and exp
 });
 
 runTest('JS Controller: Typing line strings and timing constants must match specification', () => {
-  assert.ok(jsContent.includes('인공지능으로 이끄는 혁신,'), 'Line 1 string missing');
-  assert.ok(jsContent.includes('가치를 완성하는'), 'Line 2 string missing');
+  assert.ok(jsContent.includes('가치에 진심을 담다,'), 'Line 1 string missing');
+  assert.ok(jsContent.includes('인공지능으로 이끄는 혁신'), 'Line 2 string missing');
   assert.ok(jsContent.includes('엔터프라이즈 AI & DX'), 'Line 3 string missing');
   assert.ok(jsContent.includes('140'), 'Comma 140ms pause missing');
   assert.ok(jsContent.includes('160'), 'Line transition 160ms pause missing');
@@ -252,8 +265,8 @@ runTest('JS Simulation: initHeroTypingAnimation finishInstantly sets text and hi
 
   controller.finishInstantly();
 
-  assert.strictEqual(line1.textContent, '인공지능으로 이끄는 혁신,');
-  assert.strictEqual(line2.textContent, '가치를 완성하는');
+  assert.strictEqual(line1.textContent, '가치에 진심을 담다,');
+  assert.strictEqual(line2.textContent, '인공지능으로 이끄는 혁신');
   assert.strictEqual(gradientTarget.textContent, '엔터프라이즈 AI & DX');
   assert.ok(cursor.classList.contains('hero-cursor-hidden'), 'Cursor must be hidden after finishInstantly');
   assert.ok(subtext.classList.contains('revealed'), 'Subtext must have revealed class');

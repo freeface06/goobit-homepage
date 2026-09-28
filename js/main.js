@@ -1084,9 +1084,9 @@ if (typeof document !== 'undefined') {
 }
 
 /**
- * @intent AI Prompt Typing Motion Controller with Living Aurora Text Gradient
+ * @intent AI Prompt Typing Motion Controller with Brand Slogan & Living Aurora Text Gradient
  * @agent  manager-develop
- * @branch task-hero-aurora-text-gradient-restoration
+ * @branch task-brand-slogan-hero-copywriting
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -1120,8 +1120,8 @@ function initHeroTypingAnimation() {
   let hasTyped = false;
 
   const lines = [
-    { text: '인공지능으로 이끄는 혁신,', target: line1El, container: line1El },
-    { text: '가치를 완성하는', target: line2El, container: line2El },
+    { text: '가치에 진심을 담다,', target: line1El, container: line1El },
+    { text: '인공지능으로 이끄는 혁신', target: line2El, container: line2El },
     { text: '엔터프라이즈 AI & DX', target: gradientTargetEl, container: line3El }
   ];
 
