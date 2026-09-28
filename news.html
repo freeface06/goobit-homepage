@@ -2,9 +2,9 @@
 <html lang="ko" class="scroll-smooth">
 <head>
   <!--
-   * @intent Dedicated Newsroom page with category tabs, live text search, view count sorting, and direct news detail link navigation
+   * @intent Dedicated Newsroom page with category tabs, live text search, view count sorting, high-res card news covers, and direct news detail link navigation
    * @agent  manager-develop
-   * @branch task-dedicated-news-detail-page
+   * @branch feat/card-news-generated-images
    * @author @goobit-dev
    * @date   2026-09-28
   -->
@@ -577,8 +577,17 @@
           aria-label="${item.title}"
         >
           <!-- Visual Card Face (4:3 ratio cover styled like card news) -->
-          <div class="relative aspect-[4/3] bg-gradient-to-br ${item.coverGradient} p-6 flex flex-col justify-between overflow-hidden text-white">
-            <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+          <div class="relative aspect-[4/3] bg-slate-900 bg-gradient-to-br ${item.coverGradient} p-6 flex flex-col justify-between overflow-hidden text-white group-hover:shadow-lg">
+            ${item.coverImage ? `
+              <img
+                src="${item.coverImage}"
+                alt="${item.title}"
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+              />
+            ` : ''}
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-1"></div>
 
             <!-- Top Row: Category Badge & Card Count -->
             <div class="relative z-10 flex items-center justify-between gap-2">

@@ -1,7 +1,7 @@
 /**
- * @intent Controller for dedicated News Detail page with Inline Dual-Viewer (interactive slider + vertical scroll view), breadcrumb, share URL toast, and related news
+ * @intent Controller for dedicated News Detail page with Inline Dual-Viewer (interactive slider + vertical scroll view), breadcrumb, share URL toast, high-res related news covers, and KRDS accessibility
  * @agent  manager-develop
- * @branch task-dedicated-news-detail-page
+ * @branch feat/card-news-generated-images (task-dedicated-news-detail-page)
  * @author @goobit-dev
  * @date   2026-09-28
  */
@@ -701,8 +701,17 @@ class NewsDetailController {
         class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2 block text-slate-900 no-underline h-full"
         aria-label="${item.title}"
       >
-        <div class="relative aspect-[4/3] bg-gradient-to-br ${item.coverGradient} p-5 flex flex-col justify-between overflow-hidden text-white">
-          <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+        <div class="relative aspect-[4/3] bg-slate-900 bg-gradient-to-br ${item.coverGradient} p-5 flex flex-col justify-between overflow-hidden text-white group-hover:shadow-lg">
+          ${item.coverImage ? `
+            <img
+              src="${item.coverImage}"
+              alt="${item.title}"
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+            />
+          ` : ''}
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-1"></div>
 
           <div class="relative z-10 flex items-center justify-between gap-2">
             <span class="text-xs font-bold px-2.5 py-1 rounded-lg border ${this.getCategoryBadgeStyles(item.category).badgeClass}">

@@ -1472,6 +1472,13 @@
     </div>
 
     <!-- 8. LatestNewsSection (3 Card News Preview) -->
+    <!--
+     * @intent Real generated high-res cover images with cinematic gradient overlay for Latest News cards
+     * @agent  manager-develop
+     * @branch feat/card-news-generated-images
+     * @author @goobit-dev
+     * @date   2026-09-28
+    -->
     <section class="py-28 lg:py-36 bg-slate-50 border-t border-slate-200/80 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -1500,8 +1507,17 @@
           <!-- Card 1 -->
           <div class="h-full" data-reveal data-delay="0">
             <a href="news-detail.html?id=news-rag-national-project" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="구비트, AI 지식그래프 기반 하이브리드 RAG 국책 연구과제 주관기관 최종 선정">
-              <div class="relative aspect-[4/3] bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 p-6 flex flex-col justify-between overflow-hidden text-white">
-                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+              <div class="relative aspect-[4/3] bg-slate-900 p-6 flex flex-col justify-between overflow-hidden text-white group-hover:shadow-lg">
+                <!-- Real Generated High-Res Cover Image with Smooth Zoom on Hover -->
+                <img
+                  src="images/news/news_rag_national_project.jpg"
+                  alt="구비트, AI 지식그래프 기반 하이브리드 RAG 국책 연구과제 주관기관 최종 선정"
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                />
+                <!-- Cinematic Atmospheric Gradient Overlay for Superb Readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-1"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
                   <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-blue-50 text-blue-700 border-blue-200">보도자료</span>
                   <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">
@@ -1556,8 +1572,17 @@
           <!-- Card 2 -->
           <div class="h-full" data-reveal data-delay="150">
             <a href="news-detail.html?id=news-tbcms-update" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="TBCMS 3.0 대규모 업데이트: 웹 접근성 KWCAG 2.2 인증 및 차세대 공공 CMS 엔진 혁신">
-              <div class="relative aspect-[4/3] bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 p-6 flex flex-col justify-between overflow-hidden text-white">
-                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+              <div class="relative aspect-[4/3] bg-slate-900 p-6 flex flex-col justify-between overflow-hidden text-white group-hover:shadow-lg">
+                <!-- Real Generated High-Res Cover Image with Smooth Zoom on Hover -->
+                <img
+                  src="images/news/news_tbcms_update.jpg"
+                  alt="TBCMS 3.0 대규모 업데이트: 웹 접근성 KWCAG 2.2 인증 및 차세대 공공 CMS 엔진 혁신"
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                />
+                <!-- Cinematic Atmospheric Gradient Overlay for Superb Readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-1"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
                   <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-amber-50 text-amber-800 border-amber-200">기술·DX</span>
                   <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">
@@ -1612,8 +1637,17 @@
           <!-- Card 3 -->
           <div class="h-full" data-reveal data-delay="300">
             <a href="news-detail.html?id=news-office-expansion" class="bg-white rounded-2xl border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden flex flex-col group hover:-translate-y-2.5 shimmer-card h-full block text-slate-900 no-underline" aria-label="문정 현대지식산업센터 신사옥 확장 이전 및 AI R&D 연구소 신설">
-              <div class="relative aspect-[4/3] bg-gradient-to-br from-amber-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between overflow-hidden text-white">
-                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+              <div class="relative aspect-[4/3] bg-slate-900 p-6 flex flex-col justify-between overflow-hidden text-white group-hover:shadow-lg">
+                <!-- Real Generated High-Res Cover Image with Smooth Zoom on Hover -->
+                <img
+                  src="images/news/news_office_expansion.jpg"
+                  alt="가치에 진심을 담는 사람들: 문정 현대지식산업센터 신사옥 확장 이전 및 AI R&amp;D 연구소 신설"
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                />
+                <!-- Cinematic Atmospheric Gradient Overlay for Superb Readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 z-1"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] opacity-15 pointer-events-none z-1"></div>
                 <div class="relative z-10 flex items-center justify-between gap-2">
                   <span class="text-xs font-bold px-2.5 py-1 rounded-lg border bg-emerald-50 text-emerald-800 border-emerald-200">사내소식</span>
                   <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/60 backdrop-blur-xs text-amber-400 text-xs font-bold border border-amber-400/20 group-hover:border-amber-400/50 transition-colors">

@@ -1,9 +1,9 @@
 /**
  * @intent Enterprise global data store for Goobit corporate website including menus, legal info, mega menu, products, services, case studies, and card news
  * @agent  manager-develop
- * @branch feat/homepage-skeleton
+ * @branch feat/card-news-generated-images
  * @author @goobit-dev
- * @date   2026-09-23
+ * @date   2026-09-28
  */
 
 const LEGAL_INFO = {
@@ -888,6 +888,7 @@ const CARD_NEWS_DATA = [
     date: '2026.03.18',
     readTime: '3분 읽기',
     cardCount: 5,
+    coverImage: 'images/news/news_rag_national_project.jpg',
     coverGradient: 'from-blue-950 via-slate-900 to-indigo-950',
     tags: ['AI지식그래프', '하이브리드RAG', '국책과제', '생성형AI', '엔터프라이즈AI'],
     views: 1420,
@@ -994,6 +995,7 @@ const CARD_NEWS_DATA = [
     date: '2026.02.24',
     readTime: '3분 읽기',
     cardCount: 5,
+    coverImage: 'images/news/news_tbcms_update.jpg',
     coverGradient: 'from-slate-900 via-slate-800 to-blue-950',
     tags: ['TBCMS', '웹접근성', 'KWCAG2.2', '공공CMS', '전자정부표준프레임워크'],
     views: 1180,
@@ -1100,6 +1102,7 @@ const CARD_NEWS_DATA = [
     date: '2026.02.10',
     readTime: '2분 읽기',
     cardCount: 4,
+    coverImage: 'images/news/news_office_expansion.jpg',
     coverGradient: 'from-amber-950 via-slate-900 to-slate-950',
     tags: ['사옥이전', '조직문화', 'AI연구소', '문정현대지식산업센터', '구비트피플'],
     views: 950,
